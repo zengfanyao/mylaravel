@@ -4,9 +4,10 @@
  * 登录密码加密
  * @author: 亮 <chenjialiang@han-zi.cn>
  */
-if (! function_exists('encrypt_password')) {
-    function encrypt_password($password,$salt){
-        return md5(sha1($password.$salt));
+if (!function_exists('encrypt_password')) {
+    function encrypt_password($password, $salt)
+    {
+        return md5(sha1($password . $salt));
     }
 }
 
@@ -14,10 +15,11 @@ if (! function_exists('encrypt_password')) {
  * 生成一个密码
  * @author: 亮 <chenjialiang@han-zi.cn>
  */
-if (! function_exists('create_password')) {
-    function create_password($password,&$salt){
-        $salt= str_random(5);
-        return encrypt_password($password,$salt);
+if (!function_exists('create_password')) {
+    function create_password($password, &$salt)
+    {
+        $salt = str_random(5);
+        return encrypt_password($password, $salt);
     }
 }
 
@@ -25,12 +27,13 @@ if (! function_exists('create_password')) {
  * 生成guid
  * @author: 亮 <chenjialiang@han-zi.cn>
  */
-if (! function_exists('create_guid')) {
-    function create_guid(){
+if (!function_exists('create_guid')) {
+    function create_guid()
+    {
         $charid = strtolower(md5(uniqid(mt_rand(), true)));
         $hyphen = chr(45);// "-"
-        $guid = substr($charid, 0, 8).$hyphen.substr($charid, 8, 4).$hyphen.substr($charid,12, 4).
-            $hyphen.substr($charid,16, 4).$hyphen.substr($charid,20,12);
+        $guid = substr($charid, 0, 8) . $hyphen . substr($charid, 8, 4) . $hyphen . substr($charid, 12, 4) .
+            $hyphen . substr($charid, 16, 4) . $hyphen . substr($charid, 20, 12);
         return $guid;
     }
 }

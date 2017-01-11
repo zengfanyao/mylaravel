@@ -184,7 +184,10 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
         //jwtAuth
         \JiaLeo\Jwt\JwtAuthProvider::class,
-        \JiaLeo\AutoCreate\AutoCreateProvider::class
+        //自动生成命令
+        \JiaLeo\AutoCreate\AutoCreateProvider::class,
+        //helper函数
+        \JiaLeo\Helper\HelperProvider::class
     ],
 
     /*

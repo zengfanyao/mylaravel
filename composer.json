@@ -31,7 +31,8 @@
             "JiaLeo\\Upload\\": "app/Libraries/jialeo/upload/src/",
             "JiaLeo\\Verify\\": "app/Libraries/jialeo/verify/src/",
             "JiaLeo\\Jwt\\": "app/Libraries/jialeo/jwt/src/",
-            "JiaLeo\\AutoCreate\\": "app/Libraries/jialeo/autocreate-laravel/src/"
+            "JiaLeo\\AutoCreate\\": "app/Libraries/jialeo/autocreate-laravel/src/",
+            "JiaLeo\\Helper\\": "app/Libraries/jialeo/helper/src/"
         }
     },
     "autoload-dev": {

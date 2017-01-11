@@ -23,7 +23,7 @@ class BaseController extends Controller
      * @param array $list
      * @return \Illuminate\Http\JsonResponse
      */
-    public function response( $data = array(), $list = array(),$code='200')
+    public function response($data = array(), $list = array(), $code = '200')
     {
         return response()->json([
             'status' => true,
@@ -31,7 +31,7 @@ class BaseController extends Controller
             'error_code' => '',
             'data' => $data,
             'list' => $list
-        ],$code);
+        ], $code);
     }
 
     /**
@@ -53,7 +53,8 @@ class BaseController extends Controller
      */
     public function responseError($error_msg, $error_id = 'ERROR', $status_code = 400)
     {
-        throw new ApiException($error_msg, $error_id, $status_code);
+        //throw new ApiException($error_msg, $error_id, $status_code);
+        response_error($error_msg, $error_id, $status_code);
     }
 
     /**
@@ -80,9 +81,10 @@ class BaseController extends Controller
      * @param array $data
      * @return object
      */
-    public function setSaveData($model, $data){
-        foreach($data as $key => $v){
-            $model->$key=$v;
+    public function setSaveData($model, $data)
+    {
+        foreach ($data as $key => $v) {
+            $model->$key = $v;
         }
 
         return $model;
@@ -95,12 +97,12 @@ class BaseController extends Controller
      */
     public function loadHelper($class_name)
     {
-        if(isset($this->helperObj[$class_name])){
+        if (isset($this->helperObj[$class_name])) {
             return true;
         }
 
-        require_once app_path().'/Helper/'.$class_name.'.php';
-        $this->helperObj[$class_name]=1;
+        load_helper($class_name);
+        $this->helperObj[$class_name] = 1;
 
         return true;
     }
