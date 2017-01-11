@@ -44,7 +44,7 @@ class Controller extends Command
         $class_name = class_basename($arg['controller_name']) . 'Controller';
 
         //文件路径
-        $file_path = app_path() . '/Http/Controllers/' . $arg['controller_name'] . '.php';
+        $file_path = app_path() . '/Http/Controllers/' . $arg['controller_name'] . 'Controller.php';
 
         //文件目录路径
         $dir_path = dirname($file_path);

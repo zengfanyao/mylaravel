@@ -11,7 +11,7 @@ class Logic extends Command
      *
      * @var string
      */
-    protected $signature = 'create:Logic {logic_name}';
+    protected $signature = 'create:logic {logic_name}';
 
     /**
      * The console command description.
@@ -44,7 +44,7 @@ class Logic extends Command
         $class_name = class_basename($arg['logic_name']) . 'Logic';
 
         //文件路径
-        $file_path = app_path() . '/Logic/' . $arg['logic_name'] . '.php';
+        $file_path = app_path() . '/Logic/' . $arg['logic_name'] . 'Logic.php';
 
         //文件目录路径
         $dir_path = dirname($file_path);
