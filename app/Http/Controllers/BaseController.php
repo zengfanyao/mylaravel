@@ -62,7 +62,7 @@ class BaseController extends Controller
      * @param \Illuminate\Http\Request $request
      * @throws ApiException
      */
-    public function verfiy(array $rule, $data = 'GET')
+    public function verify(array $rule, $data = 'GET')
     {
         if (empty($verifyObj)) {
             //$this->verifyObj = new \App\Libraries\Verify\Verify($rule, $data);
