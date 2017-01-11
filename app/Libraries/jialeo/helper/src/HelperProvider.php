@@ -1,10 +1,10 @@
 <?php
 
-namespace JiaLeo\Jwt;
+namespace JiaLeo\Helper;
 
 use Illuminate\Support\ServiceProvider;
 
-class JwtAuthProvider extends ServiceProvider
+class HelperProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -13,10 +13,7 @@ class JwtAuthProvider extends ServiceProvider
      */
     public function boot()
     {
-        //注册路由
-        if (!$this->app->routesAreCached()) {
-            require __DIR__ . '/routes.php';
-        }
+        require_once __DIR__.'/Hepler.php';
     }
 
     /**
@@ -26,10 +23,6 @@ class JwtAuthProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-        $this->app->singleton('jwtAuth', function () {
-            return JwtAuth::class;
-        });
 
     }
 }
