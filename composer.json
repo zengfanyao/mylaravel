@@ -32,7 +32,8 @@
             "JiaLeo\\Verify\\": "app/Libraries/jialeo/verify/src/",
             "JiaLeo\\Jwt\\": "app/Libraries/jialeo/jwt/src/",
             "JiaLeo\\AutoCreate\\": "app/Libraries/jialeo/autocreate-laravel/src/",
-            "JiaLeo\\Helper\\": "app/Libraries/jialeo/helper/src/"
+            "JiaLeo\\Helper\\": "app/Libraries/jialeo/helper/src/",
+            "JiaLeo\\Sms\\": "app/Libraries/jialeo/sms/src/"
         }
     },
     "autoload-dev": {

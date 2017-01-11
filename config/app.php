@@ -237,6 +237,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Jwt' => JiaLeo\Jwt\JwtAuth::class,
+        'Sms' => JiaLeo\Sms\Sms::class
 
     ],
 
