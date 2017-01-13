@@ -187,7 +187,7 @@ return [
         //自动生成命令
         \JiaLeo\AutoCreate\AutoCreateProvider::class,
         //helper函数
-        \JiaLeo\Helper\HelperProvider::class
+        \JiaLeo\Core\HelperProvider::class
     ],
 
     /*
@@ -236,6 +236,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        //以下是自定义
         'Jwt' => JiaLeo\Jwt\JwtAuth::class,
         'Sms' => JiaLeo\Sms\Sms::class
 

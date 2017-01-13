@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace JiaLeo\Core;
 
 use App\Exceptions\ApiException;
-use Illuminate\Support\Facades\App;
+
 
 /**
  * 控制器基类
- * @package App\Http\Controllers
+ * Class Controller
+ * @package JiaLeo\Core
  */
-class BaseController extends Controller
+trait Controller
 {
 
     public $verifyObj;   //验证类

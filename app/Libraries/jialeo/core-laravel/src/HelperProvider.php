@@ -1,6 +1,6 @@
 <?php
 
-namespace JiaLeo\Helper;
+namespace JiaLeo\Core;
 
 use Illuminate\Support\ServiceProvider;
 

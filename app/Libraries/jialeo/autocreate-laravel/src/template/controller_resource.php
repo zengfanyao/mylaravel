@@ -2,9 +2,9 @@
 namespace {{name_space}};
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\Controller;
 
-class {{class_name}} extends BaseController
+class {{class_name}} extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,7 +45,7 @@ class {{class_name}} extends BaseController
      */
     public function show($id)
     {
-        //
+        $this->verifyId($id);
     }
 
     /**
@@ -56,7 +56,7 @@ class {{class_name}} extends BaseController
      */
     public function edit($id)
     {
-        //
+        $this->verifyId($id);
     }
 
     /**
@@ -68,7 +68,7 @@ class {{class_name}} extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->verifyId($id);
     }
 
     /**
@@ -79,6 +79,6 @@ class {{class_name}} extends BaseController
      */
     public function destroy($id)
     {
-        //
+        $this->verifyId($id);
     }
 }
