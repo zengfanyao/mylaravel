@@ -76,6 +76,26 @@ class BaseController extends Controller
     }
 
     /**
+     * 验证ID
+     * @param \Illuminate\Http\Request $request
+     * @throws ApiException
+     */
+    public function verifyId($id)
+    {
+        if (empty($verifyObj)) {
+            //$this->verifyObj = new \App\Libraries\Verify\Verify($rule, $data);
+            $this->verifyObj = new \JiaLeo\Verify\Verify();
+        }
+
+        $result = $this->verifyObj->egnum($id);
+        if(!$result){
+            throw new ApiException('id验证错误', 'id_ERROR', 422);
+        }
+
+        return true;
+    }
+
+    /**
      * 设置保存的数据
      * @param Object $model
      * @param array $data

@@ -36,6 +36,9 @@ class Verify
         //初始化验证数组
         $check_arr = array();
 
+        //初始化数据
+        $this->data = array();
+
         //获取需要验证的字段
         foreach ($rule as $field => $v) {
             //分解规则
