@@ -106,7 +106,7 @@ class Verify
 
                 //没有传,则跳过验证
                 if (!isset($data[$field])) {
-                    return true;
+                    continue;
                 }
 
                 $vail_data = $data[$field];

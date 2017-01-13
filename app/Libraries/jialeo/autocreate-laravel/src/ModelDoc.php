@@ -4,21 +4,21 @@ namespace JiaLeo\AutoCreate;
 
 use Illuminate\Console\Command;
 
-class Model extends Command
+class ModelDoc extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'create:models';
+    protected $signature = 'create:models:doc';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create all model files';
+    protected $description = 'Create all model doc';
 
     /**
      * Create a new command instance.
@@ -40,28 +40,56 @@ class Model extends Command
         //获取当前所有表
         $tables = array_map('reset', \DB::select('SHOW TABLES'));
 
-        //获取模板文件
-        $template = file_get_contents(dirname(__FILE__) . '/template/model.php');
-        $template_method = file_get_contents(dirname(__FILE__) . '/template/model_method.php');
-
         //model文件目录
         $model_path = app_path() . '/Model';
 
         //加载helper
         require_once app_path() . '/Helper/File.php';
 
+        //加载模板
+        $template_method = file_get_contents(dirname(__FILE__) . '/template/model_method.php');
+
         foreach ($tables as $key => $v) {
             $class_name = studly_case($v) . 'Model';
             $file_name = $class_name . '.php';
             $file_path = $model_path . '/' . $file_name;
 
-            //判断文件是否存在,存在则跳过
-            if (file_exists($file_path)) {
+            //判断文件是否存在,不存在则跳过
+            if (!file_exists($file_path)) {
                 continue;
             }
 
+            //获取Model文件
+            $fp = fopen($file_path, "r+");
+            if($fp)
+            {
+                $doc_str='';
+                for($i=1;!feof($fp);$i++)
+                {
+                    $str=fgets($fp);
+                    if(trim($str) == '/**'){
+                        $doc_str= $str;
+                        for($i=1;!feof($fp);$i++){
+                            $str=fgets($fp);
+                            $doc_str.=$str;
+                            if(trim($str) == '*/'){
+                                break 2;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                continue;
+            }
+            fclose($fp);
+
             //查询所有字段
-            $columns_ide = '';
+            $columns_ide = '/**'.PHP_EOL;
+            $columns_ide .= ' * Model '.$class_name.PHP_EOL;
+            $columns_ide .= ' * '.PHP_EOL;
+
             $columns = \DB::select('SHOW COLUMNS FROM ' . $v);
             foreach ($columns as $vv) {
 
@@ -79,12 +107,16 @@ class Model extends Command
                 $columns_ide .= ' * @property ' . $type . ' $' . $vv->Field.PHP_EOL;
             }
 
-            $columns_ide.=' *';
-            $template_temp = $template;
-            $source = str_replace('{{class_name}}', $class_name, $template_temp);
-            $source = str_replace('{{table_name}}', $v, $source);
-            $source = str_replace('{{ide_property}}', $columns_ide, $source);
-            $source = str_replace('{{ide_method}}', $template_method, $source);
+            $columns_ide.=' *'.PHP_EOL;
+
+            $columns_ide.='';
+            $columns_ide.=$template_method;
+            $columns_ide.=' * @package App\Model'.PHP_EOL;
+            $columns_ide.=' */'.PHP_EOL;
+
+            //把文件doc部分替换成为空
+            $file=file_get_contents($file_path);
+            $last=str_replace($doc_str,$columns_ide,$file);
 
             //写入文件
             if (!dir_exists($model_path)) {
@@ -92,10 +124,12 @@ class Model extends Command
                 continue;
             }
 
-            if (file_put_contents($file_path, $source)) {
-                $this->info($class_name . '添加类成功');
+            unlink($file_path);
+
+            if (file_put_contents($file_path,$last)) {
+                $this->info($class_name . '修改model文档成功');
             } else {
-                $this->error($class_name . '类写入失败');
+                $this->error($class_name . '修改model文档成功');
             }
 
         }

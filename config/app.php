@@ -186,8 +186,8 @@ return [
         \JiaLeo\Jwt\JwtAuthProvider::class,
         //自动生成命令
         \JiaLeo\AutoCreate\AutoCreateProvider::class,
-        //helper函数
-        \JiaLeo\Core\HelperProvider::class
+        //JiaLeo核心
+        \JiaLeo\Core\CoreProvider::class
     ],
 
     /*

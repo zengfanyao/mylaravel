@@ -9,7 +9,8 @@
         "laravel/framework": "5.3.*",
         "barryvdh/laravel-cors": "^0.8.2",
         "guzzlehttp/guzzle": "^6.2",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -33,7 +34,8 @@
             "JiaLeo\\Jwt\\": "app/Libraries/jialeo/jwt/src/",
             "JiaLeo\\AutoCreate\\": "app/Libraries/jialeo/autocreate-laravel/src/",
             "JiaLeo\\Core\\": "app/Libraries/jialeo/core-laravel/src/",
-            "JiaLeo\\Sms\\": "app/Libraries/jialeo/sms/src/"
+            "JiaLeo\\Sms\\": "app/Libraries/jialeo/sms/src/",
+            "JiaLeo\\Module\\": "app/Libraries/jialeo/module-laravel/src/"
         }
     },
     "autoload-dev": {

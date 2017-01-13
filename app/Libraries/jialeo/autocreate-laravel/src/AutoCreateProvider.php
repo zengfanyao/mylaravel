@@ -16,6 +16,7 @@ class AutoCreateProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 'JiaLeo\AutoCreate\Model',
+                'JiaLeo\AutoCreate\ModelDoc',
                 'JiaLeo\AutoCreate\Controller',
                 'JiaLeo\AutoCreate\Logic'
             ]);
