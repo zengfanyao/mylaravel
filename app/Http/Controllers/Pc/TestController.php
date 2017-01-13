@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers\Pc;
 
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\Controller;
 
-class UploadController extends BaseController
+class UploadController extends Controller
 {
 
 

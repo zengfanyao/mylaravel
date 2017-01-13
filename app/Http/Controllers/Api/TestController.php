@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\Controller;
 
-class TestController extends BaseController
+class TestController extends Controller
 {
 
     public function index()
