@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 
 Route::group(['middleware' => 'cors'], function () {
-    Route::get('hello','Api\TestController@index');
+    Route::get('test','Api\TestController@index');
 
     //需要验证session的
     Route::group(['middleware' => ['JwtAuth']], function () {
@@ -27,8 +27,8 @@ Route::group(['middleware' => 'cors'], function () {
 
         //管理平台api
         Route::group(['prefix' => 'admin'], function () {
-            Route::resource('login', 'Admin\LoginController');
-            Route::delete('logout', 'Admin\LoginController@out');
+            //Route::resource('login', 'Admin\LoginController');
+            //Route::delete('logout', 'Admin\LoginController@out');
 
             Route::group(['middleware' => ['AdminCheck']], function () {
 
