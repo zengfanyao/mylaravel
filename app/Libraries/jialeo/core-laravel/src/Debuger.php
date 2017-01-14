@@ -77,7 +77,7 @@ class Debuger
             }
         }
 
-        return view('debug', ['list' => $data]);
+        return view('debug', ['list' => array_reverse($data)]);
     }
 
 }
