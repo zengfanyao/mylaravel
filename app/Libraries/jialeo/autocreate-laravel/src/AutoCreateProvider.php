@@ -18,7 +18,8 @@ class AutoCreateProvider extends ServiceProvider
                 'JiaLeo\AutoCreate\Model',
                 'JiaLeo\AutoCreate\ModelDoc',
                 'JiaLeo\AutoCreate\Controller',
-                'JiaLeo\AutoCreate\Logic'
+                'JiaLeo\AutoCreate\Logic',
+                'JiaLeo\AutoCreate\Module'
             ]);
         }
     }

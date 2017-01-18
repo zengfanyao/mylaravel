@@ -10,19 +10,24 @@ class ApiCheck
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
+        if (config('app.debug') === true && $request->query->get('usertest') && $request->query->get('usertest') > 0) {
+            \Jwt::set('user_info', array(
+                'user_id' => $request->query->get('usertest')
+            ));
+        }
 
-        if(!(!empty(\Jwt::$sessionData['user_info']) && !empty(\Jwt::$sessionData['user_info']['user_id']))){
+        if (!(!empty(\Jwt::$sessionData['user_info']) && !empty(\Jwt::$sessionData['user_info']['user_id']))) {
             return response()->json([
-                'status'=>false,
-                'error_msg'=>'你还没有登录或登录已过期!',
-                'error_code'=>'NO LOGIN'
-            ],400);
+                'status' => false,
+                'error_msg' => '你还没有登录或登录已过期!',
+                'error_code' => 'NO LOGIN'
+            ], 400);
         }
 
         return $next($request);

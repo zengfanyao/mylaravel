@@ -13,6 +13,8 @@ class TestController extends Controller
             'str' => 'hello world'
         );
 
+        dump(app('JiaLeo\Core\Dd'));
+
         return $this->response($data);
     }
 

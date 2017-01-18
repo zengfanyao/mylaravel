@@ -58,9 +58,9 @@ class Controller extends Command
         }
 
         if ($this->option('resource')) {
-            $template = file_get_contents(dirname(__FILE__) . '/template/controller_resource.php');
+            $template = file_get_contents(dirname(__FILE__) . '/Template/controller_resource.php');
         } else {
-            $template = file_get_contents(dirname(__FILE__) . '/template/controller.php');
+            $template = file_get_contents(dirname(__FILE__) . '/Template/controller.php');
         }
 
         $source = str_replace('{{class_name}}', $class_name, $template);

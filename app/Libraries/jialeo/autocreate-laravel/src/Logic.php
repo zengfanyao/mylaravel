@@ -58,7 +58,7 @@ class Logic extends Command
         }
 
 
-        $template = file_get_contents(dirname(__FILE__) . '/template/logic.php');
+        $template = file_get_contents(dirname(__FILE__) . '/Template/logic.php');
 
         $source = str_replace('{{class_name}}', $class_name, $template);
         $source = str_replace('{{name_space}}', $name_space, $source);
