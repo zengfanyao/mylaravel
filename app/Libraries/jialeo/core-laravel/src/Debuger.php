@@ -1,6 +1,8 @@
 <?php
 namespace JiaLeo\Core;
 
+use App\Exceptions\ApiException;
+
 class Debuger
 {
 
@@ -57,27 +59,42 @@ class Debuger
         $data = array();
 
         if (file_exists($log_path)) {
-            $file = fopen($log_path, 'r');
 
-            for ($i = 1; !feof($file); $i++) {
-                $str = fgets($file);
-                if ($str === false) {
-                    break;
+            if (!$fp = fopen($log_path, 'r')) {
+                throw new ApiException('打开文件失败，请检查文件路径是否正确，路径和文件名不要包含中文');
+            }
+
+            $pos = -2;
+            $eof = "";
+            $str = array();
+            while ($limit > 0) {
+                while ($eof != "\n") {
+                    if (!fseek($fp, $pos, SEEK_END)) {
+                        $eof = fgetc($fp);
+                        $pos--;
+                    } else {
+                        break;
+                    }
                 }
 
-                $line = explode('-||-', $str);
-                $data[] = array(
-                    'time' => trim(trim($line[0], '['), ']'),
-                    'data' => json_decode(trim($line[1], '\n'), true)
-                );
+                $str = fgets($fp);
+                if ($str !== false) {
 
-                if ($limit == $i) {
-                    break;
+                    $line = explode('-||-', $str);
+                    $data[] = array(
+                        'time' => trim(trim($line[0], '['), ']'),
+                        'data' => json_decode(trim($line[1], '\n'), true)
+                    );
+
+                    $eof = "";
+                    $limit--;
+                    continue;
                 }
+                break;
             }
         }
 
-        return view('debug', ['list' => array_reverse($data)]);
+        return view('debug', ['list' => $data]);
     }
 
 }
