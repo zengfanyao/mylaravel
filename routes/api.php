@@ -14,30 +14,30 @@ use Illuminate\Http\Request;
 */
 
 
-Route::group(['middleware' => 'cors'], function () {
-    Route::get('test','Api\TestController@index');
 
-    //需要验证session的
-    Route::group(['middleware' => ['JwtAuth']], function () {
+Route::get('test','Api\TestController@index');
 
-        //前台api
-        Route::group(['middleware' => ['ApiCheck']], function () {
-            //Route::resource('users', 'Api\UserController');
-        });
+//需要验证session的
+Route::group(['middleware' => ['JwtAuth']], function () {
 
-        //管理平台api
-        Route::group(['prefix' => 'admin'], function () {
-            //Route::resource('login', 'Admin\LoginController');
-            //Route::delete('logout', 'Admin\LoginController@out');
-
-            Route::group(['middleware' => ['AdminCheck']], function () {
-
-            });
-        });
-
-
+    //前台api
+    Route::group(['middleware' => ['ApiCheck']], function () {
+        //Route::resource('users', 'Api\UserController');
     });
+
+    //管理平台api
+    Route::group(['prefix' => 'admin'], function () {
+        //Route::resource('login', 'Admin\LoginController');
+        //Route::delete('logout', 'Admin\LoginController@out');
+
+        Route::group(['middleware' => ['AdminCheck']], function () {
+
+        });
+    });
+
+
 });
+
 
 
 

@@ -84,7 +84,8 @@ class Model extends Command
             $source = str_replace('{{class_name}}', $class_name, $template_temp);
             $source = str_replace('{{table_name}}', $v, $source);
             $source = str_replace('{{ide_property}}', $columns_ide, $source);
-            $source = str_replace('{{ide_method}}', $template_method, $source);
+            $source_method=str_replace('{{class_name}}', '\App\Model\\'.$class_name, $template_method);
+            $source = str_replace('{{ide_method}}', $source_method, $source);
 
             //写入文件
             if (!dir_exists($model_path)) {

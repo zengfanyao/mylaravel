@@ -17,13 +17,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $updated_at
  * @property int $is_on
  *
- * @method static \Illuminate\Database\Query\Builder where($column, $operator = null, $value = null, $boolean = 'and')
- * @method static \Illuminate\Database\Query\Builder leftJoin($table, $first, $operator = null, $second = null)
- * @method static \Illuminate\Database\Query\Builder rightJoin($table, $first, $operator = null, $second = null)
- * @method static \Illuminate\Database\Query\Builder get($columns = ['*'])
- * @method static \Illuminate\Database\Query\Builder paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
- * @method static \Illuminate\Database\Query\Builder find($id, $columns = ['*'])
- * @method static \Illuminate\Database\Query\Builder first($columns = ['*']) * @package App\Model
+ * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel where($column, $operator = null, $value = null, $boolean = 'and')
+ * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel leftJoin($table, $first, $operator = null, $second = null)
+ * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel rightJoin($table, $first, $operator = null, $second = null)
+ * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel get($columns = ['*'])
+ * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
+ * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel find($id, $columns = ['*'])
+ * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel first($columns = ['*']) * @package App\Model
  */
 class UserModel extends Model
 {
