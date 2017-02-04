@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.28 on 2017-01-11.
+ * Generated for Laravel 5.3.29 on 2017-02-01.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -2712,7 +2712,7 @@ namespace {
         /**
          * Encrypt the given value.
          *
-         * @param string $value
+         * @param mixed $value
          * @return string 
          * @throws \Illuminate\Contracts\Encryption\EncryptException
          * @static 
@@ -2724,7 +2724,7 @@ namespace {
         /**
          * Decrypt the given value.
          *
-         * @param string $payload
+         * @param mixed $payload
          * @return string 
          * @throws \Illuminate\Contracts\Encryption\DecryptException
          * @static 
@@ -8002,7 +8002,7 @@ namespace {
          * @param array $cookies The COOKIE parameters
          * @param array $files The FILES parameters
          * @param array $server The SERVER parameters
-         * @return \Request The duplicated request
+         * @return static 
          * @static 
          */
         public static function duplicate($query = null, $request = null, $attributes = null, $cookies = null, $files = null, $server = null){
@@ -8172,7 +8172,7 @@ namespace {
         /**
          * Creates a new request with values from PHP's super globals.
          *
-         * @return \Request A new request
+         * @return static 
          * @static 
          */
         public static function createFromGlobals(){
@@ -8193,7 +8193,7 @@ namespace {
          * @param array $files The request files ($_FILES)
          * @param array $server The server parameters ($_SERVER)
          * @param string $content The raw body data
-         * @return \Request A Request instance
+         * @return static 
          * @static 
          */
         public static function create($uri, $method = 'GET', $parameters = array(), $cookies = array(), $files = array(), $server = array(), $content = null){
@@ -11981,12 +11981,128 @@ namespace {
     }
 
 
-    class Jwt extends \JiaLeo\Jwt\JwtAuth{
+    class Jwt extends \JiaLeo\Jwt\JwtAuthFacade{
+        
+        /**
+         * 开始
+         *
+         * @param string $token
+         * @param \Request $request
+         * @return bool 
+         * @static 
+         */
+        public static function run($request, $token = ''){
+            return \JiaLeo\Jwt\JwtAuth::run($request, $token);
+        }
+        
+        /**
+         * 验证jwt
+         *
+         * @param \Request $request
+         * @return bool 
+         * @static 
+         */
+        public static function check($token){
+            return \JiaLeo\Jwt\JwtAuth::check($token);
+        }
+        
+        /**
+         * 生成token
+         *
+         * @param array $session_data
+         * @return string 
+         * @static 
+         */
+        public static function createToken($session_data = array()){
+            return \JiaLeo\Jwt\JwtAuth::createToken($session_data);
+        }
+        
+        /**
+         * 设置数据
+         *
+         * @param $key
+         * @param $value
+         * @return bool 
+         * @static 
+         */
+        public static function set($key, $value){
+            return \JiaLeo\Jwt\JwtAuth::set($key, $value);
+        }
+        
+        /**
+         * 获取数据
+         *
+         * @param $key
+         * @return array | bool
+         * @static 
+         */
+        public static function get($key = ''){
+            return \JiaLeo\Jwt\JwtAuth::get($key);
+        }
+        
+        /**
+         * 删除数据
+         *
+         * @param $key
+         * @return array | bool
+         * @static 
+         */
+        public static function delete($key = ''){
+            return \JiaLeo\Jwt\JwtAuth::delete($key);
+        }
+        
+        /**
+         * 销毁
+         *
+         * @static 
+         */
+        public static function destroy(){
+            return \JiaLeo\Jwt\JwtAuth::destroy();
+        }
         
     }
 
 
-    class Sms extends \JiaLeo\Sms\Sms{
+    class Sms extends \JiaLeo\Sms\SmsFacade{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function send($phone, $template_code, $param = array()){
+            return \JiaLeo\Sms\Sms::send($phone, $template_code, $param);
+        }
+        
+        /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */
+        public static function getCode(){
+            return \JiaLeo\Sms\Sms::getCode();
+        }
+        
+        /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */
+        public static function getErrorMsg(){
+            return \JiaLeo\Sms\Sms::getErrorMsg();
+        }
+        
+        /**
+         * 生成验证码
+         *
+         * @author : 亮 <chenjialiang@han-zi.cn>
+         * @static 
+         */
+        public static function generateMsgAuthCode($limit){
+            return \JiaLeo\Sms\Sms::generateMsgAuthCode($limit);
+        }
         
     }
 

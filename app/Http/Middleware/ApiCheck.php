@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Exceptions\ApiException;
 use Closure;
 
 
@@ -23,11 +24,7 @@ class ApiCheck
         }
 
         if (!(!empty(\Jwt::$sessionData['user_info']) && !empty(\Jwt::$sessionData['user_info']['user_id']))) {
-            return response()->json([
-                'status' => false,
-                'error_msg' => '你还没有登录或登录已过期!',
-                'error_code' => 'NO LOGIN'
-            ], 400);
+            throw new ApiException('你还没有登录或登录已过期','NO LOGIN');
         }
 
         return $next($request);

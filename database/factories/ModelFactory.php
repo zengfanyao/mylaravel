@@ -11,13 +11,26 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
+$factory->define(App\Model\UserModel::class, function (Faker\Generator $faker) {
+    //load_helper('Password');
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'nickname' => $faker->name,
+        //'email' => $faker->unique()->safeEmail,
+        //'password' => create_password(rand(000001,999999),$salt),
+        //'salt' => $salt,
+        //'sex' => $faker->boolean()
+    ];
+});
+
+$factory->define(App\Model\User2Model::class, function (Faker\Generator $faker) {
+    //load_helper('Password');
+
+    return [
+        'nickname' => $faker->name,
+        //'email' => $faker->unique()->safeEmail,
+        //'password' => create_password(rand(000001,999999),$salt),
+        //'salt' => $salt,
+        //'sex' => $faker->boolean()
     ];
 });

@@ -46,7 +46,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        //dd($exception);
 
         if ($request->header('X-ISAPI') == 1 && get_class($exception) == 'App\\Exceptions\\ApiException'   ) {
             return $this->result($request, $exception);

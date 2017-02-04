@@ -173,7 +173,7 @@ return [
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
+        //App\Providers\AuthServiceProvider::class,
         //App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
@@ -183,11 +183,13 @@ return [
         //跨域
         Barryvdh\Cors\ServiceProvider::class,
         //jwtAuth
-        \JiaLeo\Jwt\JwtAuthProvider::class,
+        JiaLeo\Jwt\JwtAuthProvider::class,
         //自动生成命令
-        \JiaLeo\AutoCreate\AutoCreateProvider::class,
+        JiaLeo\AutoCreate\AutoCreateProvider::class,
         //JiaLeo核心
-        \JiaLeo\Core\CoreProvider::class
+        JiaLeo\Core\CoreProvider::class,
+        //Sms
+        JiaLeo\Sms\SmsProvider::class
     ],
 
     /*
@@ -237,8 +239,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         //以下是自定义
-        'Jwt' => JiaLeo\Jwt\JwtAuth::class,
-        'Sms' => JiaLeo\Sms\Sms::class
+        'Jwt' => JiaLeo\Jwt\JwtAuthFacade::class,
+        'Sms' => JiaLeo\Sms\SmsFacade::class
 
     ],
 

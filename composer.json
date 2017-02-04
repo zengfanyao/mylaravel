@@ -27,16 +27,17 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Lib\\": "app/Libraries/",
+            "Lib\\": "app/Package/",
 
-            "JiaLeo\\Wechat\\": "app/Libraries/jialeo/wechat/src/",
-            "JiaLeo\\Upload\\": "app/Libraries/jialeo/upload/src/",
-            "JiaLeo\\Verify\\": "app/Libraries/jialeo/verify/src/",
-            "JiaLeo\\Jwt\\": "app/Libraries/jialeo/jwt/src/",
-            "JiaLeo\\AutoCreate\\": "app/Libraries/jialeo/autocreate-laravel/src/",
-            "JiaLeo\\Core\\": "app/Libraries/jialeo/core-laravel/src/",
-            "JiaLeo\\Sms\\": "app/Libraries/jialeo/sms/src/",
-            "JiaLeo\\Module\\": "app/Libraries/jialeo/module-laravel/src/"
+            "JiaLeo\\Wechat\\": "app/Packages/jialeo/wechat/src/",
+            "JiaLeo\\Upload\\": "app/Packages/jialeo/upload/src/",
+            "JiaLeo\\Verify\\": "app/Packages/jialeo/verify/src/",
+            "JiaLeo\\Jwt\\": "app/Packages/jialeo/jwt/src/",
+            "JiaLeo\\AutoCreate\\": "app/Packages/jialeo/autocreate-laravel/src/",
+            "JiaLeo\\Core\\": "app/Packages/jialeo/core-laravel/src/",
+            "JiaLeo\\Sms\\": "app/Packages/jialeo/sms/src/",
+            "JiaLeo\\Module\\": "app/Packages/jialeo/module-laravel/src/",
+            "JiaLeo\\Excel\\": "app/Packages/jialeo/excel/src/"
         }
     },
     "autoload-dev": {
