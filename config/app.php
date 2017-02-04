@@ -189,7 +189,9 @@ return [
         //JiaLeo核心
         JiaLeo\Core\CoreProvider::class,
         //Sms
-        JiaLeo\Sms\SmsProvider::class
+        JiaLeo\Sms\SmsProvider::class,
+        //Excel
+        JiaLeo\Excel\ExcelProvider::class
     ],
 
     /*
@@ -240,7 +242,8 @@ return [
 
         //以下是自定义
         'Jwt' => JiaLeo\Jwt\JwtAuthFacade::class,
-        'Sms' => JiaLeo\Sms\SmsFacade::class
+        'Sms' => JiaLeo\Sms\SmsFacade::class,
+        'Excel' => JiaLeo\Excel\ExcelFacade::class
 
     ],
 

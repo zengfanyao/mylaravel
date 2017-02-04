@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.29 on 2017-02-01.
+ * Generated for Laravel 5.3.30 on 2017-02-04.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -5546,18 +5546,6 @@ namespace {
          */
         public static function append($path, $data){
             return \Illuminate\Filesystem\Filesystem::append($path, $data);
-        }
-        
-        /**
-         * Get or set UNIX mode of a file or directory.
-         *
-         * @param string $path
-         * @param int $mode
-         * @return mixed 
-         * @static 
-         */
-        public static function chmod($path, $mode = null){
-            return \Illuminate\Filesystem\Filesystem::chmod($path, $mode);
         }
         
         /**
@@ -12102,6 +12090,72 @@ namespace {
          */
         public static function generateMsgAuthCode($limit){
             return \JiaLeo\Sms\Sms::generateMsgAuthCode($limit);
+        }
+        
+    }
+
+
+    class Excel extends \JiaLeo\Excel\ExcelFacade{
+        
+        /**
+         * 导出excel
+         *
+         * @param string $file_name 文件名
+         * @param array $table_data 数据
+         * @param bool $is_out_put 是否文件输出
+         * @param bool $is_upload 是否上传到远端(本地文件会被删除)
+         * @eg :传入的数据格式
+         * $export_data=array(
+         * 
+         *       array(
+         *          '订单号','支付时间','商品id','商品名称'
+         *       ),
+         * 
+         *       array(
+         *          '1',
+         *           2,
+         *          array(
+         *              '10','11'
+         *          ),
+         *          array(
+         *             '商品1','商品2'
+         *          )
+         *       ),
+         *       array(
+         *           '12222',
+         *           211111111,
+         *           12,
+         *           '商品3'
+         *       )
+         * );
+         * @author : 亮 <chenjialiang@han-zi.cn>
+         * @static 
+         */
+        public static function export($file_name, $table_data = array(), $is_out_put = false, $is_upload = false){
+            return \JiaLeo\Excel\Excel::export($file_name, $table_data, $is_out_put, $is_upload);
+        }
+        
+        /**
+         * 获取导入文件,返回对象
+         *
+         * @author : 亮 <chenjialiang@han-zi.cn>
+         * @static 
+         */
+        public static function import($file){
+            return \JiaLeo\Excel\Excel::import($file);
+        }
+        
+        /**
+         * 从远程服务器下载excel
+         *
+         * @param string $url 远程地址
+         * @param string $save_path 保存路径
+         * @return bool 
+         * @throws ApiException
+         * @static 
+         */
+        public static function downloadExcel($url, $save_path){
+            return \JiaLeo\Excel\Excel::downloadExcel($url, $save_path);
         }
         
     }

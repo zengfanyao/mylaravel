@@ -16,6 +16,12 @@ use Illuminate\Http\Request;
 
 
 Route::get('test','Api\TestController@index');
+Route::post('upload', 'Admin\UploadController@getUploadID');
+Route::get('upload/sign/{id}', 'Admin\UploadController@getUploadSign');
+Route::put('upload/complete/{id}', 'Admin\UploadController@putUploadComplete');
+Route::any('upload/callback', 'Admin\UploadController@uploadCallback');
+Route::post('files', 'Admin\UploadController@upload');
+
 
 //需要验证session的
 Route::group(['middleware' => ['JwtAuth']], function () {

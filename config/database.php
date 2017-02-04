@@ -52,7 +52,7 @@ return [
             'prefix' => '',
         ],
 
-        /*'mysql' => [
+        'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '3306'),
@@ -64,10 +64,10 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
-        ],*/
+        ],
 
         /* mysql读写分离配置 */
-        'mysql' => [
+        /*'mysql' => [
             'driver' => 'mysql',
             'read' => [
                 'host' => env('DB_READ_HOST', 'localhost'),
@@ -111,7 +111,7 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
-        ],
+        ],*/
 
         'pgsql' => [
             'driver' => 'pgsql',

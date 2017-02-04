@@ -11,7 +11,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "predis/predis": "^1.1",
         "doctrine/dbal": "^2.5",
-        "firebase/php-jwt": "^4.0"
+        "firebase/php-jwt": "^4.0",
+        "aliyuncs/oss-sdk-php": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
