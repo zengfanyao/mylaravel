@@ -14,7 +14,7 @@ class JwtAuth
      * @param  \Closure $next
      * @return mixed
      */
-    public function handle(\Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
 
         if (!\Jwt::run($request, '')) {
