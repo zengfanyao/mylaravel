@@ -39,7 +39,7 @@ class AliyunOss
     public function getUploadId($upload_model = \App\Model\UploadModel::class, $total_size, $part_size, $file_type, $dir, $filename, $callback, $is_multi = false, $part_temp_dir = 'tempMulti/')
     {
         $data = compact('total_size', 'part_size', 'file_type', 'filename', 'dir', 'path_temp_dir');
-        $data['is_multi'] = 0;
+
         //计算分块数量
         $data['part_num'] = ceil($data['total_size'] / $data['part_size']);
         $data['origin_filename'] = $data['filename'];
@@ -69,6 +69,10 @@ class AliyunOss
             $data['part_temp_dir'] = $part_temp_dir;
 
             $data['is_multi'] = 1;
+        }
+        else{
+            $data['is_multi'] = 0;
+            $data['part_num'] = 1;
         }
 
         $upload_model = new $upload_model();
@@ -187,39 +191,42 @@ class AliyunOss
             throw new ApiException('上传id不符合!');
         }
 
-        if ($upload_info->is_multi != 1) {
+        /*if ($upload_info->is_multi != 1) {
             throw new ApiException('上传id不符合!');
-        }
+        }*/
 
         if ($upload_info->part_num != $upload_info->part_now) {
             throw new ApiException('上传还没完成!');
         }
 
-        $path = trim($upload_info->path, '/');
-        $id = $upload_info->id;
+        if($upload_info->is_multi){
+            $path = trim($upload_info->path, '/');
+            $id = $upload_info->id;
 
-        $upload_id = $upload_info->oss_upload_id;
+            $upload_id = $upload_info->oss_upload_id;
 
-        $responseUploadPart = explode(',', $upload_info->oss_part_upload_ids);
+            $responseUploadPart = explode(',', $upload_info->oss_part_upload_ids);
 
-        $uploadParts = array();
-        foreach ($responseUploadPart as $i => $eTag) {
-            $uploadParts[] = array(
-                'PartNumber' => ($i + 1),
-                'ETag' => $eTag,
-            );
+            $uploadParts = array();
+            foreach ($responseUploadPart as $i => $eTag) {
+                $uploadParts[] = array(
+                    'PartNumber' => ($i + 1),
+                    'ETag' => $eTag,
+                );
+            }
+
+            //完成分块上传
+            $ossClient->completeMultipartUpload($bucket, $path, $upload_id, $uploadParts);
         }
-
-        //完成分块上传
-        $ossClient->completeMultipartUpload($bucket, $path, $upload_id, $uploadParts);
 
         //更新为完成状态
         $update = $upload_model::where('id', $id)->update(['status' => 1]);
         if (!$update) {
             throw new ApiException('上传图片失败!');
         }
+        load_helper('File');
 
-        return $upload_id;
+        return file_url($upload_info->path,true);
     }
 
     /**
@@ -324,16 +331,9 @@ class AliyunOss
             \Log::debug($oss_part_upload_ids);
 
             $update_data = ['part_now' => $data['part_now'], 'oss_part_upload_ids' => $oss_part_upload_ids];
-            $result = [];
+
         } else {
-            $update_data = ['status' => 1, 'part_now' => 1];
-            $result = [
-                'path' => $upload_info->path,
-                'url' => $this->config['file_domain'] . $upload_info->path,
-                'width' => $data['width'],
-                'height' => $data['height'],
-                'size' => $data['size']
-            ];
+            $update_data = ['part_now' => 1];
         }
 
         $update = $upload_model::where('id', $data['upload_id'])->update($update_data);
@@ -343,7 +343,7 @@ class AliyunOss
             throw new ApiException('上传图片失败,请稍后再试!');
         }
 
-        $data = array("Status" => "Ok", 'data' => $result);
+        $data = array("Status" => "Ok");
         return $data;
 
     }

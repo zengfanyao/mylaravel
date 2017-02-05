@@ -13,15 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-
-
 Route::get('test','Api\TestController@index');
-Route::post('upload', 'Admin\UploadController@getUploadID');
-Route::get('upload/sign/{id}', 'Admin\UploadController@getUploadSign');
-Route::put('upload/complete/{id}', 'Admin\UploadController@putUploadComplete');
-Route::any('upload/callback', 'Admin\UploadController@uploadCallback');
-Route::post('files', 'Admin\UploadController@upload');
-
 
 //需要验证session的
 Route::group(['middleware' => ['JwtAuth']], function () {
@@ -41,12 +33,15 @@ Route::group(['middleware' => ['JwtAuth']], function () {
         });
     });
 
-
 });
 
-
-
-
+//上传文件
+//Route::post('upload', 'Admin\UploadController@getUploadID');
+//Route::get('upload/sign/{id}', 'Admin\UploadController@getUploadSign');
+//Route::put('upload/cloudcomplete/{id}', 'Admin\UploadController@putCloudUploadComplete');
+//Route::put('upload/localcomplete/{id}', 'Admin\UploadController@putLocalUploadComplete');
+//Route::any('upload/callback', 'Admin\UploadController@uploadCallback');
+//Route::post('files', 'Admin\UploadController@upload');
 
 //前台微信
 //Route::any('wechat', 'Api\WechatController@serve');

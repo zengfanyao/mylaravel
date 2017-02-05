@@ -5,6 +5,10 @@
  * @author: 亮 <chenjialiang@han-zi.cn>
  */
 if (!function_exists('dir_exists')) {
+    /**
+     * @param string $path 目录路径
+     * @return bool
+     */
     function dir_exists($path)
     {
         $f = true;
@@ -16,6 +20,18 @@ if (!function_exists('dir_exists')) {
         }
 
         return $f;
+    }
+}
+
+/**
+ * 组装文件url路径
+ * @author: 亮 <chenjialiang@han-zi.cn>
+ */
+if (!function_exists('file_url')) {
+    function file_url($path, $is_cloud = false,$type = 'img')
+    {
+        $domain = !$is_cloud ? request()->getSchemeAndHttpHost() : Config::get('aliyun.oss.'.$type.'_domain');
+        return $domain.$path;
     }
 }
 

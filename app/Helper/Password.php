@@ -5,6 +5,11 @@
  * @author: 亮 <chenjialiang@han-zi.cn>
  */
 if (!function_exists('encrypt_password')) {
+    /**
+     * @param string $password 密码
+     * @param string $salt 扰乱码
+     * @return string
+     */
     function encrypt_password($password, $salt)
     {
         return md5(sha1($password . $salt));
@@ -16,6 +21,11 @@ if (!function_exists('encrypt_password')) {
  * @author: 亮 <chenjialiang@han-zi.cn>
  */
 if (!function_exists('create_password')) {
+    /**
+     * @param string $password 密码
+     * @param string $salt 扰乱码
+     * @return string
+     */
     function create_password($password, &$salt)
     {
         $salt = str_random(5);
@@ -28,6 +38,9 @@ if (!function_exists('create_password')) {
  * @author: 亮 <chenjialiang@han-zi.cn>
  */
 if (!function_exists('create_guid')) {
+    /**
+     * @return string
+     */
     function create_guid()
     {
         $charid = strtolower(md5(uniqid(mt_rand(), true)));

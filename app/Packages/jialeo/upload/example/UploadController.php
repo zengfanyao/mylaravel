@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exceptions\ApiException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use OSS\OssClient;
 
 class UploadController extends Controller
 {
