@@ -23,7 +23,7 @@ class ApiCheck
             ));
         }
 
-        if (!(!empty(\Jwt::$sessionData['user_info']) && !empty(\Jwt::$sessionData['user_info']['user_id']))) {
+        if (!(!empty(\Jwt::getSessionData('user_info')) && !empty(\Jwt::getSessionData('user_info')['user_id']))) {
             throw new ApiException('你还没有登录或登录已过期','NO LOGIN');
         }
 

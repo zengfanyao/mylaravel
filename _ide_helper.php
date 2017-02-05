@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.30 on 2017-02-04.
+ * Generated for Laravel 5.3.30 on 2017-02-05.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12046,6 +12046,16 @@ namespace {
          */
         public static function destroy(){
             return \JiaLeo\Jwt\JwtAuth::destroy();
+        }
+        
+        /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getSessionData($name = null){
+            return \JiaLeo\Jwt\JwtAuth::getSessionData($name);
         }
         
     }

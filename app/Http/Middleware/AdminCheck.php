@@ -23,7 +23,7 @@ class AdminCheck
             ));
         }
 
-        if (!(!empty(\Jwt::$sessionData['admin_info']) && !empty(\Jwt::$sessionData['admin_info']['admin_id']))) {
+        if (!(!empty(\Jwt::getSessionData('admin_info')) && !empty(\Jwt::getSessionData('admin_info')['admin_id']))) {
             throw new ApiException('你还没有登录或登录已过期', 'NO LOGIN');
         }
 

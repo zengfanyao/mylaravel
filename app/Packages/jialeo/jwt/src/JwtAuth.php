@@ -190,6 +190,17 @@ class JwtAuth
         \Cache::forget('session:' . self::$encodeData['session_key']);
     }
 
+    /**
+     * @return array
+     */
+    public static function getSessionData($name = null)
+    {
+        if($name !== null){
+            return self::$sessionData[$name];
+        }
+        return self::$sessionData;
+    }
+
     //TODO 数据签名验证
 
 }
