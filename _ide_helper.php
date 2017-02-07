@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.30 on 2017-02-05.
+ * Generated for Laravel 5.3.30 on 2017-02-07.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -11972,26 +11972,15 @@ namespace {
     class Jwt extends \JiaLeo\Jwt\JwtAuthFacade{
         
         /**
-         * 开始
-         *
-         * @param string $token
-         * @param \Request $request
-         * @return bool 
-         * @static 
-         */
-        public static function run($request, $token = ''){
-            return \JiaLeo\Jwt\JwtAuth::run($request, $token);
-        }
-        
-        /**
          * 验证jwt
          *
-         * @param \Request $request
+         * @param string $token
+         * @param object $request
          * @return bool 
          * @static 
          */
-        public static function check($token){
-            return \JiaLeo\Jwt\JwtAuth::check($token);
+        public static function check($request, $token = ''){
+            return \JiaLeo\Jwt\JwtAuth::check($request, $token);
         }
         
         /**
@@ -12035,7 +12024,7 @@ namespace {
          * @return array | bool
          * @static 
          */
-        public static function delete($key = ''){
+        public static function delete($key){
             return \JiaLeo\Jwt\JwtAuth::delete($key);
         }
         
@@ -12046,16 +12035,6 @@ namespace {
          */
         public static function destroy(){
             return \JiaLeo\Jwt\JwtAuth::destroy();
-        }
-        
-        /**
-         * 
-         *
-         * @return array 
-         * @static 
-         */
-        public static function getSessionData($name = null){
-            return \JiaLeo\Jwt\JwtAuth::getSessionData($name);
         }
         
     }

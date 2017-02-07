@@ -25,7 +25,7 @@ class WsAuth
             throw new ApiException('AUTHORIZATION验证失败', 'AUTHORIZATION_INVALID', 401);
         }
 
-        if(! \Jwt::run($request,$request->request->get('token'))){
+        if(! \Jwt::check($request,$request->request->get('token'))){
             throw new ApiException('AUTHORIZATION验证失败', 'AUTHORIZATION_INVALID', 401);
         }
 

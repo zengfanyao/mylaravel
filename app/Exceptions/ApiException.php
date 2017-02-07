@@ -14,7 +14,7 @@ class ApiException extends \Exception
      * @param string $error_id 错误id
      * @param string $code http状态码
      */
-    function __construct($message = '', $error_id = 'unknown_error', $code = 400)
+    function __construct($message = '', $error_id = 'ERROR', $code = 400)
     {
         parent::__construct($message, $code);
         empty($error_id) || $this->error_id = $error_id;
@@ -26,7 +26,7 @@ class ApiException extends \Exception
      */
     public function getErrorId()
     {
-        return empty($this->error_id) ? 'unknown_error' : $this->error_id;
+        return empty($this->error_id) ? 'ERROR' : $this->error_id;
     }
 
 }

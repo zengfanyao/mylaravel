@@ -1,9 +1,8 @@
 <?php
 namespace JiaLeo\Jwt;
 
-use \Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use \Firebase\JWT\JWT;
-
 
 /**
  * jwtAuth类
@@ -13,7 +12,6 @@ use \Firebase\JWT\JWT;
  */
 class JwtAuth
 {
-    //private static $key = "1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2l";
     private static $expires = 60; //设置过期时间(分钟)
     private static $seesionKey = '';  //会话key
 
@@ -21,12 +19,12 @@ class JwtAuth
     public static $sessionData = array();
 
     /**
-     * 开始
+     * 验证jwt
      * @param string $token
-     * @param Request $request
+     * @param object $request
      * @return bool
      */
-    public static function run(Request $request, $token = '')
+    public function check($request, $token = '')
     {
         if (empty($token)) {
             //获取header内容
@@ -44,17 +42,6 @@ class JwtAuth
                 $token = $auth_header;
             }
         }
-
-        return self::check($token);
-    }
-
-    /**
-     * 验证jwt
-     * @param Request $request
-     * @return bool
-     */
-    public static function check($token)
-    {
 
         try {
             self::$encodeData = (array)JWT::decode($token, config('app.key'), array('HS256'));
@@ -89,9 +76,9 @@ class JwtAuth
      * @param array $session_data
      * @return string
      */
-    public static function createToken(array $session_data = array())
+    public function createToken(array $session_data = array())
     {
-        require_once app_path() . '/Helper/Password.php';
+        load_helper('Password');
         $session_key = create_guid();
 
         $time = time();
@@ -112,7 +99,7 @@ class JwtAuth
      * @param $value
      * @return bool
      */
-    public static function set($key, $value)
+    public function set($key, $value)
     {
         //获取最新数据
         $data = \Cache::get('session:' . self::$encodeData['session_key']);
@@ -120,12 +107,18 @@ class JwtAuth
             return false;
         }
 
-        $data[$key] = $value;
+        $keys = is_array($key) ? $key : [$key => $value];
+
+        foreach ($keys as $key => $value) {
+            Arr::set($data, $key, $value);
+        }
+
         $time = time();
         $data['expires_time'] = $time + (self::$expires * 60);
         $data['refresh_time'] = $time;
 
         \Cache::put('session:' . self::$encodeData['session_key'], $data, self::$expires);
+        self::$sessionData = $data;
         return true;
     }
 
@@ -134,21 +127,18 @@ class JwtAuth
      * @param $key
      * @return array | bool
      */
-    public static function get($key = '')
+    public function get($key = '')
     {
         $data = self::$sessionData;
         if (empty($data)) {
             return false;
         }
 
-        if (!empty($key)) {
-            if (array_key_exists($key, $data)) {
-                return $data[$key];
-            }
-            return false;
+        if (empty($key)) {
+            return $data;
         }
 
-        return $data;
+        return Arr::get($data, $key, '');
     }
 
     /**
@@ -156,7 +146,7 @@ class JwtAuth
      * @param $key
      * @return array | bool
      */
-    public static function delete($key = '')
+    public function delete($key)
     {
         //获取最新数据
         $data = \Cache::get('session:' . self::$encodeData['session_key']);
@@ -165,40 +155,27 @@ class JwtAuth
         }
 
         if (!empty($key)) {
-            if (!array_key_exists($key, $data)) {
-                return false;
-            }
-            unset($data[$key]);
+            Arr::forget($data, $key);
+            dump($data);
+
             $time = time();
             $data['expires_time'] = $time + (self::$expires * 60);
             $data['refresh_time'] = $time;
 
             \Cache::put('session:' . self::$encodeData['session_key'], $data, self::$expires);
-        } else {
-            \Cache::forget('session:' . self::$seesionKey);
+            self::$sessionData = $data;
         }
 
         return true;
     }
 
-
     /**
      *  销毁
      */
-    public static function destroy()
+    public function destroy()
     {
-        \Cache::forget('session:' . self::$encodeData['session_key']);
-    }
-
-    /**
-     * @return array
-     */
-    public static function getSessionData($name = null)
-    {
-        if($name !== null){
-            return self::$sessionData[$name];
-        }
-        return self::$sessionData;
+        \Cache::forget('session:' . self::$seesionKey);
+        self::$sessionData = array();
     }
 
     //TODO 数据签名验证

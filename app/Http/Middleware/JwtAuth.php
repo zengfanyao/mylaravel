@@ -17,7 +17,7 @@ class JwtAuth
     public function handle($request, Closure $next)
     {
 
-        if (!\Jwt::run($request, '')) {
+        if (!\Jwt::check($request, '')) {
             throw new ApiException('AUTHORIZATION验证失败', 'AUTHORIZATION_INVALID', 401);
         }
 
