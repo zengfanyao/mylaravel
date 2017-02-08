@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model UploadModel
- *
+ * 
  * @property int $id
  * @property int $part_num
  * @property int $total_size
@@ -15,10 +15,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $filename
  * @property string $path
  * @property string $file_type
+ * @property string $type
  * @property string $dir
  * @property int $part_now
  * @property int $status
  * @property int $is_multi
+ * @property int $is_cloud
  * @property string $oss_upload_id
  * @property string $oss_part_upload_ids
  * @property string $part_temp_dir
@@ -27,6 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $is_on
  *
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UploadModel where($column, $operator = null, $value = null, $boolean = 'and')
+ * @method static \Illuminate\Database\Query\Builder | \App\Model\UploadModel whereIn($column, $values, $boolean = 'and', $not = false)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UploadModel leftJoin($table, $first, $operator = null, $second = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UploadModel rightJoin($table, $first, $operator = null, $second = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UploadModel get($columns = ['*'])

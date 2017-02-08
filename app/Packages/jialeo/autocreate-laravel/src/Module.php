@@ -47,8 +47,8 @@ class Module extends Command
         $result = false;
 
         switch ($moduler_name) {
-            case 'admin_login' :    //管理后台登录
-                $result = \JiaLeo\AutoCreate\Module\AdminLogin\Module::run();
+            case 'admin_login' :
+
                 break;
             default :
                 $this->error('不存在模块' . $moduler_name);

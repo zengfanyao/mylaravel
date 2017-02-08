@@ -86,6 +86,15 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+    }
+
+    /**
+     * 退出登录
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout(){
+        \Jwt::destroy();
+        return $this->response();
     }
 }

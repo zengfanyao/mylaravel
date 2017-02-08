@@ -25,8 +25,8 @@ Route::group(['middleware' => ['JwtAuth']], function () {
 
     //管理平台api
     Route::group(['prefix' => 'admin'], function () {
-        //Route::resource('login', 'Admin\LoginController');
-        //Route::delete('logout', 'Admin\LoginController@out');
+        Route::resource('login', 'Admin\LoginController');
+        Route::delete('logout', 'Admin\LoginController@out');
 
         Route::group(['middleware' => ['AdminCheck']], function () {
 

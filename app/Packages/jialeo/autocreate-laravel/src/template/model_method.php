@@ -1,4 +1,5 @@
  * @method static \Illuminate\Database\Query\Builder | {{class_name}} where($column, $operator = null, $value = null, $boolean = 'and')
+ * @method static \Illuminate\Database\Query\Builder | {{class_name}} whereIn($column, $values, $boolean = 'and', $not = false)
  * @method static \Illuminate\Database\Query\Builder | {{class_name}} leftJoin($table, $first, $operator = null, $second = null)
  * @method static \Illuminate\Database\Query\Builder | {{class_name}} rightJoin($table, $first, $operator = null, $second = null)
  * @method static \Illuminate\Database\Query\Builder | {{class_name}} get($columns = ['*'])
