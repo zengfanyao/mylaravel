@@ -156,7 +156,6 @@ class JwtAuth
 
         if (!empty($key)) {
             Arr::forget($data, $key);
-            dump($data);
 
             $time = time();
             $data['expires_time'] = $time + (self::$expires * 60);
