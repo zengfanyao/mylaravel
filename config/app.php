@@ -191,7 +191,9 @@ return [
         //Sms
         JiaLeo\Sms\SmsProvider::class,
         //Excel
-        JiaLeo\Excel\ExcelProvider::class
+        JiaLeo\Excel\ExcelProvider::class,
+        //Wechat
+        JiaLeo\Wechat\WechatProvider::class
     ],
 
     /*
@@ -244,7 +246,8 @@ return [
         //以下是自定义
         'Jwt' => JiaLeo\Jwt\JwtAuthFacade::class,
         'Sms' => JiaLeo\Sms\SmsFacade::class,
-        'Excel' => JiaLeo\Excel\ExcelFacade::class
+        'Excel' => JiaLeo\Excel\ExcelFacade::class,
+        'Wechat' => JiaLeo\Wechat\WechatFacade::class,
 
     ],
 

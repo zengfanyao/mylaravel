@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.9 on 2017-02-08.
+ * Generated for Laravel 5.4.9 on 2017-02-17.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12432,6 +12432,2441 @@ namespace {
          */
         public static function downloadExcel($url, $save_path){
             return \JiaLeo\Excel\Excel::downloadExcel($url, $save_path);
+        }
+        
+    }
+
+
+    class Wechat extends \JiaLeo\Wechat\WechatFacade{
+        
+        /**
+         * POST 请求(重载)
+         *
+         * @param string $url
+         * @param array $param
+         * @param boolean $post_file 是否文件上传
+         * @return string content
+         * @static 
+         */
+        public static function http_post($url, $param, $post_file = false){
+            return \JiaLeo\Wechat\Wechat::http_post($url, $param, $post_file);
+        }
+        
+        /**
+         * For weixin server validation
+         *
+         * @param bool $return 是否返回
+         * @static 
+         */
+        public static function valid($return = false){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::valid($return);
+        }
+        
+        /**
+         * 设置发送消息
+         *
+         * @param array $msg 消息数组
+         * @param bool $append 是否在原消息数组追加
+         * @static 
+         */
+        public static function Message($msg = '', $append = false){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::Message($msg, $append);
+        }
+        
+        /**
+         * 设置消息的星标标志，官方已取消对此功能的支持
+         *
+         * @static 
+         */
+        public static function setFuncFlag($flag){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::setFuncFlag($flag);
+        }
+        
+        /**
+         * 获取微信服务器发来的信息
+         *
+         * @static 
+         */
+        public static function getRev(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRev();
+        }
+        
+        /**
+         * 获取微信服务器发来的信息
+         *
+         * @static 
+         */
+        public static function getRevData(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevData();
+        }
+        
+        /**
+         * 获取消息发送者
+         *
+         * @static 
+         */
+        public static function getRevFrom(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevFrom();
+        }
+        
+        /**
+         * 获取消息接受者
+         *
+         * @static 
+         */
+        public static function getRevTo(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevTo();
+        }
+        
+        /**
+         * 获取接收消息的类型
+         *
+         * @static 
+         */
+        public static function getRevType(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevType();
+        }
+        
+        /**
+         * 获取消息ID
+         *
+         * @static 
+         */
+        public static function getRevID(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevID();
+        }
+        
+        /**
+         * 获取消息发送时间
+         *
+         * @static 
+         */
+        public static function getRevCtime(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevCtime();
+        }
+        
+        /**
+         * 获取接收消息内容正文
+         *
+         * @static 
+         */
+        public static function getRevContent(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevContent();
+        }
+        
+        /**
+         * 获取接收消息图片
+         *
+         * @static 
+         */
+        public static function getRevPic(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevPic();
+        }
+        
+        /**
+         * 获取接收消息链接
+         *
+         * @static 
+         */
+        public static function getRevLink(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevLink();
+        }
+        
+        /**
+         * 获取接收地理位置
+         *
+         * @static 
+         */
+        public static function getRevGeo(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevGeo();
+        }
+        
+        /**
+         * 获取上报地理位置事件
+         *
+         * @static 
+         */
+        public static function getRevEventGeo(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevEventGeo();
+        }
+        
+        /**
+         * 获取接收事件推送
+         *
+         * @static 
+         */
+        public static function getRevEvent(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevEvent();
+        }
+        
+        /**
+         * 获取自定义菜单的扫码推事件信息
+         * 
+         * 事件类型为以下两种时则调用此方法有效
+         * Event	 事件类型，scancode_push
+         * Event	 事件类型，scancode_waitmsg
+         *
+         * @return \JiaLeo\Wechat\: array | false
+         * array (
+         *     'ScanType'=>'qrcode',
+         *     'ScanResult'=>'123123'
+         * )
+         * @static 
+         */
+        public static function getRevScanInfo(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevScanInfo();
+        }
+        
+        /**
+         * 获取自定义菜单的图片发送事件信息
+         * 
+         * 事件类型为以下三种时则调用此方法有效
+         * Event	 事件类型，pic_sysphoto        弹出系统拍照发图的事件推送
+         * Event	 事件类型，pic_photo_or_album  弹出拍照或者相册发图的事件推送
+         * Event	 事件类型，pic_weixin          弹出微信相册发图器的事件推送
+         *
+         * @return \JiaLeo\Wechat\: array | false
+         * array (
+         *   'Count' => '2',
+         *   'PicList' =>array (
+         *         'item' =>array (
+         *             0 =>array ('PicMd5Sum' => 'aaae42617cf2a14342d96005af53624c'),
+         *             1 =>array ('PicMd5Sum' => '149bd39e296860a2adc2f1bb81616ff8'),
+         *         ),
+         *   ),
+         * )
+         * @static 
+         */
+        public static function getRevSendPicsInfo(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevSendPicsInfo();
+        }
+        
+        /**
+         * 获取自定义菜单的地理位置选择器事件推送
+         * 
+         * 事件类型为以下时则可以调用此方法有效
+         * Event	 事件类型，location_select        弹出地理位置选择器的事件推送
+         *
+         * @return \JiaLeo\Wechat\: array | false
+         * array (
+         *   'Location_X' => '33.731655000061',
+         *   'Location_Y' => '113.29955200008047',
+         *   'Scale' => '16',
+         *   'Label' => '某某市某某区某某路',
+         *   'Poiname' => '',
+         * )
+         * @static 
+         */
+        public static function getRevSendGeoInfo(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevSendGeoInfo();
+        }
+        
+        /**
+         * 获取接收语音推送
+         *
+         * @static 
+         */
+        public static function getRevVoice(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevVoice();
+        }
+        
+        /**
+         * 获取接收视频推送
+         *
+         * @static 
+         */
+        public static function getRevVideo(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevVideo();
+        }
+        
+        /**
+         * 获取接收TICKET
+         *
+         * @static 
+         */
+        public static function getRevTicket(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevTicket();
+        }
+        
+        /**
+         * 获取二维码的场景值
+         *
+         * @static 
+         */
+        public static function getRevSceneId(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevSceneId();
+        }
+        
+        /**
+         * 获取主动推送的消息ID
+         * 经过验证，这个和普通的消息MsgId不一样
+         * 当Event为 MASSSENDJOBFINISH 或 TEMPLATESENDJOBFINISH
+         *
+         * @static 
+         */
+        public static function getRevTplMsgID(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevTplMsgID();
+        }
+        
+        /**
+         * 获取模板消息发送状态
+         *
+         * @static 
+         */
+        public static function getRevStatus(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevStatus();
+        }
+        
+        /**
+         * 获取群发或模板消息发送结果
+         * 当Event为 MASSSENDJOBFINISH 或 TEMPLATESENDJOBFINISH，即高级群发/模板消息
+         *
+         * @static 
+         */
+        public static function getRevResult(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevResult();
+        }
+        
+        /**
+         * 获取多客服会话状态推送事件 - 接入会话
+         * 当Event为 kfcreatesession 即接入会话
+         *
+         * @return string | boolean  返回分配到的客服
+         * @static 
+         */
+        public static function getRevKFCreate(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevKFCreate();
+        }
+        
+        /**
+         * 获取多客服会话状态推送事件 - 关闭会话
+         * 当Event为 kfclosesession 即关闭会话
+         *
+         * @return string | boolean  返回分配到的客服
+         * @static 
+         */
+        public static function getRevKFClose(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevKFClose();
+        }
+        
+        /**
+         * 获取多客服会话状态推送事件 - 转接会话
+         * 当Event为 kfswitchsession 即转接会话
+         *
+         * @return array | boolean  返回分配到的客服
+         * {
+         *     'FromKfAccount' => '',      //原接入客服
+         *     'ToKfAccount' => ''            //转接到客服
+         * }
+         * @static 
+         */
+        public static function getRevKFSwitch(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevKFSwitch();
+        }
+        
+        /**
+         * 获取卡券事件推送 - 卡卷审核是否通过
+         * 当Event为 card_pass_check(审核通过) 或 card_not_pass_check(未通过)
+         *
+         * @return string|boolean 返回卡券ID
+         * @static 
+         */
+        public static function getRevCardPass(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevCardPass();
+        }
+        
+        /**
+         * 获取卡券事件推送 - 领取卡券
+         * 当Event为 user_get_card(用户领取卡券)
+         *
+         * @return array|boolean 
+         * @static 
+         */
+        public static function getRevCardGet(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevCardGet();
+        }
+        
+        /**
+         * 获取卡券事件推送 - 删除卡券
+         * 当Event为 user_del_card(用户删除卡券)
+         *
+         * @return array|boolean 
+         * @static 
+         */
+        public static function getRevCardDel(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevCardDel();
+        }
+        
+        /**
+         * 获取订单ID - 订单付款通知
+         * 当Event为 merchant_order(订单付款通知)
+         *
+         * @return \JiaLeo\Wechat\orderId|boolean 
+         * @static 
+         */
+        public static function getRevOrderId(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevOrderId();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function xmlSafeStr($str){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::xmlSafeStr($str);
+        }
+        
+        /**
+         * 数据XML编码
+         *
+         * @param mixed $data 数据
+         * @return string 
+         * @static 
+         */
+        public static function data_to_xml($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::data_to_xml($data);
+        }
+        
+        /**
+         * XML编码
+         *
+         * @param mixed $data 数据
+         * @param string $root 根节点名
+         * @param string $item 数字索引的子节点名
+         * @param string $attr 根节点属性
+         * @param string $id 数字索引子节点key转换的属性名
+         * @param string $encoding 数据编码
+         * @return string 
+         * @static 
+         */
+        public static function xml_encode($data, $root = 'xml', $item = 'item', $attr = '', $id = 'id', $encoding = 'utf-8'){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::xml_encode($data, $root, $item, $attr, $id, $encoding);
+        }
+        
+        /**
+         * 设置回复消息
+         * Example: $obj->text('hello')->reply();
+         *
+         * @param string $text
+         * @static 
+         */
+        public static function text($text = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::text($text);
+        }
+        
+        /**
+         * 设置回复消息
+         * Example: $obj->image('media_id')->reply();
+         *
+         * @param string $mediaid
+         * @static 
+         */
+        public static function image($mediaid = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::image($mediaid);
+        }
+        
+        /**
+         * 设置回复消息
+         * Example: $obj->voice('media_id')->reply();
+         *
+         * @param string $mediaid
+         * @static 
+         */
+        public static function voice($mediaid = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::voice($mediaid);
+        }
+        
+        /**
+         * 设置回复消息
+         * Example: $obj->video('media_id','title','description')->reply();
+         *
+         * @param string $mediaid
+         * @static 
+         */
+        public static function video($mediaid = '', $title = '', $description = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::video($mediaid, $title, $description);
+        }
+        
+        /**
+         * 设置回复音乐
+         *
+         * @param string $title
+         * @param string $desc
+         * @param string $musicurl
+         * @param string $hgmusicurl
+         * @param string $thumbmediaid 音乐图片缩略图的媒体id，非必须
+         * @static 
+         */
+        public static function music($title, $desc, $musicurl, $hgmusicurl = '', $thumbmediaid = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::music($title, $desc, $musicurl, $hgmusicurl, $thumbmediaid);
+        }
+        
+        /**
+         * 设置回复图文
+         *
+         * @param array $newsData 数组结构:
+         *  array(
+         *  	"0"=>array(
+         *  		'Title'=>'msg title',
+         *  		'Description'=>'summary text',
+         *  		'PicUrl'=>'http://www.domain.com/1.jpg',
+         *  		'Url'=>'http://www.domain.com/1.html'
+         *  	),
+         *  	"1"=>....
+         *  )
+         * @static 
+         */
+        public static function news($newsData = array()){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::news($newsData);
+        }
+        
+        /**
+         * 回复微信服务器, 此函数支持链式操作
+         * Example: $this->text('msg tips')->reply();
+         *
+         * @param string $msg 要发送的信息, 默认取$this->_msg
+         * @param bool $return 是否返回信息而不抛出到浏览器 默认:否
+         * @static 
+         */
+        public static function reply($msg = array(), $return = false){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::reply($msg, $return);
+        }
+        
+        /**
+         * GET 请求
+         *
+         * @param string $url
+         * @static 
+         */
+        public static function http_get($url){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::http_get($url);
+        }
+        
+        /**
+         * 获取access_token
+         *
+         * @param string $appid 如在类初始化时已提供，则可为空
+         * @param string $appsecret 如在类初始化时已提供，则可为空
+         * @param string $token 手动指定access_token，非必要情况不建议用
+         * @static 
+         */
+        public static function checkAuth($appid = '', $appsecret = '', $token = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::checkAuth($appid, $appsecret, $token);
+        }
+        
+        /**
+         * 删除验证数据
+         *
+         * @param string $appid
+         * @static 
+         */
+        public static function resetAuth($appid = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::resetAuth($appid);
+        }
+        
+        /**
+         * 删除JSAPI授权TICKET
+         *
+         * @param string $appid 用于多个appid时使用
+         * @static 
+         */
+        public static function resetJsTicket($appid = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::resetJsTicket($appid);
+        }
+        
+        /**
+         * 获取JSAPI授权TICKET
+         *
+         * @param string $appid 用于多个appid时使用,可空
+         * @param string $jsapi_ticket 手动指定jsapi_ticket，非必要情况不建议用
+         * @static 
+         */
+        public static function getJsTicket($appid = '', $jsapi_ticket = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getJsTicket($appid, $jsapi_ticket);
+        }
+        
+        /**
+         * 获取JsApi使用签名
+         *
+         * @param string $url 网页的URL，自动处理#及其后面部分
+         * @param string $timestamp 当前时间戳 (为空则自动生成)
+         * @param string $noncestr 随机串 (为空则自动生成)
+         * @param string $appid 用于多个appid时使用,可空
+         * @return array|bool 返回签名字串
+         * @static 
+         */
+        public static function getJsSign($url, $timestamp = 0, $noncestr = '', $appid = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getJsSign($url, $timestamp, $noncestr, $appid);
+        }
+        
+        /**
+         * 微信api不支持中文转义的json结构
+         *
+         * @param array $arr
+         * @static 
+         */
+        public static function json_encode($arr){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::json_encode($arr);
+        }
+        
+        /**
+         * 获取签名
+         *
+         * @param array $arrdata 签名数组
+         * @param string $method 签名方法
+         * @return boolean|string 签名值
+         * @static 
+         */
+        public static function getSignature($arrdata, $method = 'sha1'){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getSignature($arrdata, $method);
+        }
+        
+        /**
+         * 获取微信卡券api_ticket
+         *
+         * @param string $appid 用于多个appid时使用,可空
+         * @param string $api_ticket 手动指定api_ticket，非必要情况不建议用
+         * @static 
+         */
+        public static function getJsCardTicket($appid = '', $api_ticket = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getJsCardTicket($appid, $api_ticket);
+        }
+        
+        /**
+         * 获取微信卡券签名
+         *
+         * @param array $arrdata 签名数组
+         * @param string $method 签名方法
+         * @return boolean|string 签名值
+         * @static 
+         */
+        public static function getTicketSignature($arrdata, $method = 'sha1'){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getTicketSignature($arrdata, $method);
+        }
+        
+        /**
+         * 生成随机字串
+         *
+         * @param \JiaLeo\Wechat\number $length 长度，默认为16，最长为32字节
+         * @return string 
+         * @static 
+         */
+        public static function generateNonceStr($length = 16){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::generateNonceStr($length);
+        }
+        
+        /**
+         * 获取微信服务器IP地址列表
+         *
+         * @return \JiaLeo\Wechat\array('127.0.0.1','127.0.0.1') 
+         * @static 
+         */
+        public static function getServerIp(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getServerIp();
+        }
+        
+        /**
+         * 创建菜单(认证后的订阅号可用)
+         *
+         * @param array $data 菜单数组数据
+         * example:
+         * 	array (
+         * 	    'button' => array (
+         * 	      0 => array (
+         * 	        'name' => '扫码',
+         * 	        'sub_button' => array (
+         * 	            0 => array (
+         * 	              'type' => 'scancode_waitmsg',
+         * 	              'name' => '扫码带提示',
+         * 	              'key' => 'rselfmenu_0_0',
+         * 	            ),
+         * 	            1 => array (
+         * 	              'type' => 'scancode_push',
+         * 	              'name' => '扫码推事件',
+         * 	              'key' => 'rselfmenu_0_1',
+         * 	            ),
+         * 	        ),
+         * 	      ),
+         * 	      1 => array (
+         * 	        'name' => '发图',
+         * 	        'sub_button' => array (
+         * 	            0 => array (
+         * 	              'type' => 'pic_sysphoto',
+         * 	              'name' => '系统拍照发图',
+         * 	              'key' => 'rselfmenu_1_0',
+         * 	            ),
+         * 	            1 => array (
+         * 	              'type' => 'pic_photo_or_album',
+         * 	              'name' => '拍照或者相册发图',
+         * 	              'key' => 'rselfmenu_1_1',
+         * 	            )
+         * 	        ),
+         * 	      ),
+         * 	      2 => array (
+         * 	        'type' => 'location_select',
+         * 	        'name' => '发送位置',
+         * 	        'key' => 'rselfmenu_2_0'
+         * 	      ),
+         * 	    ),
+         * 	)
+         * type可以选择为以下几种，其中5-8除了收到菜单事件以外，还会单独收到对应类型的信息。
+         * 1、click：点击推事件
+         * 2、view：跳转URL
+         * 3、scancode_push：扫码推事件
+         * 4、scancode_waitmsg：扫码推事件且弹出“消息接收中”提示框
+         * 5、pic_sysphoto：弹出系统拍照发图
+         * 6、pic_photo_or_album：弹出拍照或者相册发图
+         * 7、pic_weixin：弹出微信相册发图器
+         * 8、location_select：弹出地理位置选择器
+         * @static 
+         */
+        public static function createMenu($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::createMenu($data);
+        }
+        
+        /**
+         * 获取菜单(认证后的订阅号可用)
+         *
+         * @return \JiaLeo\Wechat\array('menu'=>array(....s)) 
+         * @static 
+         */
+        public static function getMenu(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getMenu();
+        }
+        
+        /**
+         * 删除菜单(认证后的订阅号可用)
+         *
+         * @return boolean 
+         * @static 
+         */
+        public static function deleteMenu(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::deleteMenu();
+        }
+        
+        /**
+         * 上传临时素材，有效期为3天(认证后的订阅号可用)
+         * 注意：上传大文件时可能需要先调用 set_time_limit(0) 避免超时
+         * 注意：数组的键值任意，但文件名前必须加@，使用单引号以避免本地路径斜杠被转义
+         * 注意：临时素材的media_id是可复用的！
+         *
+         * @param array $data {"media":'@Path\filename.jpg'}
+         * @param \JiaLeo\Wechat\type  类型：图片:image 语音:voice 视频:video 缩略图:thumb
+         * @return boolean|array 
+         * @static 
+         */
+        public static function uploadMedia($data, $type){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::uploadMedia($data, $type);
+        }
+        
+        /**
+         * 获取临时素材(认证后的订阅号可用)
+         *
+         * @param string $media_id 媒体文件id
+         * @param boolean $is_video 是否为视频文件，默认为否
+         * @return \JiaLeo\Wechat\raw data
+         * @static 
+         */
+        public static function getMedia($media_id, $is_video = false){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getMedia($media_id, $is_video);
+        }
+        
+        /**
+         * 上传图片，本接口所上传的图片不占用公众号的素材库中图片数量的5000个的限制。图片仅支持jpg/png格式，大小必须在1MB以下。 (认证后的订阅号可用)
+         * 注意：上传大文件时可能需要先调用 set_time_limit(0) 避免超时
+         * 注意：数组的键值任意，但文件名前必须加@，使用单引号以避免本地路径斜杠被转义
+         *
+         * @param array $data {"media":'@Path\filename.jpg'}
+         * @return boolean|array 
+         * @static 
+         */
+        public static function uploadImg($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::uploadImg($data);
+        }
+        
+        /**
+         * 上传永久素材(认证后的订阅号可用)
+         * 新增的永久素材也可以在公众平台官网素材管理模块中看到
+         * 注意：上传大文件时可能需要先调用 set_time_limit(0) 避免超时
+         * 注意：数组的键值任意，但文件名前必须加@，使用单引号以避免本地路径斜杠被转义
+         *
+         * @param array $data {"media":'@Path\filename.jpg'}
+         * @param \JiaLeo\Wechat\type  类型：图片:image 语音:voice 视频:video 缩略图:thumb
+         * @param boolean $is_video 是否为视频文件，默认为否
+         * @param array $video_info 视频信息数组，非视频素材不需要提供 array('title'=>'视频标题','introduction'=>'描述')
+         * @return boolean|array 
+         * @static 
+         */
+        public static function uploadForeverMedia($data, $type, $is_video = false, $video_info = array()){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::uploadForeverMedia($data, $type, $is_video, $video_info);
+        }
+        
+        /**
+         * 上传永久图文素材(认证后的订阅号可用)
+         * 新增的永久素材也可以在公众平台官网素材管理模块中看到
+         *
+         * @param array $data 消息结构{"articles":[{...}]}
+         * @return boolean|array 
+         * @static 
+         */
+        public static function uploadForeverArticles($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::uploadForeverArticles($data);
+        }
+        
+        /**
+         * 修改永久图文素材(认证后的订阅号可用)
+         * 永久素材也可以在公众平台官网素材管理模块中看到
+         *
+         * @param string $media_id 图文素材id
+         * @param array $data 消息结构{"articles":[{...}]}
+         * @param int $index 更新的文章在图文素材的位置，第一篇为0，仅多图文使用
+         * @return boolean|array 
+         * @static 
+         */
+        public static function updateForeverArticles($media_id, $data, $index = 0){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateForeverArticles($media_id, $data, $index);
+        }
+        
+        /**
+         * 获取永久素材(认证后的订阅号可用)
+         * 返回图文消息数组或二进制数据，失败返回false
+         *
+         * @param string $media_id 媒体文件id
+         * @param boolean $is_video 是否为视频文件，默认为否
+         * @return boolean|array|\JiaLeo\Wechat\raw data
+         * @static 
+         */
+        public static function getForeverMedia($media_id, $is_video = false){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getForeverMedia($media_id, $is_video);
+        }
+        
+        /**
+         * 删除永久素材(认证后的订阅号可用)
+         *
+         * @param string $media_id 媒体文件id
+         * @return boolean 
+         * @static 
+         */
+        public static function delForeverMedia($media_id){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::delForeverMedia($media_id);
+        }
+        
+        /**
+         * 获取永久素材列表(认证后的订阅号可用)
+         *
+         * @param string $type 素材的类型,图片（image）、视频（video）、语音 （voice）、图文（news）
+         * @param int $offset 全部素材的偏移位置，0表示从第一个素材
+         * @param int $count 返回素材的数量，取值在1到20之间
+         * @return boolean|array 返回数组格式:
+         * array(
+         *  'total_count'=>0, //该类型的素材的总数
+         *  'item_count'=>0,  //本次调用获取的素材的数量
+         *  'item'=>array()   //素材列表数组，内容定义请参考官方文档
+         * )
+         * @static 
+         */
+        public static function getForeverList($type, $offset, $count){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getForeverList($type, $offset, $count);
+        }
+        
+        /**
+         * 获取永久素材总数(认证后的订阅号可用)
+         *
+         * @return boolean|array 返回数组格式:
+         * array(
+         *  'voice_count'=>0, //语音总数量
+         *  'video_count'=>0, //视频总数量
+         *  'image_count'=>0, //图片总数量
+         *  'news_count'=>0   //图文总数量
+         * )
+         * @static 
+         */
+        public static function getForeverCount(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getForeverCount();
+        }
+        
+        /**
+         * 上传图文消息素材，用于群发(认证后的订阅号可用)
+         *
+         * @param array $data 消息结构{"articles":[{...}]}
+         * @return boolean|array 
+         * @static 
+         */
+        public static function uploadArticles($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::uploadArticles($data);
+        }
+        
+        /**
+         * 上传视频素材(认证后的订阅号可用)
+         *
+         * @param array $data 消息结构
+         * {
+         *     "media_id"=>"",     //通过上传媒体接口得到的MediaId
+         *     "title"=>"TITLE",    //视频标题
+         *     "description"=>"Description"        //视频描述
+         * }
+         * @return boolean|array {
+         *     "type":"video",
+         *     "media_id":"mediaid",
+         *     "created_at":1398848981
+         *  }
+         * @static 
+         */
+        public static function uploadMpVideo($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::uploadMpVideo($data);
+        }
+        
+        /**
+         * 高级群发消息, 根据OpenID列表群发图文消息(订阅号不可用)
+         * 	注意：视频需要在调用uploadMedia()方法后，再使用 uploadMpVideo() 方法生成，
+         *             然后获得的 mediaid 才能用于群发，且消息类型为 mpvideo 类型。
+         *
+         * @param array $data 消息结构
+         * {
+         *     "touser"=>array(
+         *         "OPENID1",
+         *         "OPENID2"
+         *     ),
+         *      "msgtype"=>"mpvideo",
+         *      // 在下面5种类型中选择对应的参数内容
+         *      // mpnews | voice | image | mpvideo => array( "media_id"=>"MediaId")
+         *      // text => array ( "content" => "hello")
+         * }
+         * @return boolean|array 
+         * @static 
+         */
+        public static function sendMassMessage($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::sendMassMessage($data);
+        }
+        
+        /**
+         * 高级群发消息, 根据群组id群发图文消息(认证后的订阅号可用)
+         * 	注意：视频需要在调用uploadMedia()方法后，再使用 uploadMpVideo() 方法生成，
+         *             然后获得的 mediaid 才能用于群发，且消息类型为 mpvideo 类型。
+         *
+         * @param array $data 消息结构
+         * {
+         *     "filter"=>array(
+         *         "is_to_all"=>False,     //是否群发给所有用户.True不用分组id，False需填写分组id
+         *         "group_id"=>"2"     //群发的分组id
+         *     ),
+         *      "msgtype"=>"mpvideo",
+         *      // 在下面5种类型中选择对应的参数内容
+         *      // mpnews | voice | image | mpvideo => array( "media_id"=>"MediaId")
+         *      // text => array ( "content" => "hello")
+         * }
+         * @return boolean|array 
+         * @static 
+         */
+        public static function sendGroupMassMessage($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::sendGroupMassMessage($data);
+        }
+        
+        /**
+         * 高级群发消息, 删除群发图文消息(认证后的订阅号可用)
+         *
+         * @param int $msg_id 消息id
+         * @return boolean|array 
+         * @static 
+         */
+        public static function deleteMassMessage($msg_id){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::deleteMassMessage($msg_id);
+        }
+        
+        /**
+         * 高级群发消息, 预览群发消息(认证后的订阅号可用)
+         * 	注意：视频需要在调用uploadMedia()方法后，再使用 uploadMpVideo() 方法生成，
+         *             然后获得的 mediaid 才能用于群发，且消息类型为 mpvideo 类型。
+         *
+         * @param array $data 消息结构
+         * {
+         *     "touser"=>"OPENID",
+         *      "msgtype"=>"mpvideo",
+         *      // 在下面5种类型中选择对应的参数内容
+         *      // mpnews | voice | image | mpvideo => array( "media_id"=>"MediaId")
+         *      // text => array ( "content" => "hello")
+         * }
+         * @return boolean|array 
+         * @static 
+         */
+        public static function previewMassMessage($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::previewMassMessage($data);
+        }
+        
+        /**
+         * 高级群发消息, 查询群发消息发送状态(认证后的订阅号可用)
+         *
+         * @param int $msg_id 消息id
+         * @return boolean|array {
+         *     "msg_id":201053012,     //群发消息后返回的消息id
+         *     "msg_status":"SEND_SUCCESS" //消息发送后的状态，SENDING表示正在发送 SEND_SUCCESS表示发送成功
+         * }
+         * @static 
+         */
+        public static function queryMassMessage($msg_id){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::queryMassMessage($msg_id);
+        }
+        
+        /**
+         * 创建二维码ticket
+         *
+         * @param int|string $scene_id 自定义追踪id,临时二维码只能用数值型
+         * @param int $type 0:临时二维码；1:数值型永久二维码(此时expire参数无效)；2:字符串型永久二维码(此时expire参数无效)
+         * @param int $expire 临时二维码有效期，最大为604800秒
+         * @return \JiaLeo\Wechat\array('ticket'=>'qrcode字串','expire_seconds'=>604800,'url'=>'二维码图片解析后的地址') 
+         * @static 
+         */
+        public static function getQRCode($scene_id, $type = 0, $expire = 604800){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getQRCode($scene_id, $type, $expire);
+        }
+        
+        /**
+         * 获取二维码图片
+         *
+         * @param string $ticket 传入由getQRCode方法生成的ticket参数
+         * @return string url 返回http地址
+         * @static 
+         */
+        public static function getQRUrl($ticket){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getQRUrl($ticket);
+        }
+        
+        /**
+         * 长链接转短链接接口
+         *
+         * @param string $long_url 传入要转换的长url
+         * @return boolean|string url 成功则返回转换后的短url
+         * @static 
+         */
+        public static function getShortUrl($long_url){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getShortUrl($long_url);
+        }
+        
+        /**
+         * 获取统计数据
+         *
+         * @param string $type 数据分类(user|article|upstreammsg|interface)分别为(用户分析|图文分析|消息分析|接口分析)
+         * @param string $subtype 数据子分类，参考 DATACUBE_URL_ARR 常量定义部分 或者README.md说明文档
+         * @param string $begin_date 开始时间
+         * @param string $end_date 结束时间
+         * @return boolean|array 成功返回查询结果数组，其定义请看官方文档
+         * @static 
+         */
+        public static function getDatacube($type, $subtype, $begin_date, $end_date = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getDatacube($type, $subtype, $begin_date, $end_date);
+        }
+        
+        /**
+         * 批量获取关注用户列表
+         *
+         * @param \JiaLeo\Wechat\unknown $next_openid
+         * @static 
+         */
+        public static function getUserList($next_openid = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getUserList($next_openid);
+        }
+        
+        /**
+         * 获取关注者详细信息
+         *
+         * @param string $openid
+         * @return array {subscribe,openid,nickname,sex,city,province,country,language,headimgurl,subscribe_time,[unionid]}
+         * 注意：unionid字段 只有在用户将公众号绑定到微信开放平台账号后，才会出现。建议调用前用isset()检测一下
+         * @static 
+         */
+        public static function getUserInfo($openid){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getUserInfo($openid);
+        }
+        
+        /**
+         * 设置用户备注名
+         *
+         * @param string $openid
+         * @param string $remark 备注名
+         * @return boolean|array 
+         * @static 
+         */
+        public static function updateUserRemark($openid, $remark){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateUserRemark($openid, $remark);
+        }
+        
+        /**
+         * 获取用户分组列表
+         *
+         * @return boolean|array 
+         * @static 
+         */
+        public static function getGroup(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getGroup();
+        }
+        
+        /**
+         * 获取用户所在分组
+         *
+         * @param string $openid
+         * @return boolean|int 成功则返回用户分组id
+         * @static 
+         */
+        public static function getUserGroup($openid){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getUserGroup($openid);
+        }
+        
+        /**
+         * 新增自定分组
+         *
+         * @param string $name 分组名称
+         * @return boolean|array 
+         * @static 
+         */
+        public static function createGroup($name){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::createGroup($name);
+        }
+        
+        /**
+         * 更改分组名称
+         *
+         * @param int $groupid 分组id
+         * @param string $name 分组名称
+         * @return boolean|array 
+         * @static 
+         */
+        public static function updateGroup($groupid, $name){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateGroup($groupid, $name);
+        }
+        
+        /**
+         * 移动用户分组
+         *
+         * @param int $groupid 分组id
+         * @param string $openid 用户openid
+         * @return boolean|array 
+         * @static 
+         */
+        public static function updateGroupMembers($groupid, $openid){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateGroupMembers($groupid, $openid);
+        }
+        
+        /**
+         * 批量移动用户分组
+         *
+         * @param int $groupid 分组id
+         * @param string $openid_list 用户openid数组,一次不能超过50个
+         * @return boolean|array 
+         * @static 
+         */
+        public static function batchUpdateGroupMembers($groupid, $openid_list){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::batchUpdateGroupMembers($groupid, $openid_list);
+        }
+        
+        /**
+         * 发送客服消息
+         *
+         * @param array $data 消息结构{"touser":"OPENID","msgtype":"news","news":{...}}
+         * @return boolean|array 
+         * @static 
+         */
+        public static function sendCustomMessage($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::sendCustomMessage($data);
+        }
+        
+        /**
+         * oauth 授权跳转接口
+         *
+         * @param string $callback 回调URI
+         * @return string 
+         * @static 
+         */
+        public static function getOauthRedirect($callback, $state = '', $scope = 'snsapi_userinfo'){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getOauthRedirect($callback, $state, $scope);
+        }
+        
+        /**
+         * 通过code获取Access Token
+         *
+         * @return array {access_token,expires_in,refresh_token,openid,scope}
+         * @static 
+         */
+        public static function getOauthAccessToken(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getOauthAccessToken();
+        }
+        
+        /**
+         * 刷新access token并续期
+         *
+         * @param string $refresh_token
+         * @return boolean|mixed 
+         * @static 
+         */
+        public static function getOauthRefreshToken($refresh_token){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getOauthRefreshToken($refresh_token);
+        }
+        
+        /**
+         * 获取授权后的用户资料
+         *
+         * @param string $access_token
+         * @param string $openid
+         * @return array {openid,nickname,sex,province,city,country,headimgurl,privilege,[unionid]}
+         * 注意：unionid字段 只有在用户将公众号绑定到微信开放平台账号后，才会出现。建议调用前用isset()检测一下
+         * @static 
+         */
+        public static function getOauthUserinfo($access_token, $openid){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getOauthUserinfo($access_token, $openid);
+        }
+        
+        /**
+         * 检验授权凭证是否有效
+         *
+         * @param string $access_token
+         * @param string $openid
+         * @return boolean 是否有效
+         * @static 
+         */
+        public static function getOauthAuth($access_token, $openid){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getOauthAuth($access_token, $openid);
+        }
+        
+        /**
+         * 模板消息 设置所属行业
+         *
+         * @param int $id1 公众号模板消息所属行业编号，参看官方开发文档 行业代码
+         * @param int $id2 同$id1。但如果只有一个行业，此参数可省略
+         * @return boolean|array 
+         * @static 
+         */
+        public static function setTMIndustry($id1, $id2 = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::setTMIndustry($id1, $id2);
+        }
+        
+        /**
+         * 模板消息 添加消息模板
+         * 成功返回消息模板的调用id
+         *
+         * @param string $tpl_id 模板库中模板的编号，有“TM**”和“OPENTMTM**”等形式
+         * @return boolean|string 
+         * @static 
+         */
+        public static function addTemplateMessage($tpl_id){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::addTemplateMessage($tpl_id);
+        }
+        
+        /**
+         * 发送模板消息
+         *
+         * @param array $data 消息结构
+         * ｛
+         * "touser":"OPENID",
+         * "template_id":"ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY",
+         * "url":"http://weixin.qq.com/download",
+         * "topcolor":"#FF0000",
+         * "data":{
+         * "参数名1": {
+         * "value":"参数",
+         * "color":"#173177"	 //参数颜色
+         * },
+         * "Date":{
+         * "value":"06月07日 19时24分",
+         * "color":"#173177"
+         * },
+         * "CardNumber":{
+         * "value":"0426",
+         * "color":"#173177"
+         * },
+         * "Type":{
+         * "value":"消费",
+         * "color":"#173177"
+         * }
+         * }
+         * }
+         * @return boolean|array 
+         * @static 
+         */
+        public static function sendTemplateMessage($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::sendTemplateMessage($data);
+        }
+        
+        /**
+         * 获取多客服会话记录
+         *
+         * @param array $data 数据结构{"starttime":123456789,"endtime":987654321,"openid":"OPENID","pagesize":10,"pageindex":1,}
+         * @return boolean|array 
+         * @static 
+         */
+        public static function getCustomServiceMessage($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getCustomServiceMessage($data);
+        }
+        
+        /**
+         * 转发多客服消息
+         * Example: $obj->transfer_customer_service($customer_account)->reply();
+         *
+         * @param string $customer_account 转发到指定客服帐号：test1@test
+         * @static 
+         */
+        public static function transfer_customer_service($customer_account = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::transfer_customer_service($customer_account);
+        }
+        
+        /**
+         * 获取多客服客服基本信息
+         *
+         * @return boolean|array 
+         * @static 
+         */
+        public static function getCustomServiceKFlist(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getCustomServiceKFlist();
+        }
+        
+        /**
+         * 获取多客服在线客服接待信息
+         *
+         * @return boolean|array {
+         * "kf_online_list": [
+         * {
+         * "kf_account": "test1@test",	//客服账号@微信别名
+         * "status": 1,			//客服在线状态 1：pc在线，2：手机在线,若pc和手机同时在线则为 1+2=3
+         * "kf_id": "1001",		//客服工号
+         * "auto_accept": 0,		//客服设置的最大自动接入数
+         * "accepted_case": 1		//客服当前正在接待的会话数
+         * }
+         * ]
+         * }
+         * @static 
+         */
+        public static function getCustomServiceOnlineKFlist(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getCustomServiceOnlineKFlist();
+        }
+        
+        /**
+         * 创建指定多客服会话
+         *
+         * @tutorial 当用户已被其他客服接待或指定客服不在线则会失败
+         * @param string $openid //用户openid
+         * @param string $kf_account //客服账号
+         * @param string $text //附加信息，文本会展示在客服人员的多客服客户端，可为空
+         * @return boolean | array            //成功返回json数组
+         * {
+         *   "errcode": 0,
+         *   "errmsg": "ok",
+         * }
+         * @static 
+         */
+        public static function createKFSession($openid, $kf_account, $text = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::createKFSession($openid, $kf_account, $text);
+        }
+        
+        /**
+         * 关闭指定多客服会话
+         *
+         * @tutorial 当用户被其他客服接待时则会失败
+         * @param string $openid //用户openid
+         * @param string $kf_account //客服账号
+         * @param string $text //附加信息，文本会展示在客服人员的多客服客户端，可为空
+         * @return boolean | array            //成功返回json数组
+         * {
+         *   "errcode": 0,
+         *   "errmsg": "ok",
+         * }
+         * @static 
+         */
+        public static function closeKFSession($openid, $kf_account, $text = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::closeKFSession($openid, $kf_account, $text);
+        }
+        
+        /**
+         * 获取用户会话状态
+         *
+         * @param string $openid //用户openid
+         * @return boolean | array            //成功返回json数组
+         * {
+         *     "errcode" : 0,
+         *     "errmsg" : "ok",
+         *     "kf_account" : "test1@test",    //正在接待的客服
+         *     "createtime": 123456789,        //会话接入时间
+         *  }
+         * @static 
+         */
+        public static function getKFSession($openid){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getKFSession($openid);
+        }
+        
+        /**
+         * 获取指定客服的会话列表
+         *
+         * @param string $openid //用户openid
+         * @return boolean | array            //成功返回json数组
+         *  array(
+         *     'sessionlist' => array (
+         *         array (
+         *             'openid'=>'OPENID',             //客户 openid
+         *             'createtime'=>123456789,  //会话创建时间，UNIX 时间戳
+         *         ),
+         *         array (
+         *             'openid'=>'OPENID',             //客户 openid
+         *             'createtime'=>123456789,  //会话创建时间，UNIX 时间戳
+         *         ),
+         *     )
+         *  )
+         * @static 
+         */
+        public static function getKFSessionlist($kf_account){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getKFSessionlist($kf_account);
+        }
+        
+        /**
+         * 获取未接入会话列表
+         *
+         * @param string $openid //用户openid
+         * @return boolean | array            //成功返回json数组
+         *  array (
+         *     'count' => 150 ,                            //未接入会话数量
+         *     'waitcaselist' => array (
+         *         array (
+         *             'openid'=>'OPENID',             //客户 openid
+         *             'kf_account ' =>'',                   //指定接待的客服，为空则未指定
+         *             'createtime'=>123456789,  //会话创建时间，UNIX 时间戳
+         *         ),
+         *         array (
+         *             'openid'=>'OPENID',             //客户 openid
+         *             'kf_account ' =>'',                   //指定接待的客服，为空则未指定
+         *             'createtime'=>123456789,  //会话创建时间，UNIX 时间戳
+         *         )
+         *     )
+         *  )
+         * @static 
+         */
+        public static function getKFSessionWait(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getKFSessionWait();
+        }
+        
+        /**
+         * 修改客服账号信息
+         *
+         * @param string $account //完整客服账号，格式为：账号前缀@公众号微信号，账号前缀最多10个字符，必须是英文或者数字字符
+         * @param string $nickname //客服昵称，最长6个汉字或12个英文字符
+         * @param string $password //客服账号明文登录密码，会自动加密
+         * @return boolean|array 成功返回结果
+         * {
+         *   "errcode": 0,
+         *   "errmsg": "ok",
+         * }
+         * @static 
+         */
+        public static function updateKFAccount($account, $nickname, $password){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateKFAccount($account, $nickname, $password);
+        }
+        
+        /**
+         * 删除客服账号
+         *
+         * @param string $account //完整客服账号，格式为：账号前缀@公众号微信号，账号前缀最多10个字符，必须是英文或者数字字符
+         * @return boolean|array 成功返回结果
+         * {
+         *   "errcode": 0,
+         *   "errmsg": "ok",
+         * }
+         * @static 
+         */
+        public static function deleteKFAccount($account){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::deleteKFAccount($account);
+        }
+        
+        /**
+         * 上传客服头像
+         *
+         * @param string $account //完整客服账号，格式为：账号前缀@公众号微信号，账号前缀最多10个字符，必须是英文或者数字字符
+         * @param string $imgfile //头像文件完整路径,如：'D:\user.jpg'。头像文件必须JPG格式，像素建议640*640
+         * @return boolean|array 成功返回结果
+         * {
+         *   "errcode": 0,
+         *   "errmsg": "ok",
+         * }
+         * @static 
+         */
+        public static function setKFHeadImg($account, $imgfile){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::setKFHeadImg($account, $imgfile);
+        }
+        
+        /**
+         * 语义理解接口
+         *
+         * @param String $uid 用户唯一id（非开发者id），用户区分公众号下的不同用户（建议填入用户openid）
+         * @param String $query 输入文本串
+         * @param String $category 需要使用的服务类型，多个用“，”隔开，不能为空
+         * @param Float $latitude 纬度坐标，与经度同时传入；与城市二选一传入
+         * @param Float $longitude 经度坐标，与纬度同时传入；与城市二选一传入
+         * @param String $city 城市名称，与经纬度二选一传入
+         * @param String $region 区域名称，在城市存在的情况下可省略；与经纬度二选一传入
+         * @return boolean|array 
+         * @static 
+         */
+        public static function querySemantic($uid, $query, $category, $latitude = 0, $longitude = 0, $city = '', $region = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::querySemantic($uid, $query, $category, $latitude, $longitude, $city, $region);
+        }
+        
+        /**
+         * 创建卡券
+         *
+         * @param Array $data 卡券数据
+         * @return array|boolean 返回数组中card_id为卡券ID
+         * @static 
+         */
+        public static function createCard($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::createCard($data);
+        }
+        
+        /**
+         * 更改卡券信息
+         * 调用该接口更新信息后会重新送审，卡券状态变更为待审核。已被用户领取的卡券会实时更新票面信息。
+         *
+         * @param string $data
+         * @return boolean 
+         * @static 
+         */
+        public static function updateCard($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateCard($data);
+        }
+        
+        /**
+         * 删除卡券
+         * 允许商户删除任意一类卡券。删除卡券后，该卡券对应已生成的领取用二维码、添加到卡包 JS API 均会失效。
+         * 注意：删除卡券不能删除已被用户领取，保存在微信客户端中的卡券，已领取的卡券依旧有效。
+         *
+         * @param string $card_id 卡券ID
+         * @return boolean 
+         * @static 
+         */
+        public static function delCard($card_id){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::delCard($card_id);
+        }
+        
+        /**
+         * 查询卡券详情
+         *
+         * @param string $card_id
+         * @return boolean|array 返回数组信息比较复杂，请参看卡券接口文档
+         * @static 
+         */
+        public static function getCardInfo($card_id){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getCardInfo($card_id);
+        }
+        
+        /**
+         * 获取颜色列表
+         * 获得卡券的最新颜色列表，用于创建卡券
+         *
+         * @return boolean|array 返回数组请参看 微信卡券接口文档 的json格式
+         * @static 
+         */
+        public static function getCardColors(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getCardColors();
+        }
+        
+        /**
+         * 拉取门店列表
+         * 获取在公众平台上申请创建的门店列表
+         *
+         * @param int $offset 开始拉取的偏移，默认为0从头开始
+         * @param int $count 拉取的数量，默认为0拉取全部
+         * @return boolean|array 返回数组请参看 微信卡券接口文档 的json格式
+         * @static 
+         */
+        public static function getCardLocations($offset = 0, $count = 0){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getCardLocations($offset, $count);
+        }
+        
+        /**
+         * 批量导入门店信息
+         *
+         * @tutorial 返回插入的门店id列表，以逗号分隔。如果有插入失败的，则为-1，请自行核查是哪个插入失败
+         * @param array $data 数组形式的json数据，由于内容较多，具体内容格式请查看 微信卡券接口文档
+         * @return boolean|string 成功返回插入的门店id列表
+         * @static 
+         */
+        public static function addCardLocations($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::addCardLocations($data);
+        }
+        
+        /**
+         * 生成卡券二维码
+         * 成功则直接返回ticket值，可以用 getQRUrl($ticket) 换取二维码url
+         *
+         * @param string $cardid 卡券ID 必须
+         * @param string $code 指定卡券 code 码，只能被领一次。use_custom_code 字段为 true 的卡券必须填写，非自定义 code 不必填写。
+         * @param string $openid 指定领取者的 openid，只有该用户能领取。bind_openid 字段为 true 的卡券必须填写，非自定义 openid 不必填写。
+         * @param int $expire_seconds 指定二维码的有效时间，范围是 60 ~ 1800 秒。不填默认为永久有效。
+         * @param boolean $is_unique_code 指定下发二维码，生成的二维码随机分配一个 code，领取后不可再次扫描。填写 true 或 false。默认 false。
+         * @param string $balance 红包余额，以分为单位。红包类型必填（LUCKY_MONEY），其他卡券类型不填。
+         * @return boolean|string 
+         * @static 
+         */
+        public static function createCardQrcode($card_id, $code = '', $openid = '', $expire_seconds = 0, $is_unique_code = false, $balance = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::createCardQrcode($card_id, $code, $openid, $expire_seconds, $is_unique_code, $balance);
+        }
+        
+        /**
+         * 消耗 code
+         * 自定义 code（use_custom_code 为 true）的优惠券，在 code 被核销时，必须调用此接口。
+         *
+         * @param string $code 要消耗的序列号
+         * @param string $card_id 要消耗序列号所述的 card_id，创建卡券时use_custom_code 填写 true 时必填。
+         * @return boolean|array {
+         *  "errcode":0,
+         *  "errmsg":"ok",
+         *  "card":{"card_id":"pFS7Fjg8kV1IdDz01r4SQwMkuCKc"},
+         *  "openid":"oFS7Fjl0WsZ9AMZqrI80nbIq8xrA"
+         * }
+         * @static 
+         */
+        public static function consumeCardCode($code, $card_id = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::consumeCardCode($code, $card_id);
+        }
+        
+        /**
+         * code 解码
+         *
+         * @param string $encrypt_code 通过 choose_card_info 获取的加密字符串
+         * @return boolean|array {
+         *  "errcode":0,
+         *  "errmsg":"ok",
+         *  "code":"751234212312"
+         *  }
+         * @static 
+         */
+        public static function decryptCardCode($encrypt_code){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::decryptCardCode($encrypt_code);
+        }
+        
+        /**
+         * 查询 code 的有效性（非自定义 code）
+         *
+         * @param string $code
+         * @return boolean|array {
+         *  "errcode":0,
+         *  "errmsg":"ok",
+         *  "openid":"oFS7Fjl0WsZ9AMZqrI80nbIq8xrA",    //用户 openid
+         *  "card":{
+         *      "card_id":"pFS7Fjg8kV1IdDz01r4SQwMkuCKc",
+         *      "begin_time": 1404205036,               //起始使用时间
+         *      "end_time": 1404205036,                 //结束时间
+         *  }
+         * }
+         * @static 
+         */
+        public static function checkCardCode($code){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::checkCardCode($code);
+        }
+        
+        /**
+         * 批量查询卡列表
+         *
+         * @param $offset 开始拉取的偏移，默认为0从头开始
+         * @param $count 需要查询的卡片的数量（数量最大50,默认50）
+         * @return boolean|array {
+         *  "errcode":0,
+         *  "errmsg":"ok",
+         *  "card_id_list":["ph_gmt7cUVrlRk8swPwx7aDyF-pg"],    //卡 id 列表
+         *  "total_num":1                                       //该商户名下 card_id 总数
+         * }
+         * @static 
+         */
+        public static function getCardIdList($offset = 0, $count = 50){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getCardIdList($offset, $count);
+        }
+        
+        /**
+         * 更改 code
+         * 为确保转赠后的安全性，微信允许自定义code的商户对已下发的code进行更改。
+         * 注：为避免用户疑惑，建议仅在发生转赠行为后（发生转赠后，微信会通过事件推送的方式告知商户被转赠的卡券code）对用户的code进行更改。
+         *
+         * @param string $code 卡券的 code 编码
+         * @param string $card_id 卡券 ID
+         * @param string $new_code 新的卡券 code 编码
+         * @return boolean 
+         * @static 
+         */
+        public static function updateCardCode($code, $card_id, $new_code){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateCardCode($code, $card_id, $new_code);
+        }
+        
+        /**
+         * 设置卡券失效
+         * 设置卡券失效的操作不可逆
+         *
+         * @param string $code 需要设置为失效的 code
+         * @param string $card_id 自定义 code 的卡券必填。非自定义 code 的卡券不填。
+         * @return boolean 
+         * @static 
+         */
+        public static function unavailableCardCode($code, $card_id = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::unavailableCardCode($code, $card_id);
+        }
+        
+        /**
+         * 库存修改
+         *
+         * @param string $data
+         * @return boolean 
+         * @static 
+         */
+        public static function modifyCardStock($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::modifyCardStock($data);
+        }
+        
+        /**
+         * 更新门票
+         *
+         * @param string $data
+         * @return boolean 
+         * @static 
+         */
+        public static function updateMeetingCard($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateMeetingCard($data);
+        }
+        
+        /**
+         * 激活/绑定会员卡
+         *
+         * @param string $data 具体结构请参看卡券开发文档(6.1.1 激活/绑定会员卡)章节
+         * @return boolean 
+         * @static 
+         */
+        public static function activateMemberCard($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::activateMemberCard($data);
+        }
+        
+        /**
+         * 会员卡交易
+         * 会员卡交易后每次积分及余额变更需通过接口通知微信，便于后续消息通知及其他扩展功能。
+         *
+         * @param string $data 具体结构请参看卡券开发文档(6.1.2 会员卡交易)章节
+         * @return boolean|array 
+         * @static 
+         */
+        public static function updateMemberCard($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateMemberCard($data);
+        }
+        
+        /**
+         * 更新红包金额
+         *
+         * @param string $code 红包的序列号
+         * @param $balance 红包余额
+         * @param string $card_id 自定义 code 的卡券必填。非自定义 code 可不填。
+         * @return boolean|array 
+         * @static 
+         */
+        public static function updateLuckyMoney($code, $balance, $card_id = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateLuckyMoney($code, $balance, $card_id);
+        }
+        
+        /**
+         * 设置卡券测试白名单
+         *
+         * @param string $openid 测试的 openid 列表
+         * @param string $user 测试的微信号列表
+         * @return boolean 
+         * @static 
+         */
+        public static function setCardTestWhiteList($openid = array(), $user = array()){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::setCardTestWhiteList($openid, $user);
+        }
+        
+        /**
+         * 申请设备ID
+         * [applyShakeAroundDevice 申请配置设备所需的UUID、Major、Minor。
+         * 若激活率小于50%，不能新增设备。单次新增设备超过500 个，需走人工审核流程。
+         * 审核通过后，可用迒回的批次ID 用“查询设备列表”接口拉取本次申请的设备ID]
+         *
+         * @param array $data array(
+         *      "quantity" => 3,         //申请的设备ID 的数量，单次新增设备超过500 个,需走人工审核流程(必填)
+         *      "apply_reason" => "测试",//申请理由(必填)
+         *      "comment" => "测试专用", //备注(非必填)
+         *      "poi_id" => 1234         //设备关联的门店ID(非必填)
+         * )
+         * @return boolean|mixed {
+         * "data": {
+         * "apply_id": 123,
+         * "device_identifiers":[
+         * {
+         * "device_id":10100,
+         * "uuid":"FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+         * "major":10001,
+         * "minor":10002
+         * }
+         * ]
+         * },
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * 
+         * apply_id:申请的批次ID，可用在“查询设备列表”接口按批次查询本次申请成功的设备ID
+         * device_identifiers:指定的设备ID 列表
+         * device_id:设备编号
+         * uuid、major、minor
+         * audit_status:审核状态。0：审核未通过、1：审核中、2：审核已通过；审核会在三个工作日内完成
+         * audit_comment:审核备注，包括审核不通过的原因
+         * @access public
+         * @author polo<gao.bo168@gmail.com>
+         * @version 2015-3-25 下午1:24:06
+         * @copyright Show More
+         * @static 
+         */
+        public static function applyShakeAroundDevice($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::applyShakeAroundDevice($data);
+        }
+        
+        /**
+         * 编辑设备信息
+         * [updateShakeAroundDevice 编辑设备的备注信息。可用设备ID或完整的UUID、Major、Minor指定设备，二者选其一。]
+         *
+         * @param array $data array(
+         *      "device_identifier" => array(
+         *          		"device_id" => 10011,   //当提供了device_id则不需要使用uuid、major、minor，反之亦然
+         *          		"uuid" => "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+         *          		"major" => 1002,
+         *          		"minor" => 1223
+         *      ),
+         *      "comment" => "测试专用", //备注(非必填)
+         * )
+         * {
+         * "data": {
+         * },
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * @return boolean 
+         * @author binsee<binsee@163.com>
+         * @version 2015-4-20 23:45:00
+         * @static 
+         */
+        public static function updateShakeAroundDevice($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateShakeAroundDevice($data);
+        }
+        
+        /**
+         * 查询设备列表
+         * [searchShakeAroundDevice 查询已有的设备ID、UUID、Major、Minor、激活状态、备注信息、关联门店、关联页面等信息。
+         * 可指定设备ID 或完整的UUID、Major、Minor 查询，也可批量拉取设备信息列表。]
+         *
+         * @param array $data $data 三种格式:
+         * ①查询指定设备时：$data = array(
+         *                              "device_identifiers" => array(
+         *                                                          array(
+         *                                                              "device_id" => 10100,
+         *                                                              "uuid" => "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+         *                                                              "major" => 10001,
+         *                                                              "minor" => 10002
+         *                                                          )
+         *                                                      )
+         *                              );
+         * device_identifiers:指定的设备
+         * device_id:设备编号，若填了UUID、major、minor，则可不填设备编号，若二者都填，则以设备编号为优先
+         * uuid、major、minor:三个信息需填写完整，若填了设备编号，则可不填此信息
+         * +-------------------------------------------------------------------------------------------------------------
+         * ②需要分页查询或者指定范围内的设备时: $data = array(
+         *                                                  "begin" => 0,
+         *                                                  "count" => 3
+         *                                               );
+         * begin:设备列表的起始索引值
+         * count:待查询的设备个数
+         * +-------------------------------------------------------------------------------------------------------------
+         * ③当需要根据批次ID 查询时: $data = array(
+         *                                      "apply_id" => 1231,
+         *                                      "begin" => 0,
+         *                                      "count" => 3
+         *                                    );
+         * apply_id:批次ID
+         * +-------------------------------------------------------------------------------------------------------------
+         * @return boolean|mixed 正确迒回JSON 数据示例：
+         * 字段说明
+         * {
+         * "data": {
+         * "devices": [          //指定的设备信息列表
+         * {
+         * "comment": "", //设备的备注信息
+         * "device_id": 10097, //设备编号
+         * "major": 10001,
+         * "minor": 12102,
+         * "page_ids": "15369", //与此设备关联的页面ID 列表，用逗号隔开
+         * "status": 1, //激活状态，0：未激活，1：已激活（但不活跃），2：活跃
+         * "poi_id": 0, //门店ID
+         * "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825"
+         * },
+         * {
+         * "comment": "", //设备的备注信息
+         * "device_id": 10098, //设备编号
+         * "major": 10001,
+         * "minor": 12103,
+         * "page_ids": "15368", //与此设备关联的页面ID 列表，用逗号隔开
+         * "status": 1, //激活状态，0：未激活，1：已激活（但不活跃），2：活跃
+         * "poi_id": 0, //门店ID
+         * "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825"
+         * }
+         * ],
+         * "total_count": 151 //商户名下的设备总量
+         * },
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * @access public
+         * @author polo<gao.bo168@gmail.com>
+         * @version 2015-3-25 下午1:45:42
+         * @copyright Show More
+         * @static 
+         */
+        public static function searchShakeAroundDevice($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::searchShakeAroundDevice($data);
+        }
+        
+        /**
+         * [bindLocationShakeAroundDevice 配置设备与门店的关联关系]
+         *
+         * @param string $device_id 设备编号，若填了UUID、major、minor，则可不填设备编号，若二者都填，则以设备编号为优先
+         * @param int $poi_id 待关联的门店ID
+         * @param string $uuid UUID、major、minor，三个信息需填写完整，若填了设备编号，则可不填此信息
+         * @param int $major
+         * @param int $minor
+         * @return boolean|mixed 正确返回JSON 数据示例:
+         * {
+         * "data": {
+         * },
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * @access public
+         * @author polo<gao.bo168@gmail.com>
+         * @version 2015-4-21 00:14:00
+         * @copyright Show More
+         * @static 
+         */
+        public static function bindLocationShakeAroundDevice($device_id, $poi_id, $uuid = '', $major = 0, $minor = 0){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::bindLocationShakeAroundDevice($device_id, $poi_id, $uuid, $major, $minor);
+        }
+        
+        /**
+         * [bindPageShakeAroundDevice 配置设备与页面的关联关系。
+         * 支持建立或解除关联关系，也支持新增页面或覆盖页面等操作。
+         * 配置完成后，在此设备的信号范围内，即可摇出关联的页面信息。
+         * 若设备配置多个页面，则随机出现页面信息]
+         *
+         * @param string $device_id 设备编号，若填了UUID、major、minor，则可不填设备编号，若二者都填，则以设备编号为优先
+         * @param array $page_ids 待关联的页面列表
+         * @param \JiaLeo\Wechat\number $bind 关联操作标志位， 0 为解除关联关系，1 为建立关联关系
+         * @param \JiaLeo\Wechat\number $append 新增操作标志位， 0 为覆盖，1 为新增
+         * @param string $uuid UUID、major、minor，三个信息需填写完整，若填了设备编号，则可不填此信息
+         * @param int $major
+         * @param int $minor
+         * @return boolean|mixed 正确返回JSON 数据示例:
+         * {
+         * "data": {
+         * },
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * @access public
+         * @author polo<gao.bo168@gmail.com>
+         * @version 2015-4-21 00:31:00
+         * @copyright Show More
+         * @static 
+         */
+        public static function bindPageShakeAroundDevice($device_id, $page_ids = array(), $bind = 1, $append = 1, $uuid = '', $major = 0, $minor = 0){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::bindPageShakeAroundDevice($device_id, $page_ids, $bind, $append, $uuid, $major, $minor);
+        }
+        
+        /**
+         * 上传在摇一摇页面展示的图片素材
+         * 注意：数组的键值任意，但文件名前必须加@，使用单引号以避免本地路径斜杠被转义
+         *
+         * @param array $data {"media":'@Path\filename.jpg'} 格式限定为：jpg,jpeg,png,gif，图片大小建议120px*120 px，限制不超过200 px *200 px，图片需为正方形。
+         * @return boolean|array {
+         * "data": {
+         * "pic_url":"http://shp.qpic.cn/wechat_shakearound_pic/0/1428377032e9dd2797018cad79186e03e8c5aec8dc/120"
+         * },
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * }
+         * @author binsee<binsee@163.com>
+         * @version 2015-4-21 00:51:00
+         * @static 
+         */
+        public static function uploadShakeAroundMedia($data){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::uploadShakeAroundMedia($data);
+        }
+        
+        /**
+         * [addShakeAroundPage 增加摇一摇出来的页面信息，包括在摇一摇页面出现的主标题、副标题、图片和点击进去的超链接。]
+         *
+         * @param string $title 在摇一摇页面展示的主标题，不超过6 个字
+         * @param string $description 在摇一摇页面展示的副标题，不超过7 个字
+         * @param \JiaLeo\Wechat\sting $icon_url 在摇一摇页面展示的图片， 格式限定为：jpg,jpeg,png,gif; 建议120*120 ， 限制不超过200*200
+         * @param string $page_url 跳转链接
+         * @param string $comment 页面的备注信息，不超过15 个字,可不填
+         * @return boolean|mixed 正确返回JSON 数据示例:
+         * {
+         * "data": {
+         * "page_id": 28840 //新增页面的页面id
+         * }
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * @access public
+         * @author polo<gao.bo168@gmail.com>
+         * @version 2015-3-25 下午2:57:09
+         * @copyright Show More
+         * @static 
+         */
+        public static function addShakeAroundPage($title, $description, $icon_url, $page_url, $comment = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::addShakeAroundPage($title, $description, $icon_url, $page_url, $comment);
+        }
+        
+        /**
+         * [updateShakeAroundPage 编辑摇一摇出来的页面信息，包括在摇一摇页面出现的主标题、副标题、图片和点击进去的超链接。]
+         *
+         * @param int $page_id
+         * @param string $title 在摇一摇页面展示的主标题，不超过6 个字
+         * @param string $description 在摇一摇页面展示的副标题，不超过7 个字
+         * @param \JiaLeo\Wechat\sting $icon_url 在摇一摇页面展示的图片， 格式限定为：jpg,jpeg,png,gif; 建议120*120 ， 限制不超过200*200
+         * @param string $page_url 跳转链接
+         * @param string $comment 页面的备注信息，不超过15 个字,可不填
+         * @return boolean|mixed 正确返回JSON 数据示例:
+         * {
+         * "data": {
+         * "page_id": 28840 //编辑页面的页面ID
+         * }
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * @access public
+         * @author polo<gao.bo168@gmail.com>
+         * @version 2015-3-25 下午3:02:51
+         * @copyright Show More
+         * @static 
+         */
+        public static function updateShakeAroundPage($page_id, $title, $description, $icon_url, $page_url, $comment = ''){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::updateShakeAroundPage($page_id, $title, $description, $icon_url, $page_url, $comment);
+        }
+        
+        /**
+         * [searchShakeAroundPage 查询已有的页面，包括在摇一摇页面出现的主标题、副标题、图片和点击进去的超链接。
+         * 提供两种查询方式，①可指定页面ID 查询，②也可批量拉取页面列表。]
+         *
+         * @param array $page_ids
+         * @param int $begin
+         * @param int $count ①需要查询指定页面时:
+         * {
+         * "page_ids":[12345, 23456, 34567]
+         * }
+         * +-------------------------------------------------------------------------------------------------------------
+         * ②需要分页查询或者指定范围内的页面时:
+         * {
+         * "begin": 0,
+         * "count": 3
+         * }
+         * +-------------------------------------------------------------------------------------------------------------
+         * @return boolean|mixed 正确返回JSON 数据示例:
+         * {
+         * "data": {
+         * "pages": [
+         * {
+         * "comment": "just for test",
+         * "description": "test",
+         * "icon_url": "https://www.baidu.com/img/bd_logo1.png",
+         * "page_id": 28840,
+         * "page_url": "http://xw.qq.com/testapi1",
+         * "title": "测试1"
+         * },
+         * {
+         * "comment": "just for test",
+         * "description": "test",
+         * "icon_url": "https://www.baidu.com/img/bd_logo1.png",
+         * "page_id": 28842,
+         * "page_url": "http://xw.qq.com/testapi2",
+         * "title": "测试2"
+         * }
+         * ],
+         * "total_count": 2
+         * },
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * 字段说明:
+         * total_count 商户名下的页面总数
+         * page_id 摇周边页面唯一ID
+         * title 在摇一摇页面展示的主标题
+         * description 在摇一摇页面展示的副标题
+         * icon_url 在摇一摇页面展示的图片
+         * page_url 跳转链接
+         * comment 页面的备注信息
+         * @access public
+         * @author polo<gao.bo168@gmail.com>
+         * @version 2015-3-25 下午3:12:17
+         * @copyright Show More
+         * @static 
+         */
+        public static function searchShakeAroundPage($page_ids = array(), $begin = 0, $count = 1){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::searchShakeAroundPage($page_ids, $begin, $count);
+        }
+        
+        /**
+         * [deleteShakeAroundPage 删除已有的页面，包括在摇一摇页面出现的主标题、副标题、图片和点击进去的超链接。
+         * 只有页面与设备没有关联关系时，才可被删除。]
+         *
+         * @param array $page_ids {
+         * "page_ids":[12345,23456,34567]
+         * }
+         * @return boolean|mixed 正确返回JSON 数据示例:
+         * {
+         * "data": {
+         * },
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * @access public
+         * @author polo<gao.bo168@gmail.com>
+         * @version 2015-3-25 下午3:23:00
+         * @copyright Show More
+         * @edit 凌翔
+         * @static 
+         */
+        public static function deleteShakeAroundPage($page_id){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::deleteShakeAroundPage($page_id);
+        }
+        
+        /**
+         * [getShakeInfoShakeAroundUser 获取设备信息，包括UUID、major、minor，以及距离、openID 等信息。]
+         *
+         * @param string $ticket 摇周边业务的ticket，可在摇到的URL 中得到，ticket生效时间为30 分钟
+         * @return boolean|mixed 正确返回JSON 数据示例:
+         * {
+         * "data": {
+         * "page_id ": 14211,
+         * "beacon_info": {
+         * "distance": 55.00620700469034,
+         * "major": 10001,
+         * "minor": 19007,
+         * "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825"
+         * },
+         * "openid": "oVDmXjp7y8aG2AlBuRpMZTb1-cmA"
+         * },
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * 字段说明:
+         * beacon_info 设备信息，包括UUID、major、minor，以及距离
+         * UUID、major、minor UUID、major、minor
+         * distance Beacon 信号与手机的距离
+         * page_id 摇周边页面唯一ID
+         * openid 商户AppID 下用户的唯一标识
+         * poi_id 门店ID，有的话则返回，没有的话不会在JSON 格式内
+         * @access public
+         * @author polo<gao.bo168@gmail.com>
+         * @version 2015-3-25 下午3:28:20
+         * @copyright Show More
+         * @static 
+         */
+        public static function getShakeInfoShakeAroundUser($ticket){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getShakeInfoShakeAroundUser($ticket);
+        }
+        
+        /**
+         * [deviceShakeAroundStatistics 以设备为维度的数据统计接口。
+         * 查询单个设备进行摇周边操作的人数、次数，点击摇周边消息的人数、次数；查询的最长时间跨度为30天。]
+         *
+         * @param int $device_id 设备编号，若填了UUID、major、minor，即可不填设备编号，二者选其一
+         * @param int $begin_date 起始日期时间戳，最长时间跨度为30 天
+         * @param int $end_date 结束日期时间戳，最长时间跨度为30 天
+         * @param string $uuid UUID、major、minor，三个信息需填写完成，若填了设备编辑，即可不填此信息，二者选其一
+         * @param int $major
+         * @param int $minor
+         * @return boolean|mixed 正确返回JSON 数据示例:
+         * {
+         * "data": [
+         * {
+         * "click_pv": 0,
+         * "click_uv": 0,
+         * "ftime": 1425052800,
+         * "shake_pv": 0,
+         * "shake_uv": 0
+         * },
+         * {
+         * "click_pv": 0,
+         * "click_uv": 0,
+         * "ftime": 1425139200,
+         * "shake_pv": 0,
+         * "shake_uv": 0
+         * }
+         * ],
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * 字段说明:
+         * ftime 当天0 点对应的时间戳
+         * click_pv 点击摇周边消息的次数
+         * click_uv 点击摇周边消息的人数
+         * shake_pv 摇周边的次数
+         * shake_uv 摇周边的人数
+         * @access public
+         * @author polo<gao.bo168@gmail.com>
+         * @version 2015-4-21 00:39:00
+         * @copyright Show More
+         * @static 
+         */
+        public static function deviceShakeAroundStatistics($device_id, $begin_date, $end_date, $uuid = '', $major = 0, $minor = 0){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::deviceShakeAroundStatistics($device_id, $begin_date, $end_date, $uuid, $major, $minor);
+        }
+        
+        /**
+         * [pageShakeAroundStatistics 以页面为维度的数据统计接口。
+         * 查询单个页面通过摇周边摇出来的人数、次数，点击摇周边页面的人数、次数；查询的最长时间跨度为30天。]
+         *
+         * @param int $page_id 指定页面的ID
+         * @param int $begin_date 起始日期时间戳，最长时间跨度为30 天
+         * @param int $end_date 结束日期时间戳，最长时间跨度为30 天
+         * @return boolean|mixed 正确返回JSON 数据示例:
+         * {
+         * "data": [
+         * {
+         * "click_pv": 0,
+         * "click_uv": 0,
+         * "ftime": 1425052800,
+         * "shake_pv": 0,
+         * "shake_uv": 0
+         * },
+         * {
+         * "click_pv": 0,
+         * "click_uv": 0,
+         * "ftime": 1425139200,
+         * "shake_pv": 0,
+         * "shake_uv": 0
+         * }
+         * ],
+         * "errcode": 0,
+         * "errmsg": "success."
+         * }
+         * 字段说明:
+         * ftime 当天0 点对应的时间戳
+         * click_pv 点击摇周边消息的次数
+         * click_uv 点击摇周边消息的人数
+         * shake_pv 摇周边的次数
+         * shake_uv 摇周边的人数
+         * @author binsee<binsee@163.com>
+         * @version 2015-4-21 00:43:00
+         * @static 
+         */
+        public static function pageShakeAroundStatistics($page_id, $begin_date, $end_date){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::pageShakeAroundStatistics($page_id, $begin_date, $end_date);
+        }
+        
+        /**
+         * 根据订单ID获取订单详情
+         *
+         * @param string $order_id 订单ID
+         * @return \JiaLeo\Wechat\order array|bool
+         * @static 
+         */
+        public static function getOrderByID($order_id){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getOrderByID($order_id);
+        }
+        
+        /**
+         * 根据订单状态/创建时间获取订单详情
+         *
+         * @param int $status 订单状态(不带该字段-全部状态, 2-待发货, 3-已发货, 5-已完成, 8-维权中, )
+         * @param int $begintime 订单创建时间起始时间(不带该字段则不按照时间做筛选)
+         * @param int $endtime 订单创建时间终止时间(不带该字段则不按照时间做筛选)
+         * @return \JiaLeo\Wechat\order list array|bool
+         * @static 
+         */
+        public static function getOrderByFilter($status = null, $begintime = null, $endtime = null){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getOrderByFilter($status, $begintime, $endtime);
+        }
+        
+        /**
+         * 设置订单发货信息
+         *
+         * @param string $order_id 订单 ID
+         * @param int $need_delivery 商品是否需要物流(0-不需要，1-需要)
+         * @param string $delivery_company 物流公司 ID
+         * @param string $delivery_track_no 运单 ID
+         * @param int $is_others 是否为 6.4.5 表之外的其它物流公司(0-否，1-是)
+         * @return bool 
+         * @static 
+         */
+        public static function setOrderDelivery($order_id, $need_delivery = 0, $delivery_company = null, $delivery_track_no = null, $is_others = 0){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::setOrderDelivery($order_id, $need_delivery, $delivery_company, $delivery_track_no, $is_others);
+        }
+        
+        /**
+         * 关闭订单
+         *
+         * @param string $order_id 订单 ID
+         * @return bool 
+         * @static 
+         */
+        public static function closeOrder($order_id){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::closeOrder($order_id);
+        }
+        
+        /**
+         * 获取订单SkuInfo - 订单付款通知
+         * 当Event为 merchant_order(订单付款通知)
+         *
+         * @return array|boolean 
+         * @static 
+         */
+        public static function getRevOrderSkuInfo(){
+            //Method inherited from \JiaLeo\Wechat\WechatOrigin            
+            return \JiaLeo\Wechat\Wechat::getRevOrderSkuInfo();
         }
         
     }

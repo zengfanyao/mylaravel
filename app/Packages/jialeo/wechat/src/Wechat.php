@@ -13,7 +13,7 @@ class Wechat extends WechatOrigin
     public function __construct($type = 'mp')
     {
         $config = config('wechat');
-        $options = $config[$type];//dump($config,$options);
+        $options = $config[$type];
         parent::__construct($options);
     }
 
@@ -84,7 +84,7 @@ class Wechat extends WechatOrigin
         //php版本大于5.5时
         if ($post_file && version_compare(PHP_VERSION, '5.5.0') >= 0) {
             foreach ($strPOST as $key => $v) {
-                $args[$key] = new CurlFile($strPOST[$key], mime_content_type($strPOST[$key]));
+                $args[$key] = new \CurlFile($strPOST[$key], mime_content_type($strPOST[$key]));
                 curl_setopt($oCurl, CURLOPT_POSTFIELDS, $args);
             }
         } else {
@@ -100,5 +100,9 @@ class Wechat extends WechatOrigin
             return false;
         }
     }
+
+
+
+
 
 }

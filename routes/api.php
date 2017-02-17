@@ -48,6 +48,6 @@ Route::group(['middleware' => ['JwtAuth']], function () {
 //Route::any('wechat/auth', 'Api\WechatController@auth');
 
 
-
+Route::get('wechat', 'Api\WechatController@index');
 
 

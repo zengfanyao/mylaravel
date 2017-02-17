@@ -8,6 +8,8 @@ return [
      */
     'debug'  => true,
 
+    'default' => 'mp',
+
     /*
      * 账号基本信息，请从微信公众平台/开放平台获取
      */
@@ -16,6 +18,13 @@ return [
             'appsecret'  => env('WECHAT_SECRET', 'your-app-secret'),     // AppSecret
             'token'   => env('WECHAT_TOKEN', 'your-token'),          // Token
             'encodingaeskey' => env('WECHAT_AES_KEY', ''),                    // EncodingAESKey
+    ),
+
+    'app'=>array(
+        'appid'  => env('WECHAT_APPID', 'your-app-id'),         // AppID
+        'appsecret'  => env('WECHAT_SECRET', 'your-app-secret'),     // AppSecret
+        'token'   => env('WECHAT_TOKEN', 'your-token'),          // Token
+        'encodingaeskey' => env('WECHAT_AES_KEY', ''),                    // EncodingAESKey
     ),
 
     /*
