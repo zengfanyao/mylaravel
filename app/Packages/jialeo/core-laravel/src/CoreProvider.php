@@ -22,7 +22,7 @@ class CoreProvider extends ServiceProvider
             if (!$this->app->routesAreCached()) {
                 require __DIR__ . '/routes/debug.php';
             }
-            $debug=new \JiaLeo\Core\Debuger();
+            new \JiaLeo\Core\Debuger();
         }
     }
 
