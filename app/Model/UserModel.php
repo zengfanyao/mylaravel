@@ -6,13 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model UserModel
- *
+ * 
  * @property int $id
- * @property string $nickname
+ * @property string $email
+ * @property string $password
+ * @property string $salt
+ * @property string $last_login_ip
+ * @property string $username
  * @property int $created_at
  * @property int $updated_at
+ * @property string $encryption
+ * @property int $is_on
  *
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel where($column, $operator = null, $value = null, $boolean = 'and')
+ * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel whereIn($column, $values, $boolean = 'and', $not = false)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel leftJoin($table, $first, $operator = null, $second = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel rightJoin($table, $first, $operator = null, $second = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel get($columns = ['*'])

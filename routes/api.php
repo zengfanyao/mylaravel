@@ -18,6 +18,9 @@ Route::get('test','Api\TestController@index');
 //需要验证session的
 Route::group(['middleware' => ['JwtAuth']], function () {
 
+    //微信授权接口
+    Route::any('wechat/auth', 'Api\WechatController@auth');
+
     //前台api
     Route::group(['middleware' => ['ApiCheck']], function () {
         //Route::resource('users', 'Api\UserController');
@@ -43,11 +46,11 @@ Route::group(['middleware' => ['JwtAuth']], function () {
 //Route::any('upload/callback', 'Admin\UploadController@uploadCallback');
 //Route::post('files', 'Admin\UploadController@upload');
 
-//前台微信
-//Route::any('wechat', 'Api\WechatController@serve');
-//Route::any('wechat/auth', 'Api\WechatController@auth');
+//微信消息回调接口
+Route::any('wechat', 'Api\WechatController@index');
 
 
-Route::get('wechat', 'Api\WechatController@index');
+
+
 
 

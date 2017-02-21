@@ -15,12 +15,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $filename
  * @property string $path
  * @property string $file_type
- * @property string $type
  * @property string $dir
  * @property int $part_now
  * @property int $status
  * @property int $is_multi
- * @property int $is_cloud
  * @property string $oss_upload_id
  * @property string $oss_part_upload_ids
  * @property string $part_temp_dir

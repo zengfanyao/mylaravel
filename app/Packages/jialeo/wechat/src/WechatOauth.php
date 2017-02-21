@@ -11,6 +11,7 @@ class WechatOauth
 {
 
     public $weObj;  //微信实例
+    private $access_token;  //code获取的access_token
 
     /**
      * 注释说明
@@ -24,12 +25,17 @@ class WechatOauth
         $this->weObj = $weObj;
         $this->params = $params;
 
-        $query['callback']=$_GET['callback'];
-        $query['type']=$params['type'];
-        $query['key']=$params['key'];
-        $this->callback = url()->current() . '?'.http_build_query($query);
+        $query['callback'] = $_GET['callback'];
+        $query['type'] = $params['type'];
+        $query['token'] = $params['token'];
+        $this->callback = url()->current() . '?' . http_build_query($query);
     }
 
+    /**
+     * 运行
+     * @return array|bool|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws ApiException
+     */
     public function run()
     {
         if (empty($_GET['code']) && empty($_GET['state'])) {    //第一步
@@ -38,8 +44,7 @@ class WechatOauth
             return $this->afterSilentOauth();
         } elseif (!empty($_GET['code']) && $_GET['state'] == 'snsapi_userinfo') {   //弹出授权获取用户消息
             return $this->afterClickOauth();
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -66,31 +71,35 @@ class WechatOauth
             throw new ApiException('code错误', 'CODE_ERROR');
         }
 
-        $term = $accessToken['openid'];
-        $user_info = array();
+        $this->access_token = $accessToken;
 
         //使用unionid作为用户标识
         if ($this->params['check_for'] === 'unionid') {
-            $user_info = $this->weObj->getUserInfo($accessToken['openid']);
-            $term = $user_info['unionid'];
+            $get_unionid = $this->weObj->getUserInfo($this->access_token['openid']);
+            if (!isset($get_unionid['unionid'])) {
+                throw new ApiException('获取unionid失败!', 'UNIONID_ERROR');
+            }
+
+            $this->access_token['unionid'] = $get_unionid['unionid'];
         }
 
         //是否存在用户
-        $is_user = $this->checkUser($term);
-        if (!$is_user && $this->params['is_oauth_user_info'] === true) {
+        $user_info = $this->checkUser();
+
+        if (!$user_info && $this->params['is_oauth_user_info'] === true) {        //不存在用户 且 设置为通过显性授权获取用户信息
             $reurl = $this->weObj->getOauthRedirect($this->callback, "snsapi_userinfo", "snsapi_userinfo");
             return redirect($reurl);
-        } elseif ($is_user) {
-            $is_user['openid'] = $accessToken['openid'];
-            $is_user['unionid'] = !isset($user_info['unionid']) ? '' : $user_info['unionid'];
-            $result = call_user_func_array($this->params['oauth_get_user_silent_function'], array($is_user));
+        } elseif ($user_info) {       //存在用户
+            $result = call_user_func_array($this->params['oauth_get_user_silent_function'], array($user_info));
 
             if ($result) {
                 return redirect(urldecode($_GET['callback']));
             }
+        } else {
+            throw new ApiException('授权失败', 'AUTH_ERROR');
         }
 
-        throw new ApiException('授权失败', 'AUTH_ERROR');
+        return false;
     }
 
     /**
@@ -100,20 +109,24 @@ class WechatOauth
     public function afterClickOauth()
     {
         $accessToken = $this->weObj->getOauthAccessToken();
-        if (!$accessToken) {
-            throw new ApiException('获取access_token错误', 'ERROR_ACCESS_TOKEN');
+        if (!$accessToken || empty($accessToken['openid'])) {
+            throw new ApiException('code错误', 'CODE_ERROR');
         }
 
-        $user_info = $this->weObj->getOauthUserinfo($accessToken['access_token'], $accessToken['openid']);
-        $term = $accessToken['openid'];
+        $this->access_token = $accessToken;
 
-        //使用unionid作为用户标识
-        if ($this->params['check_for'] === 'unionid') {
-            $term = $user_info['unionid'];
+        //拉取用户信息
+        $user_info = $this->weObj->getOauthUserinfo($accessToken['access_token'], $accessToken['openid']);
+        if(!$user_info){
+            throw new ApiException('获取用户信息失败!', 'GET_USERINFO_ERROR');
+        }
+
+        if(isset($user_info['unionid'])){
+            $this->access_token['unionid'] = $user_info['unionid'];
         }
 
         //检查是否存在用户
-        $is_user = $this->checkUser($term);
+        $is_user = $this->checkUser();
         if (!$is_user) {
             //创健新用户
             $add_user = call_user_func_array($this->params['create_user_function'], array($user_info));
@@ -135,9 +148,56 @@ class WechatOauth
      * 检查是否存在用户
      * @author: 亮 <chenjialiang@han-zi.cn>
      */
-    public function checkUser($value)
+    public function checkUser()
     {
-        $result = call_user_func_array($this->params['check_user_function'], array($value));
-        return $result;
+        if (empty($this->access_token) || empty($this->access_token['openid'])) {
+            throw new ApiException('获取openid错误!', 'ACCESS_TOKEN_ERROR');
+        }
+
+        $openid = '';
+        $unionid = '';
+
+        //使用unionid作为用户标识
+        if ($this->params['check_for'] === 'unionid') {
+            if(empty($this->access_token['unionid'])){
+                throw new ApiException('获取unionid错误!', 'UNIONID_ERROR');
+            }
+
+            $unionid = $this->access_token['unionid'];
+
+            $where = array(
+                'id2' => $unionid,
+                'oauth_type' => 1
+            );
+        } else {
+            $openid = $this->access_token['openid'];
+
+            $where = array(
+                'id1' => $openid,
+                'oauth_type' => 1
+            );
+        }
+
+        $is_user = \App\Model\UserAuthOauthModel::where($where)->first(['user_id']);
+        if (!$is_user) {
+            return false;
+        }
+
+        //返回的用户信息
+        $user_info = array(
+            'openid' => $openid,
+            'unionid' => $unionid,
+            'user_id' => $is_user->user_id
+        );
+
+        //保存更新信息
+        set_save_data($is_user, [
+            'access_token' => $this->access_token['access_token'],
+            'expires_time' => time() + $this->access_token['expires_in'],
+            'info' => json_encode($this->access_token)
+        ]);
+        $is_user->save();
+
+        return $user_info;
     }
 }
