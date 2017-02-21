@@ -6,16 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model UserModel
- * 
+ *
  * @property int $id
  * @property string $email
- * @property string $password
- * @property string $salt
- * @property string $last_login_ip
+ * @property string $headimg
  * @property string $username
+ * @property string $last_login_ip
  * @property int $created_at
  * @property int $updated_at
- * @property string $encryption
  * @property int $is_on
  *
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel where($column, $operator = null, $value = null, $boolean = 'and')
@@ -26,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserModel first($columns = ['*'])
+
  * @package App\Model
  */
 class UserModel extends Model

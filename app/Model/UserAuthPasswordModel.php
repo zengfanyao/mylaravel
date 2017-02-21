@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model UserAuthPasswordModel
- * 
+ *
  * @property int $id
  * @property int $user_id
  * @property string $password
@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserAuthPasswordModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserAuthPasswordModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserAuthPasswordModel first($columns = ['*'])
+
  * @package App\Model
  */
 class UserAuthPasswordModel extends Model

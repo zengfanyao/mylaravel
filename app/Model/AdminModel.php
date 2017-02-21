@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model AdminModel
- * 
+ *
  * @property int $id
  * @property string $account
  * @property string $password
@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminModel first($columns = ['*'])
+
  * @package App\Model
  */
 class AdminModel extends Model
