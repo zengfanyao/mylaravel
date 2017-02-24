@@ -1,6 +1,6 @@
 <?php
 
-namespace JiaLeo\AutoCreate;
+namespace JiaLeo\Core\Console;
 
 use Illuminate\Console\Command;
 

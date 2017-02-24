@@ -24,6 +24,18 @@ class CoreProvider extends ServiceProvider
             }
             new \JiaLeo\Core\Debuger();
         }
+
+        //注册自动生成命令
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                'JiaLeo\Core\Console\Model',
+                'JiaLeo\Core\Console\ModelDoc',
+                'JiaLeo\Core\Console\Controller',
+                'JiaLeo\Core\Console\Logic',
+                'JiaLeo\Core\Console\Module',
+                'JiaLeo\Core\Console\Config',
+            ]);
+        }
     }
 
     /**

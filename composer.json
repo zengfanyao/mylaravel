@@ -36,7 +36,6 @@
             "JiaLeo\\Upload\\": "app/Packages/jialeo/upload/src/",
             "JiaLeo\\Verify\\": "app/Packages/jialeo/verify/src/",
             "JiaLeo\\Jwt\\": "app/Packages/jialeo/jwt/src/",
-            "JiaLeo\\AutoCreate\\": "app/Packages/jialeo/autocreate-laravel/src/",
             "JiaLeo\\Core\\": "app/Packages/jialeo/core-laravel/src/",
             "JiaLeo\\Sms\\": "app/Packages/jialeo/sms/src/",
             "JiaLeo\\Module\\": "app/Packages/jialeo/module-laravel/src/",

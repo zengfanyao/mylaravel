@@ -1,24 +1,24 @@
 <?php
 
-namespace JiaLeo\AutoCreate;
+namespace JiaLeo\Core\Console;
 
 use Illuminate\Console\Command;
 
-class Logic extends Command
+class Controller extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'create:logic {logic_name}';
+    protected $signature = 'create:controller {controller_name} {--resource}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create logic file';
+    protected $description = 'Create controller file';
 
     /**
      * Create a new command instance.
@@ -41,24 +41,27 @@ class Logic extends Command
         $arg = $this->arguments();
 
         //类名
-        $class_name = class_basename($arg['logic_name']) . 'Logic';
+        $class_name = class_basename($arg['controller_name']) . 'Controller';
 
         //文件路径
-        $file_path = app_path() . '/Logic/' . $arg['logic_name'] . 'Logic.php';
+        $file_path = app_path() . '/Http/Controllers/' . $arg['controller_name'] . 'Controller.php';
 
         //文件目录路径
         $dir_path = dirname($file_path);
 
         //分析命名空间
-        if ($class_name == $arg['logic_name'] . 'Logic') {
-            $name_space = 'App\Logic';
+        if ($class_name == $arg['controller_name'] . 'Controller') {
+            $name_space = 'App\Http\Controllers';
         } else {
-            $name_space = 'App\Logic\\' . $arg['logic_name'];
+            $name_space = 'App\Http\Controllers\\' . $arg['controller_name'];
             $name_space = str_replace('/', '\\', substr($name_space, 0, strrpos($name_space, '/')));
         }
 
-
-        $template = file_get_contents(dirname(__FILE__) . '/Template/logic.php');
+        if ($this->option('resource')) {
+            $template = file_get_contents(dirname(__FILE__) . '/stubs/controller_resource.stub');
+        } else {
+            $template = file_get_contents(dirname(__FILE__) . '/stubs/controller.stub');
+        }
 
         $source = str_replace('{{class_name}}', $class_name, $template);
         $source = str_replace('{{name_space}}', $name_space, $source);
@@ -79,9 +82,9 @@ class Logic extends Command
         }
 
         if (file_put_contents($file_path, $source)) {
-            $this->info($class_name . '添加Logic成功');
+            $this->info($class_name . '添加控制器成功');
         } else {
-            $this->error($class_name . '添加Logic失败');
+            $this->error($class_name . '添加控制器失败');
         }
     }
 }

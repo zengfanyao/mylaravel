@@ -1,6 +1,6 @@
 <?php
 
-namespace JiaLeo\AutoCreate;
+namespace JiaLeo\Core\Console;
 
 use Illuminate\Console\Command;
 
@@ -47,7 +47,7 @@ class ModelDoc extends Command
         require_once app_path() . '/Helper/File.php';
 
         //加载模板
-        $template_method = file_get_contents(dirname(__FILE__) . '/Template/model_method.php');
+        $template_method = file_get_contents(dirname(__FILE__) . '/stubs/model_method.stub');
 
         foreach ($tables as $key => $v) {
             $class_name = studly_case($v) . 'Model';

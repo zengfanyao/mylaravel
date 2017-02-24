@@ -1,6 +1,6 @@
 <?php
 
-namespace JiaLeo\AutoCreate;
+namespace JiaLeo\Core\Console;
 
 use Illuminate\Console\Command;
 
@@ -41,8 +41,8 @@ class Model extends Command
         $tables = array_map('reset', \DB::select('SHOW TABLES'));
 
         //获取模板文件
-        $template = file_get_contents(dirname(__FILE__) . '/Template/model.php');
-        $template_method = file_get_contents(dirname(__FILE__) . '/Template/model_method.php');
+        $template = file_get_contents(dirname(__FILE__) . '/stubs/model.stub');
+        $template_method = file_get_contents(dirname(__FILE__) . '/stubs/model_method.stub');
 
         //model文件目录
         $model_path = app_path() . '/Model';
