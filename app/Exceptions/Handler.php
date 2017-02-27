@@ -5,6 +5,8 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\Debug\ExceptionHandler as SymfonyExceptionHandler;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class Handler extends ExceptionHandler
 {
@@ -47,8 +49,14 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
 
-        if ($request->header('X-ISAPI') == 1 && get_class($exception) == 'App\\Exceptions\\ApiException'   ) {
+        if ($request->header('X-ISAPI') == 1 && $exception instanceof ApiException) {
             return $this->result($request, $exception);
+        }
+        elseif($exception instanceof ApiException){
+            $e = \Symfony\Component\Debug\Exception\FlattenException::create($exception,$exception->getCode());
+            $handler = new SymfonyExceptionHandler(config('app.debug'));
+
+            return SymfonyResponse::create($handler->getHtml($e), $e->getStatusCode(), $e->getHeaders());
         }
 
         return parent::render($request, $exception);
