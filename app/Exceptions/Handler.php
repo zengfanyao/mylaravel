@@ -7,6 +7,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\Debug\ExceptionHandler as SymfonyExceptionHandler;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException as NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -49,11 +50,10 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
 
-        if ($request->header('X-ISAPI') == 1 && $exception instanceof ApiException) {
+        if ($request->header('X-ISAPI') == 1 && $exception instanceof ApiException || $exception instanceof NotFoundHttpException) {
             return $this->result($request, $exception);
-        }
-        elseif($exception instanceof ApiException){
-            $e = \Symfony\Component\Debug\Exception\FlattenException::create($exception,$exception->getCode());
+        } elseif ($exception instanceof ApiException) {
+            $e = \Symfony\Component\Debug\Exception\FlattenException::create($exception, $exception->getCode());
             $handler = new SymfonyExceptionHandler(config('app.debug'));
 
             return SymfonyResponse::create($handler->getHtml($e), $e->getStatusCode(), $e->getHeaders());
@@ -86,23 +86,32 @@ class Handler extends ExceptionHandler
      */
     private function result($request, \Exception $exception)
     {
+        if ($exception instanceof NotFoundHttpException) {
+            $error_code = '404_NOT_FOUND';
+            $http_code = 404;
+            $error_msg = '找不到页面!';
+        } else {
+            $error_code = $exception->getErrorId();
+            $http_code = $exception->getCode();
+            $error_msg = $exception->getMessage();
+        }
 
         $data = [
             'status' => false,
-            'error_msg' => $exception->getMessage(),
-            'error_code' =>  $exception->getErrorId(),
+            'error_msg' => $error_msg,
+            'error_code' => $error_code,
             'data' => [],
             'list' => [],
         ];
 
-        config('app.debug')== 'true' ? $data['debug'] = [
+        config('app.debug') == 'true' ? $data['debug'] = [
             'type' => get_class($exception),
             'line' => $exception->getLine(),
             'file' => $exception->getFile(),
             'trace' => explode("\n", $exception->getTraceAsString())
         ] : true;
 
-        return response()->json($data, $exception->getCode());
+        return response()->json($data, $http_code);
     }
 
 }

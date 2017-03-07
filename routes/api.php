@@ -38,7 +38,7 @@ Route::group(['middleware' => ['JwtAuth']], function () {
 
 });
 
-//上传文件
+//TODO上传文件
 //Route::post('upload', 'Admin\UploadController@getUploadID');
 //Route::get('upload/sign/{id}', 'Admin\UploadController@getUploadSign');
 //Route::put('upload/cloudcomplete/{id}', 'Admin\UploadController@putCloudUploadComplete');
@@ -48,18 +48,3 @@ Route::group(['middleware' => ['JwtAuth']], function () {
 
 //微信消息回调接口
 Route::any('wechat', 'Api\WechatController@index');
-
-Route::get('auth', function() {
-    // Only authenticated users may enter...
-
-    header('Content-Type: plain/text');
-
-    $aa=file_get_contents(base_path().'/.env');
-
-    return $aa;
-
-});
-
-
-
-
