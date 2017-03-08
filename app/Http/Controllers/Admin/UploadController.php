@@ -46,6 +46,9 @@ class UploadController extends Controller
 
         if ($upload_setting == 'cloud') {
             $aliyun_obj = new \JiaLeo\Upload\AliyunOss();
+
+            //TODO
+            //$callback = $request->getSchemeAndHttpHost().'/api/upload/callback';
             $callback = 'http://hanzikeji.imwork.net:9999/api/upload/callback';
 
             $aliyun_obj->getUploadId(\App\Model\UploadModel::class, $data['total_size'], $data['part_size'], $data['file_type'], $dir, $data['filename'], $callback, $is_multi);

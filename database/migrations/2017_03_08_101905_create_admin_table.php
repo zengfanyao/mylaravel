@@ -28,6 +28,11 @@ class CreateAdminTable extends Migration
             $table->integer('created_at')->comment('创建时间');
             $table->integer('updated_at')->comment('更新时间');
             $table->integer('is_on')->default(1)->comment('管理员帐户状态。0为已删除，1为正常');
+
+            
+
+            
+
         });
 
         DB::table('admin')->insert([
@@ -40,6 +45,7 @@ class CreateAdminTable extends Migration
             'created_at' => time(),
             'updated_at' => time()
         ]);
+
     }
 
     /**
