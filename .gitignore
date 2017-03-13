@@ -5,6 +5,7 @@
 Homestead.json
 Homestead.yaml
 .env
+.dev
 workspace.xml
 /vue-admin/.idea/workspace.xml
 /workerman/workerman.log
