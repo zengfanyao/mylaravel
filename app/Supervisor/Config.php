@@ -9,7 +9,7 @@ class Config
      *
      * @var array
      */
-    public $supervistor = [
+    public $supervisor = [
         //'register_email'
     ];
 
