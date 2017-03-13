@@ -11,14 +11,14 @@ class Supervisor extends Command
      *
      * @var string
      */
-    protected $signature = 'supervistor {action} {--supervistor_path=} {--name=}';
+    protected $signature = 'supervisor {action} {--supervisor_path=} {--name=}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Config the supervistor';
+    protected $description = 'Config the supervisor';
 
     /**
      * Create a new command instance.
@@ -75,11 +75,11 @@ class Supervisor extends Command
 
         $source_supervistor_path = app_path('Supervisor/');
 
-        if(empty($this->option('supervistor_path'))){
+        if(empty($this->option('supervisor_path'))){
             $supervistor_path = '/etc/supervisor/conf.d/';
         }
         else{
-            $supervistor_path = $this->option('supervistor_path');
+            $supervistor_path = $this->option('supervisor_path');
         }
 
         foreach ($list as $v) {
