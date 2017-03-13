@@ -9,8 +9,9 @@ class Config
      *
      * @var array
      */
-    public $supervistor = [
-        //'register_email'
+    public $supervisor = [
+        'register_email',
+        'song_download'
     ];
 
 }

@@ -66,7 +66,7 @@ class Supervisor extends Command
     {
         //获取配置
         $obj = new \App\Supervisor\Config();
-        $list = $obj->supervistor;
+        $list = $obj->supervisor;
 
         if(!$list){
             $this -> error('没有配置文件操作!');
