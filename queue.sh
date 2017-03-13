@@ -10,3 +10,5 @@
 # {--tries=0 : Number of times to attempt a job before logging it failed}';
 
 # php artisan queue:work --queue=email  --delay=3 --sleep=1 --tries=3 --daemon
+# php artisan queue:work --queue=emails --delay=3 --sleep=1 --tries=3 --daemon
+# php artisan queue:work --queue=songDownload --delay=3 --sleep=1 --tries=3 --daemon
