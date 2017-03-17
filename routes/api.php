@@ -48,13 +48,5 @@ Route::group(['middleware' => ['JwtAuth']], function () {
 
 });
 
-//TODO上传文件
-//Route::post('upload', 'Admin\UploadController@getUploadID');
-//Route::get('upload/sign/{id}', 'Admin\UploadController@getUploadSign');
-//Route::put('upload/cloudcomplete/{id}', 'Admin\UploadController@putCloudUploadComplete');
-//Route::put('upload/localcomplete/{id}', 'Admin\UploadController@putLocalUploadComplete');
-//Route::any('upload/callback', 'Admin\UploadController@uploadCallback');
-//Route::post('files', 'Admin\UploadController@upload');
-
 //微信消息回调接口
-Route::any('wechat', 'Api\WechatController@index');
+//Route::any('wechat', 'Api\WechatController@index');

@@ -12,7 +12,7 @@ if (!function_exists('dir_exists')) {
     function dir_exists($path)
     {
         $f = true;
-        if (file_exists($path) == false) {//创建图片目录
+        if (file_exists($path) == false) {//创建目录
             if (mkdir($path, 0777, true) == false)
                 $f = false;
             else if (chmod($path, 0777) == false)

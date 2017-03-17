@@ -344,7 +344,7 @@ class Verify
      */
     public function timestamp($time)
     {
-        if (!is_int($time)) {
+        if (!preg_match('/^\d{10}$/', $time)) {
             return false;
         }
         return strtotime(date('Y-m-d H:i:s', $time)) !== false;

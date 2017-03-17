@@ -69,8 +69,7 @@ class AliyunOss
             $data['part_temp_dir'] = $part_temp_dir;
 
             $data['is_multi'] = 1;
-        }
-        else{
+        } else {
             $data['is_multi'] = 0;
             $data['part_num'] = 1;
         }
@@ -91,7 +90,7 @@ class AliyunOss
                 unset($temp_sign);
             }
         } else {
-            $temp_sign = $this->getSign($upload_id, $callback, $dir, $data['filename']);
+            $temp_sign = $this->getSign($upload_id, $callback, $dir, $data['filename'] . '.' . $ext);
             $temp_sign['is_multi'] = 0;
             $temp_sign['type'] = 'cloud';
             $sign[] = $temp_sign;
@@ -185,21 +184,21 @@ class AliyunOss
 
         $ossClient = new OssClient($access_id, $access_key, $endpoint);
 
-        $field = ['id', 'dir', 'part_num', 'part_now', 'filename', 'path', 'oss_upload_id', 'oss_part_upload_ids'];
+        $field = ['id', 'dir', 'part_num', 'part_now', 'is_multi', 'origin_filename', 'type', 'filename', 'path', 'oss_upload_id', 'oss_part_upload_ids'];
         $upload_info = $upload_model::where('is_on', 1)->where('status', 0)->where('id', $id)->first($field);
         if (!$upload_info) {
             throw new ApiException('上传id不符合!');
         }
 
-        /*if ($upload_info->is_multi != 1) {
-            throw new ApiException('上传id不符合!');
-        }*/
+        if ($upload_info->type != 'cloud') {
+            throw new ApiException('上传云id错误!');
+        }
 
         if ($upload_info->part_num != $upload_info->part_now) {
             throw new ApiException('上传还没完成!');
         }
 
-        if($upload_info->is_multi){
+        if ($upload_info->is_multi) {
             $path = trim($upload_info->path, '/');
             $id = $upload_info->id;
 
@@ -215,7 +214,6 @@ class AliyunOss
                 );
             }
 
-            //完成分块上传
             $ossClient->completeMultipartUpload($bucket, $path, $upload_id, $uploadParts);
         }
 
@@ -226,7 +224,11 @@ class AliyunOss
         }
         load_helper('File');
 
-        return file_url($upload_info->path,true);
+        return [
+            'url' => file_url($upload_info->path, true),
+            'path' => $upload_info,
+            'origin_filename' => $upload_info->origin_filename
+        ];
     }
 
     /**

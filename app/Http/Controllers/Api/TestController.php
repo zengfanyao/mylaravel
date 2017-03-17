@@ -12,7 +12,7 @@ class TestController extends Controller
     public function index()
     {
         $data = array(
-            'str' => 'hello world2'
+            'str' => 'hello world'
         );
 
         return $this->response($data);

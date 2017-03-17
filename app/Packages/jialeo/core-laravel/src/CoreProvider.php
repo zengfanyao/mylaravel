@@ -34,7 +34,8 @@ class CoreProvider extends ServiceProvider
                 'JiaLeo\Core\Console\Logic',
                 'JiaLeo\Core\Console\Module',
                 'JiaLeo\Core\Console\Config',
-                'JiaLeo\Core\Console\Supervisor'
+                'JiaLeo\Core\Console\Supervisor',
+                'JiaLeo\Core\Console\Upload'
             ]);
         }
     }

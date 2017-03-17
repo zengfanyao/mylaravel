@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 use App\Exceptions\ApiException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use OSS\OssClient;
 
 class UploadController extends Controller
 {
@@ -19,10 +18,13 @@ class UploadController extends Controller
             'part_size' => 'egnum',
             'file_type' => '',
             'filename' => '',
-            'upload_type' => 'in:banner:article:activity',
+            'upload_type' => 'in:banner:article:activity:headpic',
             'upload_setting' => 'in:cloud:local'
         ], 'POST');
         $data = $this->verifyData;
+
+        //$part_size 必须大于102400
+        $part_size = $data['part_size'];  //单位B
 
         //此处作权限控制
         switch ($data['upload_type']) {
@@ -30,6 +32,7 @@ class UploadController extends Controller
                 $upload_setting = 'cloud';
                 $dir = 'banner/';
                 $is_multi = true;   //是否分块
+                $part_size = 204800;  //单位B
                 break;
             case 'article' :
                 $upload_setting = 'cloud';
@@ -40,6 +43,15 @@ class UploadController extends Controller
                 $upload_setting = $data['upload_setting'];
                 $dir = 'activity/';
                 $is_multi = true;   //是否分块
+                $part_size = 400000;   //单位B
+                \JiaLeo\Upload\ExtCheck::checkFileTypeOfGroup($data['file_type']);
+                break;
+            case 'headpic' :
+                $upload_setting = 'cloud';
+                $dir = 'headpic/';
+                $is_multi = false;   //是否分块
+                $part_size = 204800;   //单位B
+                \JiaLeo\Upload\ExtCheck::checkFileTypeOfGroup($data['file_type']);
                 break;
             default :
                 throw new ApiException('错误的上传类型!', 'UPLOAD_ERROR');
@@ -47,29 +59,36 @@ class UploadController extends Controller
 
         if ($upload_setting == 'cloud') {
             $aliyun_obj = new \JiaLeo\Upload\AliyunOss();
-            $callback = 'http://hanzikeji.imwork.net:9999/api/upload/callback';
 
-            $aliyun_obj->getUploadId(\App\Model\UploadModel::class, $data['total_size'], $data['part_size'], $data['file_type'], $dir, $data['filename'], $callback, $is_multi);
+            //配置云callback路径
+            $callback = $request->getSchemeAndHttpHost() . '/api/admin/upload/callback';
+
+            $aliyun_obj->getUploadId(\App\Model\UploadModel::class, $data['total_size'], $part_size, $data['file_type'], $dir, $data['filename'], $callback, $is_multi);
             $upload_sign = $aliyun_obj->uploadSign;
             $upload_id = $aliyun_obj->uploadId;
             $part_num = $aliyun_obj->partNum;
-            //完成后调用的url
-            $complete_url = '/api/upload/cloudcomplete/';
+
+            //配置完成后调用的url
+            $complete_url = '/api/admin/upload/cloudcomplete/';
         } else {
-            $upload_host = $request->getSchemeAndHttpHost() . '/api/files';
+            //配置上传文件路径
+            $upload_host = $request->getSchemeAndHttpHost() . '/api/admin/files';
+
             $local_obj = new \JiaLeo\Upload\LocalOss();
 
-            $local_obj->getUploadId(\App\Model\UploadModel::class, $data['total_size'], $data['part_size'], $data['file_type'], $dir, $data['filename'], $upload_host, $is_multi);
+            $local_obj->getUploadId(\App\Model\UploadModel::class, $data['total_size'], $part_size, $data['file_type'], $dir, $data['filename'], $upload_host, $is_multi);
             $upload_sign = $local_obj->uploadSign;
             $upload_id = $local_obj->uploadId;
             $part_num = $local_obj->partNum;
-            //完成后调用的url
-            $complete_url = '/api/upload/localcomplete/';
+
+            //配置完成后调用的url
+            $complete_url = '/api/admin/upload/localcomplete/';
         }
 
         return $this->response([
             'upload_id' => $upload_id,
             'part_num' => $part_num,
+            'part_size' => $part_size,
             'upload_setting' => $upload_setting,
             'complete_url' => $complete_url
         ],
@@ -84,9 +103,9 @@ class UploadController extends Controller
         $this->verifyId($id);
 
         $obj = new \JiaLeo\Upload\AliyunOss();
-        $path=$obj->multiUploadComplete(\App\Model\UploadModel::class, $id);
+        $data = $obj->multiUploadComplete(\App\Model\UploadModel::class, $id);
 
-        return $this->response(['path'=>$path,'upload_id'=>$id]);
+        return $this->response(['path' => $data['path'], 'url' => $data['url'], 'upload_id' => $id, 'origin_filename' => $data['origin_filename']]);
     }
 
     /**
@@ -97,9 +116,9 @@ class UploadController extends Controller
         $this->verifyId($id);
 
         $obj = new \JiaLeo\Upload\LocalOss();
-        $path=$obj->multiUploadComplete(\App\Model\UploadModel::class, $id);
+        $data = $obj->multiUploadComplete(\App\Model\UploadModel::class, $id);
 
-        return $this->response(['path'=>$path,'upload_id'=>$id]);
+        return $this->response(['path' => $data['path'], 'url' => $data['url'], 'upload_id' => $id, 'origin_filename' => $data['origin_filename']]);
     }
 
     /**
@@ -128,11 +147,11 @@ class UploadController extends Controller
         ], 'POST');
         $data = $this->verifyData;
 
-        //是否上传到阿里云
+        //完成后是否上传到阿里云
         $is_upload = false;
 
         $local_obj = new \JiaLeo\Upload\LocalOss();
-        $result = $local_obj->updatePart(\App\Model\UploadModel::class, $data['upload_id'], $data['part_now'],$is_upload);
+        $result = $local_obj->updatePart(\App\Model\UploadModel::class, $data['upload_id'], $data['part_now'], $is_upload);
 
         return $this->response($result);
     }

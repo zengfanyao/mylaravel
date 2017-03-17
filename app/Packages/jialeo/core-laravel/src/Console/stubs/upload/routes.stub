@@ -1,4 +1,3 @@
-<?php
 
 //后台上传文件
 Route::any('admin/upload/callback', 'Admin\UploadController@uploadCallback');

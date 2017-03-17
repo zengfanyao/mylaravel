@@ -8,6 +8,10 @@ use OSS\Core\OssException;
 class LocalOss
 {
 
+    public $uploadId;  //数据库model中的id
+    public $partNum = 0;   //分块数量
+    public $uploadSign = array();  //上传签名列表
+
     /**
      * 获取分块id
      * @param \App\Model\UploadModel $upload_model
@@ -85,13 +89,26 @@ class LocalOss
         return true;
     }
 
+    /**
+     * 本地上传(块)
+     * @param $upload_model
+     * @param $upload_id
+     * @param $part_now
+     * @param bool $is_upload
+     * @return bool
+     * @throws ApiException
+     */
     public function updatePart($upload_model = \App\Model\UploadModel::class, $upload_id, $part_now, $is_upload = false)
     {
         //查询数据库
-        $field = ['id', 'dir', 'part_num', 'part_now', 'filename', 'path', 'is_multi', 'oss_upload_id', 'oss_part_upload_ids', 'part_temp_dir'];
+        $field = ['id', 'dir', 'part_num', 'part_now', 'filename', 'path', 'type', 'is_multi', 'oss_upload_id', 'oss_part_upload_ids', 'part_temp_dir'];
         $upload_info = $upload_model::where('is_on', 1)->where('status', 0)->where('id', $upload_id)->first($field);
         if (!$upload_info) {
             throw new ApiException('上传id不符合', 'UPLOAD_ERROR');
+        }
+
+        if ($upload_info->type != 'local') {
+            throw new ApiException('上传本地id不符合', 'UPLOAD_ERROR');
         }
 
         //上传的分块顺序错误
@@ -190,10 +207,14 @@ class LocalOss
      */
     public function multiUploadComplete($upload_model, $id)
     {
-        $field = ['id', 'dir', 'part_num', 'part_now', 'filename', 'path', 'oss_upload_id', 'oss_part_upload_ids'];
+        $field = ['id', 'dir', 'part_num', 'part_now', 'origin_filename', 'filename', 'path', 'type', 'is_cloud', 'oss_upload_id', 'oss_part_upload_ids'];
         $upload_info = $upload_model::where('is_on', 1)->where('status', 0)->where('id', $id)->first($field);
         if (!$upload_info) {
             throw new ApiException('上传id不符合!', 'UPLOAD_ERROR');
+        }
+
+        if ($upload_info->type != 'local') {
+            throw new ApiException('上传本地id不符合!', 'UPLOAD_ERROR');
         }
 
         if ($upload_info->part_num != $upload_info->part_now) {
@@ -207,7 +228,14 @@ class LocalOss
         }
         load_helper('File');
 
-        return file_url($upload_info->path);
+        //是否在云盘中
+        $is_cloud = boolval($upload_info->is_cloud);
+
+        return [
+            'url' => file_url($upload_info->path, $is_cloud),
+            'path' => $upload_info->path,
+            'origin_filename' => $upload_info->origin_filename
+        ];
     }
 
 }
