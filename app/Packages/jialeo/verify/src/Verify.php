@@ -384,5 +384,28 @@ class Verify
         return preg_match($match, $value);
     }
 
+    /**
+     * @param string $value 值
+     * @param int $minLen 最小长度
+     * @param int $maxLen 最长长度
+     */
+    public function string($value, $min = null, $max = null)
+    {
+        //判断最小值范围
+        if ($min !== null) {
+            if (strlen($value) < $min) {
+                return false;
+            }
+        }
+
+        //判断最小值范围
+        if ($max !== null) {
+            if (strlen($value) > $max) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }
