@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model AdminMenuModel
- *
+ * 
  * @property int $id
  * @property string $name
  * @property string $url
@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $created_at
  * @property int $updated_at
  * @property int $is_on
+ * @property int $order
+ * @property string $description
  *
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminMenuModel where($column, $operator = null, $value = null, $boolean = 'and')
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminMenuModel whereIn($column, $values, $boolean = 'and', $not = false)
@@ -25,7 +27,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminMenuModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminMenuModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminMenuModel first($columns = ['*'])
-
  * @package App\Model
  */
 class AdminMenuModel extends Model

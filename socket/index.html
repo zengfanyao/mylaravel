@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        function init() {
+            var url = window.document.getElementById('url').value;
+
+            websocket = new WebSocket(url);
+            websocket.onopen = function(evt) {
+                onOpen(evt)
+                window.document.getElementById('connectBtn').innerHTML = '已连接';
+                window.document.getElementById('connectBtn').setAttribute('disabled','disabled');
+                window.document.getElementById('disconnectBtn').style.display = 'inline-block';
+                window.document.getElementById('loginDiv').style.display = 'block';
+            };
+            websocket.onclose = function(evt) {
+                onClose(evt)
+            };
+            websocket.onmessage = function(evt) {
+                onMessage(evt)
+            };
+            websocket.onerror = function(evt) {
+                onError(evt)
+            };
+        }
+
+        function onOpen(evt) {
+            writeToScreen('<span style="color: green;">SERVER CONNECTED</span>');
+            doSend("WebSocket rocks",'init');
+        }
+
+        function onClose(evt) {
+            writeToScreen('<span style="color: red;">SERVER DISCONNECTED</span>');
+        }
+
+        function onMessage(evt) {
+            writeToScreen('<span style="color: blue;">接收到: '+ evt.data+'</span>');
+            //websocket.close();
+        }
+
+        function onError(evt) {
+            writeToScreen('<span style="color: red;">SERVER ERROR:</span> '+ evt.data);
+        }
+
+        function doSend(message,type) {
+            var setData={
+                'guid':'5122531C-6FAC-FAE0-0093-49D9083DB8AF',
+                'content':{
+                    'type':type
+                }
+            };
+            if(type=='customer_login'){
+                setData.content.token=message;
+            }else{
+                setData.content.message=message;
+            }
+            setData=JSON.stringify(setData);
+            writeToScreen("发送: " + message);
+            websocket.send(setData);
+        }
+
+
+        function doChat(message,user_id) {
+            var setData={
+                'guid':'5122531C-6FAC-FAE0-0093-49D9083DB8AF',
+                'content':{
+                    'type':'chat',
+                    'msg':{
+                        'content':message,
+                        'customer_id':user_id,
+                        'msg_type':1
+                    }
+                }
+            };
+            setData=JSON.stringify(setData);
+            writeToScreen("发送: " + message);
+            websocket.send(setData);
+        }
+
+        function doClose() {
+            websocket.close();
+            window.document.getElementById('disconnectBtn').style.display = 'none';
+            window.document.getElementById('sendDiv').style.display = 'none';
+        }
+
+        function writeToScreen(message) {
+            var date =getNowFormatDate();
+
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = date + ' - ' +message;
+
+            var list=document.getElementById("output");
+            list.insertBefore(pre,list.childNodes[0]);
+        }
+
+        function login(){
+            var $user_id = window.document.getElementById('login').value;
+            var $api_url = window.document.getElementById('api_url').value;
+
+            $.ajax({
+                type: "GET",
+                url:$api_url+'/api/init',
+                error: function(request) {
+                    alert("Connection error");
+                },
+                success: function(data) {
+                    var login_token = data.token;
+                    $.ajax({
+                        type: "GET",
+                        data:{
+                            usertest:$user_id,
+                            token:login_token
+                        },
+                        url:$api_url+'/api/socket/token',
+                        error: function(request) {
+                            alert("Connection error");
+                        },
+                        success: function(data) {
+                            var token = data.data.token;
+                            doSend(token,'customer_login');
+                            window.document.getElementById('sendDiv').style.display = 'block';
+                        }
+                    });
+                }
+            });
+        }
+
+        function sendMessage(){
+            var msg = window.document.getElementById('sendContent').value;
+            var user_id = window.document.getElementById('sendUser').value;
+            doChat(msg,user_id);
+            window.document.getElementById('sendContent').value = '';
+        }
+
+        function disconnectBtn(){
+            doClose();
+            window.document.getElementById('connectBtn').innerHTML = '确认';
+            window.document.getElementById('connectBtn').removeAttribute('disabled');
+        }
+
+        function getNowFormatDate() {
+            var date = new Date();
+            var seperator1 = "-";
+            var seperator2 = ":";
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var currentdate = /*date.getFullYear() + seperator1 + month + seperator1 + strDate
+                    + " " + */date.getHours() + seperator2 + date.getMinutes()
+                    + seperator2 + date.getSeconds();
+            return currentdate;
+        }
+
+    </script>
+</head>
+<body>
+<h1>websocket调试工具</h1>
+
+<label>websocket请求接口地址:</label>
+<input id="api_url" value="http://10.31.31.32:8002">
+<br/><br/>
+
+<label>websocket服务地址:</label>
+<input id="url" value="ws://10.31.31.32:18282"> <button id="connectBtn" onclick="init()">确认</button> <button style="display: none" id="disconnectBtn" onclick="disconnectBtn()">断开连接</button>
+
+<br/><br/>
+
+<div id="loginDiv" style="display: none">
+    <label>登录:</label>
+    <input id="login" value=""> <button id="loginBtn" onclick="login()">登录</button>
+</div>
+
+<div id="sendDiv" style="display: none">
+    <label>发送消息:</label>
+    <input id="sendUser" value="">
+    <input id="sendContent" value=""> <button id="sendMsgBtn" onclick="sendMessage()">发送</button>
+</div>
+
+
+<br/><br/>
+<label>收到消息:</label>
+<br/>
+<div id="output">
+
+</div>
+
+
+
+</body>
+</html>

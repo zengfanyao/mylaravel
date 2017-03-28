@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model ArticleTagRelationsModel
- *
+ * 
  * @property int $id
  * @property int $article_id
  * @property int $tag_id
@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleTagRelationsModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleTagRelationsModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleTagRelationsModel first($columns = ['*'])
-
  * @package App\Model
  */
 class ArticleTagRelationsModel extends Model

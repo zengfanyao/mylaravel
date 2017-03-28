@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model AdminRolePermissionModel
- *
+ * 
  * @property int $id
  * @property int $admin_role_id
  * @property int $admin_permission_id
@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminRolePermissionModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminRolePermissionModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminRolePermissionModel first($columns = ['*'])
-
  * @package App\Model
  */
 class AdminRolePermissionModel extends Model

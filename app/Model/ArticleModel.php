@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model ArticleModel
- *
+ * 
  * @property int $id
  * @property string $title
  * @property string $author
@@ -25,7 +25,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleModel first($columns = ['*'])
-
  * @package App\Model
  */
 class ArticleModel extends Model

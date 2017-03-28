@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model UserAuthOauthModel
- *
+ * 
  * @property int $id
  * @property int $user_id
  * @property int $oauth_type
@@ -26,7 +26,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserAuthOauthModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserAuthOauthModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\UserAuthOauthModel first($columns = ['*'])
-
  * @package App\Model
  */
 class UserAuthOauthModel extends Model

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model MigrationsModel
- *
+ * 
  * @property int $id
  * @property string $migration
  * @property int $batch
@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\MigrationsModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\MigrationsModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\MigrationsModel first($columns = ['*'])
-
  * @package App\Model
  */
 class MigrationsModel extends Model

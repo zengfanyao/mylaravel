@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model ArticleTagModel
- *
+ * 
  * @property int $id
  * @property string $name
  * @property int $created_at
@@ -21,7 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleTagModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleTagModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleTagModel first($columns = ['*'])
-
  * @package App\Model
  */
 class ArticleTagModel extends Model

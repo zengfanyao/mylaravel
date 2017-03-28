@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model AdminPermissionModel
- *
+ * 
  * @property int $id
  * @property string $name
  * @property string $code
@@ -25,7 +25,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminPermissionModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminPermissionModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminPermissionModel first($columns = ['*'])
-
  * @package App\Model
  */
 class AdminPermissionModel extends Model

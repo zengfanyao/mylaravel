@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model AdminPermissionMenuModel
- *
+ * 
  * @property int $id
  * @property int $admin_permission_id
  * @property int $admin_menu_id
@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminPermissionMenuModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminPermissionMenuModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminPermissionMenuModel first($columns = ['*'])
-
  * @package App\Model
  */
 class AdminPermissionMenuModel extends Model

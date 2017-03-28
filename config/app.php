@@ -183,15 +183,15 @@ return [
         //跨域
         Barryvdh\Cors\ServiceProvider::class,
         //jwtAuth
-        JiaLeo\Jwt\JwtAuthProvider::class,
+        JiaLeo\Laravel\Jwt\JwtAuthProvider::class,
         //JiaLeo核心
-        JiaLeo\Core\CoreProvider::class,
+        JiaLeo\Laravel\Core\CoreProvider::class,
         //Sms
-        JiaLeo\Sms\SmsProvider::class,
+        JiaLeo\Laravel\Sms\SmsProvider::class,
         //Excel
-        JiaLeo\Excel\ExcelProvider::class,
+        JiaLeo\Laravel\Excel\ExcelProvider::class,
         //Wechat
-        JiaLeo\Wechat\WechatProvider::class
+        JiaLeo\Laravel\Wechat\WechatProvider::class
     ],
 
     /*
@@ -242,10 +242,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         //以下是自定义
-        'Jwt' => JiaLeo\Jwt\JwtAuthFacade::class,
-        'Sms' => JiaLeo\Sms\SmsFacade::class,
-        'Excel' => JiaLeo\Excel\ExcelFacade::class,
-        'Wechat' => JiaLeo\Wechat\WechatFacade::class,
+        'Jwt' => JiaLeo\Laravel\Jwt\JwtAuthFacade::class,
+        'Sms' => JiaLeo\Laravel\Sms\SmsFacade::class,
+        'Excel' => JiaLeo\Laravel\Excel\ExcelFacade::class,
+        'Wechat' => JiaLeo\Laravel\Wechat\WechatFacade::class,
 
     ],
 

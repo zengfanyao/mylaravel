@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model AdminRoleModel
- *
+ * 
  * @property int $id
  * @property string $name
- * @property string $display_name
  * @property string $description
- * @property string $created_at
- * @property string $updated_at
+ * @property int $created_at
+ * @property int $updated_at
+ * @property int $is_on
  *
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminRoleModel where($column, $operator = null, $value = null, $boolean = 'and')
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminRoleModel whereIn($column, $values, $boolean = 'and', $not = false)
@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminRoleModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminRoleModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminRoleModel first($columns = ['*'])
-
  * @package App\Model
  */
 class AdminRoleModel extends Model

@@ -13,8 +13,7 @@
         "guzzlehttp/guzzle": "^6.2",
         "predis/predis": "^1.1",
         "doctrine/dbal": "^2.5",
-        "firebase/php-jwt": "^4.0",
-        "aliyuncs/oss-sdk-php": "^2.2"
+        "jialeo/laravel-package": "0.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -33,14 +32,7 @@
             "App\\": "app/",
             "Lib\\": "app/Package/",
 
-            "JiaLeo\\Wechat\\": "app/Packages/jialeo/wechat/src/",
-            "JiaLeo\\Upload\\": "app/Packages/jialeo/upload/src/",
-            "JiaLeo\\Verify\\": "app/Packages/jialeo/verify/src/",
-            "JiaLeo\\Jwt\\": "app/Packages/jialeo/jwt/src/",
-            "JiaLeo\\Core\\": "app/Packages/jialeo/core-laravel/src/",
-            "JiaLeo\\Sms\\": "app/Packages/jialeo/sms/src/",
-            "JiaLeo\\Module\\": "app/Packages/jialeo/module-laravel/src/",
-            "JiaLeo\\Excel\\": "app/Packages/jialeo/excel/src/"
+            "Socket\\": "socket/"
         }
     },
     "autoload-dev": {

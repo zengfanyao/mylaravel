@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model ArticleCategoryModel
- *
+ * 
  * @property int $id
  * @property string $name
  * @property int $parent_id
@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleCategoryModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleCategoryModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\ArticleCategoryModel first($columns = ['*'])
-
  * @package App\Model
  */
 class ArticleCategoryModel extends Model

@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Model AdminUserModel
- *
+ * 
  * @property int $id
  * @property string $account
  * @property string $password
  * @property string $salt
  * @property string $name
+ * @property string $headimg
  * @property int $last_login_ip
  * @property int $last_login_time
  * @property int $created_at
@@ -26,7 +27,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminUserModel paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminUserModel find($id, $columns = ['*'])
  * @method static \Illuminate\Database\Query\Builder | \App\Model\AdminUserModel first($columns = ['*'])
-
  * @package App\Model
  */
 class AdminUserModel extends Model
