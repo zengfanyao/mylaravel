@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * This file is part of workerman.
  *
@@ -12,16 +12,35 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
 use \Workerman\Worker;
-use \GatewayWorker\Register;
+use \GatewayWorker\BusinessWorker;
+use JiaLeo\Laravel\Socket\Lib\Config;
 
 //获取配置
-$config = \Socket\Lib\Config::get('socket');
+$config = Config::get('socket');
 
-// register 服务必须是text协议
-$register = new Register('text://'.$config['set_register_address']);
+
+// bussinessWorker 进程
+$worker = new BusinessWorker();
+
+// worker名称
+$worker->name = 'BusinessWorker';
+// bussinessWorker进程数量
+$worker->count = $config['worker_num'];
+// 服务注册地址
+$worker->registerAddress = $config['get_register_address'];
+
+$worker->onWorkerStart = function () {
+
+};
+
+//$url = env('DEV_CONFIG_URL');
+
+
+//var_dump(env('REDIS_PASSWORD'));
+
 
 // 如果不是在根目录启动，则运行runAll方法
-if(!defined('GLOBAL_START')) {
+if (!defined('GLOBAL_START')) {
     Worker::runAll();
 }
 

@@ -1,6 +1,6 @@
 <?php
 use \GatewayWorker\Lib\Gateway;
-use \Socket\Lib\Message;
+use JiaLeo\Laravel\Socket\Lib\Message;
 
 class Customer{
 

@@ -688,6 +688,54 @@
             "time": "2016-07-18T04:51:16+00:00"
         },
         {
+            "name": "gregwar/captcha",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gregwar/Captcha.git",
+                "reference": "1240ab993ca713680573b2d4166900da5f758623"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/Gregwar/Captcha/1240ab993ca713680573b2d4166900da5f758623.zip",
+                "reference": "1240ab993ca713680573b2d4166900da5f758623",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "captcha",
+            "autoload": {
+                "psr-4": {
+                    "Gregwar\\Captcha\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Passault",
+                    "email": "g.passault@gmail.com",
+                    "homepage": "http://www.gregwar.com/"
+                },
+                {
+                    "name": "Jeremy Livingston",
+                    "email": "jeremy.j.livingston@gmail.com"
+                }
+            ],
+            "description": "Captcha generator",
+            "homepage": "https://github.com/Gregwar/Captcha",
+            "keywords": [
+                "bot",
+                "captcha",
+                "spam"
+            ],
+            "time": "2015-09-11T15:23:20+00:00"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "dev-master",
             "source": {
@@ -957,28 +1005,31 @@
         },
         {
             "name": "jialeo/laravel-package",
-            "version": "v0.1",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jialeo/laravel-package.git",
-                "reference": "457a1ef5f7bf5fb4d03a1dae58b8ff8f4d683e59"
+                "reference": "1e3679d1ce1a5098c3e7fd402765398f05cd8030"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jialeo/laravel-package/457a1ef5f7bf5fb4d03a1dae58b8ff8f4d683e59.zip",
-                "reference": "457a1ef5f7bf5fb4d03a1dae58b8ff8f4d683e59",
+                "url": "https://files.phpcomposer.com/files/jialeo/laravel-package/1e3679d1ce1a5098c3e7fd402765398f05cd8030.zip",
+                "reference": "1e3679d1ce1a5098c3e7fd402765398f05cd8030",
                 "shasum": ""
             },
             "require": {
                 "aliyuncs/oss-sdk-php": "^2.2",
                 "firebase/php-jwt": "^4.0",
+                "gregwar/captcha": "1.*",
+                "laravel/framework": "5.4.*",
                 "php": ">=5.6.4",
                 "workerman/gateway-worker": "^3.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "JiaLeo\\Laravel\\": "src/"
+                    "JiaLeo\\Laravel\\": "src/",
+                    "App\\Exceptions\\": "src/Core/Exception"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -996,7 +1047,7 @@
                 "laravel",
                 "package"
             ],
-            "time": "2017-03-28T02:15:32+00:00"
+            "time": "2017-03-29T10:32:45+00:00"
         },
         {
             "name": "laravel/framework",

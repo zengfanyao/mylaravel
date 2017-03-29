@@ -1,7 +1,7 @@
 <?php
 use Workerman\Worker;
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
@@ -22,13 +22,13 @@ define('GLOBAL_START', 1);
 $root_path=__DIR__;
 define('ROOT_PATH', $root_path);
 
-
-$env_obj = new \Dotenv\Dotenv(ROOT_PATH.'/../','.env');
+//配置文件路径
+$env_obj = new \Dotenv\Dotenv(ROOT_PATH,'.env');
 $env_obj->load();
 
 
 // 加载所有Applications/*/start.php，以便启动所有服务
-foreach(glob(__DIR__.'/App/start*.php') as $start_file)
+foreach(glob(__DIR__.'/app/socket/start*.php') as $start_file)
 {
     require_once $start_file;
 }

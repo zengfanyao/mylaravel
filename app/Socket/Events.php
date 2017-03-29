@@ -19,7 +19,7 @@
  */
 //declare(ticks=1);
 use \GatewayWorker\Lib\Gateway;
-use \Socket\Lib\Message;
+use JiaLeo\Laravel\Socket\Lib\Message;
 
 /**
  * 主逻辑
@@ -75,10 +75,10 @@ class Events
                 Customer::chat($client_id, $data);
                 break;
             case 'close':
-                Message::replyError('用户尚未登录','error','no_login');
+                Message::replyError('用户尚未登录','no_login');
                 break;
             default:
-                Message::replyError('用户请求失败','error','request_fail');
+                Message::replyError('用户请求失败','request_fail');
         }
 
         Gateway::sendToCurrentClient('已收到你的信息!');

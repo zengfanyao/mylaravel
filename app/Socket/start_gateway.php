@@ -13,8 +13,9 @@
  */
 use \Workerman\Worker;
 use \GatewayWorker\Gateway;
+use JiaLeo\Laravel\Socket\Lib\Config;
 
-$config = \Socket\Lib\Config::get('socket');
+$config = Config::get('socket');
 
 $gateway = new Gateway("websocket://".$config['gateway_address']);
 // gateway名称，status方便查看
@@ -28,15 +29,6 @@ $gateway->lanIp = $config['gateway_lan_ip'];
 $gateway->startPort = $config['gateway_start_port'];
 // 服务注册地址
 $gateway->registerAddress = $config['get_register_address'];
-
-
-
-
-
-
-
-
-
 
 // 心跳间隔
 //$gateway->pingInterval = 10;

@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('test','Api\TestController@index');
+Route::get('test', 'Api\TestController@index');
 
 //需要验证session的
 Route::group(['middleware' => ['JwtAuth']], function () {
@@ -26,27 +26,6 @@ Route::group(['middleware' => ['JwtAuth']], function () {
         //Route::resource('users', 'Api\UserController');
 
     });
-
-    //管理平台api
-    Route::group(['prefix' => 'admin'], function () {
-        Route::resource('logins', 'Admin\LoginController');
-        Route::delete('logout', 'Admin\LoginController@out');
-        Route::resource('auth/menu/availables', 'Admin\AdminMenuAvailableController');
-        // 验证权限
-        Route::group(['middleware' => ['AdminCheck']], function () {
-            Route::resource('auth/users', 'Admin\AdminUserController');
-            Route::resource('auth/roles', 'Admin\AdminRoleController');
-            Route::resource('auth/permissions', 'Admin\AdminPermissionController');
-            Route::resource('auth/role/permissions', 'Admin\AdminRolePermissionController');
-            Route::resource('auth/menus', 'Admin\AdminMenuController');
-            Route::resource('article/categorys', 'Admin\ArticleCategoryController');
-            Route::resource('articles', 'Admin\ArticleController');
-            Route::resource('article/tags', 'Admin\ArticleTagController');
-            Route::resource('auth/permission/menus', 'Admin\AdminPermissionMenuController');
-            Route::resource('auth/user/selfs', 'Admin\AdminUserSelfController');
-        });
-    });
-
 });
 
 //微信消息回调接口
