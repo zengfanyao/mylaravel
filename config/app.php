@@ -191,7 +191,9 @@ return [
         //Excel
         JiaLeo\Laravel\Excel\ExcelProvider::class,
         //Wechat
-        JiaLeo\Laravel\Wechat\WechatProvider::class
+        JiaLeo\Laravel\Wechat\WechatProvider::class,
+        //Captcha
+        JiaLeo\Laravel\Captcha\CaptchaProvider::class
     ],
 
     /*
@@ -246,6 +248,8 @@ return [
         'Sms' => JiaLeo\Laravel\Sms\SmsFacade::class,
         'Excel' => JiaLeo\Laravel\Excel\ExcelFacade::class,
         'Wechat' => JiaLeo\Laravel\Wechat\WechatFacade::class,
+
+        'Captcha' => JiaLeo\Laravel\Captcha\CaptchaFacade::class,
 
     ],
 

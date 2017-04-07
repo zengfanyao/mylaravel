@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.16 on 2017-03-27.
+ * Generated for Laravel 5.4.16 on 2017-03-31.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -213,12 +213,13 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the path to the resources directory.
          *
+         * @param string $path
          * @return string 
          * @static 
          */ 
-        public static function resourcePath()
+        public static function resourcePath($path = '')
         {
-            return \Illuminate\Foundation\Application::resourcePath();
+            return \Illuminate\Foundation\Application::resourcePath($path);
         }
         
         /**
@@ -5930,21 +5931,22 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function size($queue = null)
         {
-            return \Illuminate\Queue\RedisQueue::size($queue);
+            return \Illuminate\Queue\SyncQueue::size($queue);
         }
         
         /**
          * Push a new job onto the queue.
          *
-         * @param object|string $job
+         * @param string $job
          * @param mixed $data
          * @param string $queue
          * @return mixed 
+         * @throws \Exception|\Throwable
          * @static 
          */ 
         public static function push($job, $data = '', $queue = null)
         {
-            return \Illuminate\Queue\RedisQueue::push($job, $data, $queue);
+            return \Illuminate\Queue\SyncQueue::push($job, $data, $queue);
         }
         
         /**
@@ -5958,14 +5960,14 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function pushRaw($payload, $queue = null, $options = array())
         {
-            return \Illuminate\Queue\RedisQueue::pushRaw($payload, $queue, $options);
+            return \Illuminate\Queue\SyncQueue::pushRaw($payload, $queue, $options);
         }
         
         /**
          * Push a new job onto the queue after a delay.
          *
          * @param \DateTime|int $delay
-         * @param object|string $job
+         * @param string $job
          * @param mixed $data
          * @param string $queue
          * @return mixed 
@@ -5973,7 +5975,7 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function later($delay, $job, $data = '', $queue = null)
         {
-            return \Illuminate\Queue\RedisQueue::later($delay, $job, $data, $queue);
+            return \Illuminate\Queue\SyncQueue::later($delay, $job, $data, $queue);
         }
         
         /**
@@ -5985,58 +5987,7 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function pop($queue = null)
         {
-            return \Illuminate\Queue\RedisQueue::pop($queue);
-        }
-        
-        /**
-         * Migrate the delayed jobs that are ready to the regular queue.
-         *
-         * @param string $from
-         * @param string $to
-         * @return array 
-         * @static 
-         */ 
-        public static function migrateExpiredJobs($from, $to)
-        {
-            return \Illuminate\Queue\RedisQueue::migrateExpiredJobs($from, $to);
-        }
-        
-        /**
-         * Delete a reserved job from the queue.
-         *
-         * @param string $queue
-         * @param \Illuminate\Queue\Jobs\RedisJob $job
-         * @return void 
-         * @static 
-         */ 
-        public static function deleteReserved($queue, $job)
-        {
-            \Illuminate\Queue\RedisQueue::deleteReserved($queue, $job);
-        }
-        
-        /**
-         * Delete a reserved job from the reserved queue and release it.
-         *
-         * @param string $queue
-         * @param \Illuminate\Queue\Jobs\RedisJob $job
-         * @param int $delay
-         * @return void 
-         * @static 
-         */ 
-        public static function deleteAndRelease($queue, $job, $delay)
-        {
-            \Illuminate\Queue\RedisQueue::deleteAndRelease($queue, $job, $delay);
-        }
-        
-        /**
-         * Get the underlying Redis instance.
-         *
-         * @return \Illuminate\Contracts\Redis\Factory 
-         * @static 
-         */ 
-        public static function getRedis()
-        {
-            return \Illuminate\Queue\RedisQueue::getRedis();
+            return \Illuminate\Queue\SyncQueue::pop($queue);
         }
         
         /**
@@ -6051,7 +6002,7 @@ namespace Illuminate\Support\Facades {
         public static function pushOn($queue, $job, $data = '')
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\RedisQueue::pushOn($queue, $job, $data);
+            return \Illuminate\Queue\SyncQueue::pushOn($queue, $job, $data);
         }
         
         /**
@@ -6067,7 +6018,7 @@ namespace Illuminate\Support\Facades {
         public static function laterOn($queue, $delay, $job, $data = '')
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\RedisQueue::laterOn($queue, $delay, $job, $data);
+            return \Illuminate\Queue\SyncQueue::laterOn($queue, $delay, $job, $data);
         }
         
         /**
@@ -6082,7 +6033,7 @@ namespace Illuminate\Support\Facades {
         public static function bulk($jobs, $data = '', $queue = null)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\RedisQueue::bulk($jobs, $data, $queue);
+            return \Illuminate\Queue\SyncQueue::bulk($jobs, $data, $queue);
         }
         
         /**
@@ -6094,7 +6045,7 @@ namespace Illuminate\Support\Facades {
         public static function getConnectionName()
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\RedisQueue::getConnectionName();
+            return \Illuminate\Queue\SyncQueue::getConnectionName();
         }
         
         /**
@@ -6107,7 +6058,7 @@ namespace Illuminate\Support\Facades {
         public static function setConnectionName($name)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\RedisQueue::setConnectionName($name);
+            return \Illuminate\Queue\SyncQueue::setConnectionName($name);
         }
         
         /**
@@ -6120,7 +6071,7 @@ namespace Illuminate\Support\Facades {
         public static function setContainer($container)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            \Illuminate\Queue\RedisQueue::setContainer($container);
+            \Illuminate\Queue\SyncQueue::setContainer($container);
         }
          
     }
@@ -14331,6 +14282,196 @@ namespace JiaLeo\Laravel\Wechat {
  
 }
 
+namespace JiaLeo\Laravel\Captcha { 
+
+    class CaptchaFacade {
+        
+        /**
+         * 创建验证码,浏览器直接输出
+         *
+         * @param $name string 验证码名称
+         * @param $timeout int 有效时间--分钟
+         * @static 
+         */ 
+        public static function create($name = 'register', $timeout = 1)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::create($name, $timeout);
+        }
+        
+        /**
+         * 生成验证码图片
+         *
+         * @param $code string
+         * @static 
+         */ 
+        public static function createImg($code = '')
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::createImg($code);
+        }
+        
+        /**
+         * 生成验证码
+         *
+         * @static 
+         */ 
+        public static function createCode()
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::createCode();
+        }
+        
+        /**
+         * 验证验证码
+         *
+         * @param $key
+         * @return bool 
+         * @static 
+         */ 
+        public static function checkCodeInfo($name, $code)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::checkCodeInfo($name, $code);
+        }
+        
+        /**
+         * 获取验证码信息
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function getCodeInfo($name)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::getCodeInfo($name);
+        }
+        
+        /**
+         * 设置验证码
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function getCode()
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::getCode();
+        }
+        
+        /**
+         * 设置验证码
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function setCode($code)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::setCode($code);
+        }
+        
+        /**
+         * 设置宽度
+         *
+         * @param $width
+         * @return $this 
+         * @static 
+         */ 
+        public static function setWidth($width)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::setWidth($width);
+        }
+        
+        /**
+         * 设置高度
+         *
+         * @param $height
+         * @return $this 
+         * @static 
+         */ 
+        public static function setHeight($height)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::setHeight($height);
+        }
+        
+        /**
+         * 设置字体
+         *
+         * @param $font
+         * @return $this 
+         * @static 
+         */ 
+        public static function setFont($font)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::setFont($font);
+        }
+        
+        /**
+         * 设置是否纯数字
+         *
+         * @param $isDigital
+         * @return $this 
+         * @static 
+         */ 
+        public static function setDigital($isDigital)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::setDigital($isDigital);
+        }
+        
+        /**
+         * 设置位数
+         *
+         * @param $limit
+         * @return $this 
+         * @static 
+         */ 
+        public static function setLimit($limit)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::setLimit($limit);
+        }
+        
+        /**
+         * 设置字典
+         *
+         * @param $charset
+         * @return $this 
+         * @static 
+         */ 
+        public static function setCharset($charset)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::setCharset($charset);
+        }
+        
+        /**
+         * 生成数字验证码
+         *
+         * @author : 亮 <chenjialiang@han-zi.cn>
+         * @static 
+         */ 
+        public static function generateMsgAuthCode($limit)
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::generateMsgAuthCode($limit);
+        }
+        
+        /**
+         * 生成验证码
+         *
+         * @author 伟健
+         * @static 
+         */ 
+        public static function buildCode()
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::buildCode();
+        }
+        
+        /**
+         * 重置参数
+         *
+         * @static 
+         */ 
+        public static function reset()
+        {
+            return \JiaLeo\Laravel\Captcha\Captcha::reset();
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -16366,6 +16507,8 @@ namespace  {
     class Excel extends \JiaLeo\Laravel\Excel\ExcelFacade {}
 
     class Wechat extends \JiaLeo\Laravel\Wechat\WechatFacade {}
+
+    class Captcha extends \JiaLeo\Laravel\Captcha\CaptchaFacade {}
  
 }
 

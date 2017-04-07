@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b33f7189126a2d2a76bdc3583fe4019f",
+    "content-hash": "582a3beb4c79afff00b27a7dfec3c370",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -1005,17 +1005,12 @@
         },
         {
             "name": "jialeo/laravel-package",
-            "version": "v0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jialeo/laravel-package.git",
-                "reference": "1e3679d1ce1a5098c3e7fd402765398f05cd8030"
-            },
+            "version": "dev-develop",
             "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jialeo/laravel-package/1e3679d1ce1a5098c3e7fd402765398f05cd8030.zip",
-                "reference": "1e3679d1ce1a5098c3e7fd402765398f05cd8030",
-                "shasum": ""
+                "type": "path",
+                "url": "../laravel-package",
+                "reference": "3223dfa31e4cfed9a73b97172169213baaf3314f",
+                "shasum": null
             },
             "require": {
                 "aliyuncs/oss-sdk-php": "^2.2",
@@ -1032,7 +1027,6 @@
                     "App\\Exceptions\\": "src/Core/Exception"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1046,8 +1040,7 @@
             "keywords": [
                 "laravel",
                 "package"
-            ],
-            "time": "2017-03-29T10:32:45+00:00"
+            ]
         },
         {
             "name": "laravel/framework",
@@ -4628,7 +4621,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "jialeo/laravel-package": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
