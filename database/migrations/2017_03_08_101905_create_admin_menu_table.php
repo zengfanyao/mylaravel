@@ -29,12 +29,110 @@ class CreateAdminMenuTable extends Migration
             $table->tinyInteger('is_on')->default(1);
             $table->integer('order')->comment('排序');
             $table->string('description', 255)->nullable()->comment('菜单描述');
-
-            
-
-            
-
         });
+        DB::table('admin_menu')->insert([
+            'name' => '管理员管理',
+            'description' => '管理员管理',
+            'level' => '1',
+            'parent_id' => '0',
+            'order' => '1',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
+
+        DB::table('admin_menu')->insert([
+            'name' => '文章管理',
+            'description' => '文章管理',
+            'level' => '1',
+            'parent_id' => '0',
+            'order' => '1',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
+
+        DB::table('admin_menu')->insert([
+            'name' => '管理员列表',
+            'description' => '管理员列表',
+            'url' => '/admin/lists/lists',
+            'icon' => 'fa-list-ul',
+            'level' => '2',
+            'parent_id' => '1',
+            'order' => '1',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
+
+        DB::table('admin_menu')->insert([
+            'name' => '角色列表',
+            'description' => '角色列表',
+            'url' => '/admin/role/lists',
+            'icon' => 'fa-list-ul',
+            'level' => '2',
+            'parent_id' => '1',
+            'order' => '1',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
+
+        DB::table('admin_menu')->insert([
+            'name' => '权限组列表',
+            'description' => '权限组列表',
+            'url' => '/admin/power/lists',
+            'icon' => 'fa-list-ul',
+            'level' => '2',
+            'parent_id' => '1',
+            'order' => '1',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
+
+        DB::table('admin_menu')->insert([
+            'name' => '菜单组列表',
+            'description' => '菜单组列表',
+            'url' => '/admin/menu/lists',
+            'icon' => 'fa-list-ul',
+            'level' => '2',
+            'parent_id' => '1',
+            'order' => '1',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
+
+        DB::table('admin_menu')->insert([
+            'name' => '文章列表',
+            'description' => '文章列表',
+            'url' => '/article/lists/lists',
+            'icon' => 'fa-list-ul',
+            'level' => '2',
+            'parent_id' => '2',
+            'order' => '1',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
+
+        DB::table('admin_menu')->insert([
+            'name' => '文章分类',
+            'description' => '文章分类',
+            'url' => '/article/classify/lists',
+            'icon' => 'fa-list-ul',
+            'level' => '2',
+            'parent_id' => '2',
+            'order' => '1',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
+
+        DB::table('admin_menu')->insert([
+            'name' => '文章标签',
+            'description' => '文章标签',
+            'url' => '/article/label/lists',
+            'icon' => 'fa-list-ul',
+            'level' => '2',
+            'parent_id' => '2',
+            'order' => '1',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
     }
 
     /**

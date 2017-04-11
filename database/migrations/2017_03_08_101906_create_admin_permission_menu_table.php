@@ -27,6 +27,166 @@ class CreateAdminPermissionMenuTable extends Migration
             
 
         });
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '8',
+            'admin_menu_id' => '3',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '9',
+            'admin_menu_id' => '3',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '10',
+            'admin_menu_id' => '3',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '11',
+            'admin_menu_id' => '3',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '12',
+            'admin_menu_id' => '4',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '13',
+            'admin_menu_id' => '4',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '14',
+            'admin_menu_id' => '4',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '15',
+            'admin_menu_id' => '4',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '16',
+            'admin_menu_id' => '4',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '17',
+            'admin_menu_id' => '4',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '18',
+            'admin_menu_id' => '5',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '19',
+            'admin_menu_id' => '5',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '20',
+            'admin_menu_id' => '5',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '21',
+            'admin_menu_id' => '5',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '22',
+            'admin_menu_id' => '5',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '23',
+            'admin_menu_id' => '5',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '24',
+            'admin_menu_id' => '6',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '25',
+            'admin_menu_id' => '6',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '26',
+            'admin_menu_id' => '6',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '27',
+            'admin_menu_id' => '6',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '28',
+            'admin_menu_id' => '7',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '29',
+            'admin_menu_id' => '7',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '30',
+            'admin_menu_id' => '7',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '31',
+            'admin_menu_id' => '7',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '32',
+            'admin_menu_id' => '8',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '33',
+            'admin_menu_id' => '8',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '34',
+            'admin_menu_id' => '8',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '35',
+            'admin_menu_id' => '8',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '36',
+            'admin_menu_id' => '9',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '37',
+            'admin_menu_id' => '9',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '38',
+            'admin_menu_id' => '9',
+        ]);
+
+        DB::table('admin_permission_menu')->insert([
+            'admin_permission_id' => '39',
+            'admin_menu_id' => '9',
+        ]);
     }
 
     /**

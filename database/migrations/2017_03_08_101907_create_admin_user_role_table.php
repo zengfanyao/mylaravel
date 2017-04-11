@@ -27,6 +27,11 @@ class CreateAdminUserRoleTable extends Migration
             
 
         });
+
+        DB::table('admin_user_role')->insert([
+            'admin_user_id' => '1',
+            'admin_role_id' => '1'
+        ]);
     }
 
     /**

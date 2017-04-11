@@ -35,6 +35,15 @@ class CreateAdminUserTable extends Migration
             
 
         });
+
+        DB::table('admin_user')->insert([
+            'account' => 'admin',
+            'password' => 'fc95568d13755a8a8f4f7f90234eff81',
+            'salt' => 'dbRqv',
+            'name' => '管理员',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
     }
 
     /**

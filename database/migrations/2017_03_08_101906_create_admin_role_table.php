@@ -30,6 +30,13 @@ class CreateAdminRoleTable extends Migration
             
 
         });
+
+        DB::table('admin_role')->insert([
+            'name' => '超级管理员',
+            'description' => '超级管理员',
+            'created_at' => time(),
+            'updated_at' => time()
+        ]);
     }
 
     /**
