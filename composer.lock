@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b33f7189126a2d2a76bdc3583fe4019f",
+    "content-hash": "cde693f0b727ca7bed1519c4afa43bf6",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -1005,17 +1005,12 @@
         },
         {
             "name": "jialeo/laravel-package",
-            "version": "v0.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jialeo/laravel-package.git",
-                "reference": "4590cce94e95a66f5308a2771763bab20b8d6046"
-            },
+            "version": "dev-feature/upload",
             "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jialeo/laravel-package/4590cce94e95a66f5308a2771763bab20b8d6046.zip",
-                "reference": "4590cce94e95a66f5308a2771763bab20b8d6046",
-                "shasum": ""
+                "type": "path",
+                "url": "../laravel-package",
+                "reference": "169d34dd8ba24513183965582edc86589adfbd50",
+                "shasum": null
             },
             "require": {
                 "aliyuncs/oss-sdk-php": "^2.2",
@@ -1032,7 +1027,6 @@
                     "App\\Exceptions\\": "src/Core/Exception"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1046,8 +1040,7 @@
             "keywords": [
                 "laravel",
                 "package"
-            ],
-            "time": "2017-04-07T06:29:11+00:00"
+            ]
         },
         {
             "name": "laravel/framework",
@@ -2869,6 +2862,39 @@
                 "event-loop"
             ],
             "time": "2017-03-14T03:19:12+00:00"
+        },
+        {
+            "name": "zedisdog/laravel-schema-extend",
+            "version": "v0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zedisdog/laravel-schema-extend.git",
+                "reference": "b8e4ff426bafb7e64fe48d356c48f015be8a3cc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/zedisdog/laravel-schema-extend/b8e4ff426bafb7e64fe48d356c48f015be8a3cc9.zip",
+                "reference": "b8e4ff426bafb7e64fe48d356c48f015be8a3cc9",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "zedisdog\\LaravelSchemaExtend": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "zed",
+                    "email": "2692273254@qq.com"
+                }
+            ],
+            "description": "support MySQL 'table comment'.",
+            "time": "2015-11-16T00:00:00+00:00"
         }
     ],
     "packages-dev": [
@@ -4628,7 +4654,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "jialeo/laravel-package": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

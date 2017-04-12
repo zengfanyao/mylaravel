@@ -13,7 +13,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "predis/predis": "^1.1",
         "doctrine/dbal": "^2.5",
-        "jialeo/laravel-package": "0.1.*"
+        "zedisdog/laravel-schema-extend": "~0.5",
+        "jialeo/laravel-package": "dev-feature/upload"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -55,5 +56,12 @@
     },
     "config": {
         "preferred-install": "dist"
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../laravel-package"
+        }
+    ]
+
 }
