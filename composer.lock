@@ -1005,16 +1005,16 @@
         },
         {
             "name": "jialeo/laravel-package",
-            "version": "v0.1.5",
+            "version": "v0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jialeo/laravel-package.git",
-                "reference": "c2049e9a870ea088673745f5c29d2bfda866b2b6"
+                "reference": "1c12e78e64a3ce2adeed10b68382f1c22b769204"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jialeo/laravel-package/c2049e9a870ea088673745f5c29d2bfda866b2b6.zip",
-                "reference": "c2049e9a870ea088673745f5c29d2bfda866b2b6",
+                "url": "https://files.phpcomposer.com/files/jialeo/laravel-package/1c12e78e64a3ce2adeed10b68382f1c22b769204.zip",
+                "reference": "1c12e78e64a3ce2adeed10b68382f1c22b769204",
                 "shasum": ""
             },
             "require": {
@@ -1047,7 +1047,7 @@
                 "laravel",
                 "package"
             ],
-            "time": "2017-04-12T03:00:33+00:00"
+            "time": "2017-04-17T10:58:59+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3227,7 +3227,7 @@
             "version": "0.9.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/padraic/mockery.git",
+                "url": "https://github.com/mockery/mockery.git",
                 "reference": "6fdb61243844dc924071d3404bb23994ea0b6856"
             },
             "dist": {
