@@ -3,7 +3,7 @@
 return array(
 
     'admin_config_list' => array(
-        'upload_to_cloud' => true,    //是否上传到网盘
+        'upload_to_cloud' => false,    //是否上传到网盘
 
         /* 上传图片配置项 */
         "imageActionName" => "uploadimage", /* 执行上传图片的action名称 */
@@ -14,7 +14,7 @@ return array(
         "imageCompressBorder" => 1600, /* 图片压缩最长边限制 */
         "imageInsertAlign" => "none", /* 插入的图片浮动方式 */
         "imageUrlPrefix" => "", /* 图片访问路径前缀 */
-        "imagePathFormat" => "/testupload/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
+        "imagePathFormat" => "/uditor/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
         /* {filename} 会替换成原文件名,配置这项需要注意中文乱码问题 */
         /* {rand:6} 会替换成随机数,后面的数字是随机数的位数 */
         /* {time} 会替换成时间戳 */

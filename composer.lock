@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc7cadf31de5d06bcf1c459482160316",
+    "content-hash": "aa6aeb5358f59e251d199163069a754f",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -1005,16 +1005,16 @@
         },
         {
             "name": "jialeo/laravel-package",
-            "version": "v0.1.6",
+            "version": "v0.1.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jialeo/laravel-package.git",
-                "reference": "1c12e78e64a3ce2adeed10b68382f1c22b769204"
+                "reference": "2136406c2de9bf60e0983e5e647c967edea3bfd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/jialeo/laravel-package/1c12e78e64a3ce2adeed10b68382f1c22b769204.zip",
-                "reference": "1c12e78e64a3ce2adeed10b68382f1c22b769204",
+                "url": "https://files.phpcomposer.com/files/jialeo/laravel-package/2136406c2de9bf60e0983e5e647c967edea3bfd0.zip",
+                "reference": "2136406c2de9bf60e0983e5e647c967edea3bfd0",
                 "shasum": ""
             },
             "require": {
@@ -1047,7 +1047,40 @@
                 "laravel",
                 "package"
             ],
-            "time": "2017-04-17T10:58:59+00:00"
+            "time": "2017-05-08T07:27:19+00:00"
+        },
+        {
+            "name": "jialeo/laravel-schema-extend",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jialeo/laravel-schema-extend.git",
+                "reference": "9870ddf2b1e23adbe4ea53ff3b0e595afdac3df8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/jialeo/laravel-schema-extend/9870ddf2b1e23adbe4ea53ff3b0e595afdac3df8.zip",
+                "reference": "9870ddf2b1e23adbe4ea53ff3b0e595afdac3df8",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jialeo\\LaravelSchemaExtend\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "chenjialiang",
+                    "email": "chenjialiang@han-zi.cn"
+                }
+            ],
+            "description": "support MySQL 'table comment','int' data type length setting",
+            "time": "2017-05-07T09:30:33+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2869,39 +2902,6 @@
                 "event-loop"
             ],
             "time": "2017-03-14T03:19:12+00:00"
-        },
-        {
-            "name": "zedisdog/laravel-schema-extend",
-            "version": "v0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zedisdog/laravel-schema-extend.git",
-                "reference": "b8e4ff426bafb7e64fe48d356c48f015be8a3cc9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/zedisdog/laravel-schema-extend/b8e4ff426bafb7e64fe48d356c48f015be8a3cc9.zip",
-                "reference": "b8e4ff426bafb7e64fe48d356c48f015be8a3cc9",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "5.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "zedisdog\\LaravelSchemaExtend": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "zed",
-                    "email": "2692273254@qq.com"
-                }
-            ],
-            "description": "support MySQL 'table comment'.",
-            "time": "2015-11-16T00:00:00+00:00"
         }
     ],
     "packages-dev": [
@@ -3793,12 +3793,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c4ebb68af6e68179eb2381603ad35032622894cf"
+                "reference": "69c4f49ff376af2692bad9cebd883d17ebaa98a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/sebastianbergmann/phpunit/c4ebb68af6e68179eb2381603ad35032622894cf.zip",
-                "reference": "c4ebb68af6e68179eb2381603ad35032622894cf",
+                "url": "https://files.phpcomposer.com/files/sebastianbergmann/phpunit/69c4f49ff376af2692bad9cebd883d17ebaa98a1.zip",
+                "reference": "69c4f49ff376af2692bad9cebd883d17ebaa98a1",
                 "shasum": ""
             },
             "require": {
@@ -3867,7 +3867,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-20T17:41:26+00:00"
+            "time": "2017-04-03T02:22:27+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

@@ -237,7 +237,7 @@ return [
         'Response' => Illuminate\Support\Facades\Response::class,
         'Route' => Illuminate\Support\Facades\Route::class,
         //'Schema' => Illuminate\Support\Facades\Schema::class,
-        'Schema'    => zedisdog\LaravelSchemaExtend\Schema::class,
+        'Schema'    => Jialeo\LaravelSchemaExtend\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'URL' => Illuminate\Support\Facades\URL::class,

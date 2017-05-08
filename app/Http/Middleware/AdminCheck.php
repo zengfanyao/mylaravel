@@ -18,8 +18,18 @@ class AdminCheck
     public function handle($request, Closure $next)
     {
         if (config('app.debug') === true && $request->query->get('usertest') && $request->query->get('usertest') > 0) {
+            $role = [];
+            $role_info = \App\Model\AdminUserModel::find($request->query->get('usertest'))->roles()->get(['admin_role_id', 'name']);
+
+            if(!$role_info ->isEmpty()){
+                foreach ($role_info as $v) {
+                    $role[]=$v->admin_role_id;
+                }
+            }
+
             \Jwt::set('admin_info', array(
-                'admin_id' => $request->query->get('usertest')
+                'admin_id' => $request->query->get('usertest'),
+                'role' => $role
             ));
         }
 

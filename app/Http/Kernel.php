@@ -59,6 +59,6 @@ class Kernel extends HttpKernel
 
         'AdminCheck' => \App\Http\Middleware\AdminCheck::class,
         'ApiCheck' => \App\Http\Middleware\ApiCheck::class,
-
+        'AdminAuth' => \App\Http\Middleware\AdminAuth::class,
     ];
 }
