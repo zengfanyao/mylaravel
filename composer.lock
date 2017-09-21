@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fce9bc50be3ca4f88368a2cc2cebde9c",
+    "content-hash": "8b9d251d27c866ea78c8d7ab8522dee5",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -1090,12 +1090,11 @@
         },
         {
             "name": "jialeo/laravel-package",
-            "version": "dev-develop",
-            "dist": {
-                "type": "path",
-                "url": "../../laravel-package",
-                "reference": "c6dad50f45f396ccacadfb587d18a9a86e5b40f4",
-                "shasum": null
+            "version": "0.1.36",
+            "source": {
+                "type": "git",
+                "url": "https://git.han-zi.cn/hanzi/laravel-package",
+                "reference": "1bb0191d19a7d29f0ff2714f338a8e62e7d05c3c"
             },
             "require": {
                 "aliyuncs/oss-sdk-php": "^2.2",
@@ -1126,7 +1125,8 @@
             "keywords": [
                 "laravel",
                 "package"
-            ]
+            ],
+            "time": "2017-09-21T12:03:36+00:00"
         },
         {
             "name": "jialeo/laravel-schema-extend",
@@ -5039,9 +5039,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "jialeo/laravel-package": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
