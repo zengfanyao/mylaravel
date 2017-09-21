@@ -50,6 +50,8 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         //'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         //'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'cors' => \Barryvdh\Cors\HandleCors::class,
+
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         //'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
@@ -60,5 +62,6 @@ class Kernel extends HttpKernel
         'AdminCheck' => \App\Http\Middleware\AdminCheck::class,
         'ApiCheck' => \App\Http\Middleware\ApiCheck::class,
         'AdminAuth' => \App\Http\Middleware\AdminAuth::class,
+
     ];
 }

@@ -9,6 +9,8 @@ use Symfony\Component\Debug\ExceptionHandler as SymfonyExceptionHandler;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException as NotFoundHttpException;
 
+use \Illuminate\Http\JsonResponse;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -49,16 +51,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-
-        if ($request->header('X-ISAPI') == 1 && $exception instanceof ApiException || $exception instanceof NotFoundHttpException) {
-            return $this->result($request, $exception);
-        } elseif ($exception instanceof ApiException) {
-            $e = \Symfony\Component\Debug\Exception\FlattenException::create($exception, $exception->getCode());
-            $handler = new SymfonyExceptionHandler(config('app.debug'));
-
-            return SymfonyResponse::create($handler->getHtml($e), $e->getStatusCode(), $e->getHeaders());
-        }
-
         return parent::render($request, $exception);
     }
 
@@ -79,39 +71,16 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * 返回结果
-     * @param $request
-     * @param Exception $exception
-     * @return \Illuminate\Http\JsonResponse
+     * Convert the given exception to an array.
+     *
+     * @param  \Exception  $e
+     * @return array
      */
-    private function result($request, \Exception $exception)
+    public function convertExceptionToArray(Exception $e)
     {
-        if ($exception instanceof NotFoundHttpException) {
-            $error_code = '404_NOT_FOUND';
-            $http_code = 404;
-            $error_msg = '找不到页面!';
-        } else {
-            $error_code = $exception->getErrorId();
-            $http_code = $exception->getCode();
-            $error_msg = $exception->getMessage();
-        }
-
-        $data = [
-            'status' => false,
-            'error_msg' => $error_msg,
-            'error_code' => $error_code,
-            'data' => [],
-            'list' => [],
-        ];
-
-        config('app.debug') == 'true' ? $data['debug'] = [
-            'type' => get_class($exception),
-            'line' => $exception->getLine(),
-            'file' => $exception->getFile(),
-            'trace' => explode("\n", $exception->getTraceAsString())
-        ] : true;
-
-        return response()->json($data, $http_code);
+        return \App\Exceptions\ApiException::formatData($e);
     }
+
+
 
 }
