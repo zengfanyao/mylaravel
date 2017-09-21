@@ -20,6 +20,9 @@ return array(
         'file_domain' => env('OSS_FILE_DOMAIN', 'http://test.ping-qu.com'),
         //图片cdn域名
         'img_domain' => env('OSS_IMG_DOMAIN', 'http://test.ping-qu.com'),
+
+        //子目录
+        'sub_dir' => env('OSS_SUB_DIR', '')     //目录名 + "/" ,如果没有,则设置为空字符串
     )
 );
 ?>
